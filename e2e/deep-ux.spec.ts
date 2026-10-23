@@ -17,6 +17,7 @@ for (const removedIndex of [0, 3]) {
     for (const [index, name] of names.entries()) {
       if (index > 0) await page.getByRole('button', { name: 'Добавить участника' }).click();
       const person = page.getByRole('group', { name: `Участник ${index + 1}`, exact: true });
+      if (index > 0) await expect(person.getByLabel('Имя', { exact: true })).toBeFocused();
       await person.getByLabel('Имя', { exact: true }).fill(name);
       await person.getByLabel('Возраст, лет', { exact: true }).fill(String(18 + index));
     }
@@ -28,7 +29,7 @@ for (const removedIndex of [0, 3]) {
         .getByRole('group', { name: `Участник ${focusedIndex + 1}`, exact: true })
         .getByLabel('Имя', { exact: true }),
     ).toBeFocused();
-    const undo = page.getByText('Вернуть', { exact: true });
+    const undo = page.getByRole('button', { name: 'Вернуть участника', exact: true });
     await expect(undo).toBeInViewport({ ratio: 1 });
     await capture(
       page,
@@ -106,7 +107,8 @@ test('повреждённый HTTP 201 сохраняет сводку до р�
   await page.getByRole('button', { name: 'Подтвердить заказ' }).click();
   const alert = page.getByRole('alert');
   await expect(alert).toContainText('Результат подтверждения неизвестен');
-  await expect(alert).toContainText(/повторите подтверждение вручную/i);
+  await expect(alert).toContainText('«Подтвердить заказ»');
+  await expect(alert).toContainText('автоматически запрос не повторяется');
   await expect(alert).not.toContainText('Заказ не создан');
   await expect(alert).toBeFocused();
   await expect(page.getByRole('heading', { name: 'Проверьте заказ' })).toBeVisible();

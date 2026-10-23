@@ -81,7 +81,9 @@ test('зона тарифа постоянна, а название добавл
   const add = page.getByRole('button', { name: 'Добавить участника', exact: true });
   await expect(status).toBeVisible();
   await expect(status).toBeEmpty();
-  await expect(age).toHaveAccessibleDescription('Полных лет; 0 — до года');
+  await expect(age).toHaveAccessibleDescription(
+    'Укажите число полных лет. Если ребёнку ещё нет года, введите 0',
+  );
   const initial = await geometry(status);
   expect(initial.height).toBeGreaterThan(0);
   const samples = [{ age: '', geometry: initial }];
@@ -97,7 +99,9 @@ test('зона тарифа постоянна, а название добавл
       await expect(age).toHaveAccessibleDescription(tariff);
     } else {
       await expect(status).toBeEmpty();
-      await expect(age).toHaveAccessibleDescription('Полных лет; 0 — до года');
+      await expect(age).toHaveAccessibleDescription(
+        'Укажите число полных лет. Если ребёнку ещё нет года, введите 0',
+      );
       await expect(status).not.toContainText(/билет.*₽/);
     }
     await settleLayout(page);

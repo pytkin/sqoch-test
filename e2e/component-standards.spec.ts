@@ -13,7 +13,7 @@ test('футер не мелькает на месте формы во врем�
   });
   await page.goto('/');
   try {
-    await expect(page.getByText('Загружаем мероприятие…')).toBeVisible();
+    await expect(page.getByText('Загружаем данные мероприятия…')).toBeVisible();
     await page.screenshot({ path: testInfo.outputPath('event-loading-layout.png') });
     await expect(page.locator('.site-footer')).not.toBeInViewport();
   } finally {

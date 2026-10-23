@@ -84,6 +84,43 @@ beforeEach(() => {
   mockApi();
 });
 
+describe('Понятная обратная связь оформления — test first', () => {
+  it('объявляет отказ из-за мест у действия, фокусирует ошибку и не подтверждает при смене radio', async () => {
+    const user = await readyForm();
+    await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
+    await screen.findByRole('heading', { name: 'Проверьте заказ' });
+    await user.click(screen.getByRole('radio', { name: 'Нет мест' }));
+    expect(screen.queryByRole('alert')).toBeNull();
+    expect(requests.filter((request) => request.path === '/api/orders')).toHaveLength(0);
+    await user.click(screen.getByRole('button', { name: 'Подтвердить заказ' }));
+    const alert = await screen.findByRole('alert');
+    expect(alert).toHaveTextContent('Не удалось оформить заказ: места закончились');
+    expect(alert).toHaveTextContent('Заказ не создан');
+    expect(alert).toHaveTextContent('на этой странице');
+    expect(alert).toHaveTextContent('«Успех»');
+    expect(alert).toHaveTextContent('«Повторить подтверждение»');
+    await waitFor(() => expect(alert).toHaveFocus());
+    expect(screen.getByTestId('order-total')).toHaveTextContent('2 000');
+    await user.click(screen.getByRole('radio', { name: 'Успех' }));
+    expect(alert).toBeVisible();
+    expect(requests.filter((request) => request.path === '/api/orders')).toHaveLength(1);
+    await user.click(screen.getByRole('button', { name: 'Повторить подтверждение' }));
+    await screen.findByRole('heading', { name: 'Заказ подтверждён' });
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
+
+  it('ошибка расчёта называет незавершённое действие и сохраняет заполненную форму', async () => {
+    const user = await readyForm();
+    mode = 'network';
+    await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
+    const alert = await screen.findByRole('alert');
+    expect(alert).toHaveTextContent('Не удалось рассчитать стоимость заказа');
+    expect(alert).toHaveTextContent('«Проверить заказ»');
+    expect(screen.getByLabelText('Имя')).toHaveValue('Анна');
+    expect(screen.getByLabelText('Email')).toHaveValue('anna@example.com');
+  });
+});
+
 describe('Подсказка возраста и короткие UI-тексты — test first', () => {
   it('открывает помощь hover, фокусом и кликом, закрывает Escape и вне подсказки', async () => {
     const user = userEvent.setup();
@@ -92,10 +129,12 @@ describe('Подсказка возраста и короткие UI-текст�
     const help = screen.getByRole('button', { name: 'Подсказка к полю «Возраст, лет»' });
     expect(screen.queryByRole('tooltip')).toBeNull();
     expect(screen.getByLabelText('Возраст, лет')).toHaveAccessibleDescription(
-      'Полных лет; 0 — до года',
+      'Укажите число полных лет. Если ребёнку ещё нет года, введите 0',
     );
     await user.hover(help);
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Полных лет; 0 — до года');
+    expect(screen.getByRole('tooltip')).toHaveTextContent(
+      'Укажите число полных лет. Если ребёнку ещё нет года, введите 0',
+    );
     await user.unhover(help);
     expect(screen.queryByRole('tooltip')).toBeNull();
     await user.click(screen.getByLabelText('Имя'));
@@ -121,13 +160,17 @@ describe('Подсказка возраста и короткие UI-текст�
     const user = await readyForm('13');
     expect(screen.getByText('Правила покупки билетов', { exact: true })).toBeVisible();
     expect(screen.getByText('Все поля обязательны', { exact: true })).toBeVisible();
-    expect(screen.getByText('Один адрес на всех участников', { exact: true })).toBeVisible();
+    expect(
+      screen.getByText('Один email для всех участников заказа. В демо письма не отправляются', {
+        exact: true,
+      }),
+    ).toBeVisible();
     expect(screen.getByRole('button', { name: 'Добавить участника' })).toHaveAccessibleDescription(
-      'В заказе не больше 4 участников',
+      'В одном заказе может быть от 1 до 4 участников',
     );
     await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
     expect(screen.getByRole('alert')).toHaveTextContent(
-      /^Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе$/,
+      /^Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе\. Нажмите «Добавить участника»/,
     );
   });
 });
@@ -147,13 +190,15 @@ describe('Эвристический аудит формуляра — test firs
     render(<App />);
     await screen.findByRole('heading', { name: 'Оформление билетов' });
     const age = screen.getByLabelText('Возраст, лет');
-    expect(age).toHaveAccessibleDescription('Полных лет; 0 — до года');
+    expect(age).toHaveAccessibleDescription(
+      'Укажите число полных лет. Если ребёнку ещё нет года, введите 0',
+    );
     await user.type(age, '13');
     expect(age).toHaveAccessibleDescription(/Детский билет.*1\s000\s₽/);
     await user.clear(age);
     await user.type(age, '-1');
     await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
-    expect(age).toHaveAccessibleDescription('Укажите целый возраст от 0');
+    expect(age).toHaveAccessibleDescription('Введите возраст в полных годах — целое число от 0');
     expect(age).toHaveAttribute('aria-invalid', 'true');
     expect(requests).toHaveLength(0);
   });
@@ -161,10 +206,12 @@ describe('Эвристический аудит формуляра — test firs
   it('показывает объяснение лимита как доступное описание добавления', async () => {
     const user = await readyForm();
     const add = screen.getByRole('button', { name: 'Добавить участника' });
-    expect(add).toHaveAccessibleDescription('В заказе не больше 4 участников');
+    expect(add).toHaveAccessibleDescription('В одном заказе может быть от 1 до 4 участников');
     for (let index = 0; index < 3; index++) await user.click(add);
     expect(add).toBeDisabled();
-    expect(add).toHaveAccessibleDescription('В заказе не больше 4 участников');
+    expect(add).toHaveAccessibleDescription(
+      'Достигнут лимит — 4 участника. Чтобы добавить другого человека, сначала удалите одного из списка',
+    );
   });
 
   it('объясняет ручной повтор sold_out рядом с доступным демопереключателем', async () => {
@@ -172,19 +219,19 @@ describe('Эвристический аудит формуляра — test firs
     await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
     await screen.findByRole('heading', { name: 'Проверьте заказ' });
     const demo = screen.getByRole('group', { name: 'Сценарий демо' });
-    expect(demo).toHaveAccessibleDescription('Только при подтверждении');
+    expect(demo).toHaveAccessibleDescription(
+      /Сценарий сработает после нажатия «Подтвердить заказ»/,
+    );
     await user.click(screen.getByRole('radio', { name: 'Нет мест' }));
     await user.click(screen.getByRole('button', { name: 'Подтвердить заказ' }));
     await screen.findByRole('heading', { name: 'Места закончились' });
-    expect(
-      screen.getByText('Заказ не создан. Данные участников сохранены', { exact: true }),
-    ).toBeVisible();
-    expect(demo).toHaveAccessibleDescription('Для успешного повтора выберите «Успех»');
-    expect(within(demo).getByText('Для успешного повтора выберите «Успех»')).toBeVisible();
+    expect(screen.getByRole('alert')).toHaveTextContent('Заказ не создан');
+    expect(demo).toHaveAccessibleDescription(/после нажатия «Повторить подтверждение»/);
+    expect(within(demo).getByText(/Смена сценария сама по себе не создаёт заказ/)).toBeVisible();
     expect(screen.queryByText('Выберите в демо «Успех» и подтвердите заказ ещё раз.')).toBeNull();
     expect(requests.filter((request) => request.path === '/api/orders')).toHaveLength(1);
     await user.click(screen.getByRole('radio', { name: 'Успех' }));
-    expect(demo).toHaveAccessibleDescription('Только при подтверждении');
+    expect(demo).toHaveAccessibleDescription(/после нажатия «Повторить подтверждение»/);
     expect(requests.filter((request) => request.path === '/api/orders')).toHaveLength(1);
     await user.click(screen.getByRole('button', { name: 'Повторить подтверждение' }));
     expect(await screen.findByRole('heading', { name: 'Заказ подтверждён' })).toBeVisible();
@@ -211,15 +258,17 @@ describe('Данные заказа — test first', () => {
     await user.type(screen.getByLabelText('Имя'), '   ');
     await user.type(screen.getByLabelText('Email'), 'bad');
     await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
-    expect(screen.getByText('Укажите имя')).toBeVisible();
-    expect(screen.getByText('Укажите целый возраст от 0')).toBeVisible();
-    expect(screen.getByText('Проверьте email, например name@example.com')).toBeVisible();
+    expect(screen.getByText('Введите имя участника — поле не должно быть пустым')).toBeVisible();
+    expect(screen.getByText('Введите возраст в полных годах — целое число от 0')).toBeVisible();
+    expect(
+      screen.getByText('Введите email в формате name@example.com, без пробелов'),
+    ).toBeVisible();
     expect(requests).toHaveLength(0);
   });
   it.each(['-1', '1.5'])('отклоняет возраст %s до обращения к API', async (age) => {
     const user = await readyForm(age);
     await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
-    expect(screen.getByText('Укажите целый возраст от 0')).toBeVisible();
+    expect(screen.getByText('Введите возраст в полных годах — целое число от 0')).toBeVisible();
     expect(requests).toHaveLength(0);
   });
   it.each(['0', '13'])('ребёнок %s без сопровождающего не переходит к расчёту', async (age) => {
@@ -319,7 +368,9 @@ describe('Редактирование и подтверждение — test fi
     const email = screen.getByLabelText('Email');
     await waitFor(() => expect(email).toHaveFocus());
     expect(email).toHaveAttribute('aria-invalid', 'true');
-    expect(email).toHaveAccessibleDescription('Проверьте email, например name@example.com');
+    expect(email).toHaveAccessibleDescription(
+      'Введите email в формате name@example.com, без пробелов',
+    );
     expect(email).toHaveValue('anna@example.com');
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
@@ -333,7 +384,7 @@ describe('Редактирование и подтверждение — test fi
     );
     await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
     const alert = await screen.findByRole('alert');
-    expect(alert).toHaveTextContent('Проверьте данные заказа');
+    expect(alert).toHaveTextContent('Сервер не принял данные заказа');
     await waitFor(() => expect(alert).toHaveFocus());
     expect(screen.getByLabelText('Email')).toHaveValue('anna@example.com');
     expect(screen.getByLabelText('Имя')).toHaveValue('Анна');
@@ -377,7 +428,8 @@ it.each([
     await user.click(screen.getByRole('button', { name: 'Подтвердить заказ' }));
     const alert = await screen.findByRole('alert');
     expect(alert).toHaveTextContent('Результат подтверждения неизвестен');
-    expect(alert).toHaveTextContent(/повторите подтверждение вручную/i);
+    expect(alert).toHaveTextContent('«Подтвердить заказ»');
+    expect(alert).toHaveTextContent('автоматически запрос не повторяется');
     expect(alert).not.toHaveTextContent('Заказ не создан');
     expect(screen.getByRole('heading', { name: 'Проверьте заказ' })).toBeVisible();
     expect(screen.getByText('Анна')).toBeVisible();
@@ -400,7 +452,7 @@ it('повреждённый ответ расчёта сохраняет фор
   mode = 'malformed';
   await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
   const alert = await screen.findByRole('alert');
-  expect(alert).toHaveTextContent('Сервер временно недоступен');
+  expect(alert).toHaveTextContent('Сервер вернул ошибку или некорректный ответ');
   expect(alert).not.toHaveTextContent('Результат подтверждения неизвестен');
   expect(screen.getByLabelText('Имя')).toHaveValue('Анна');
   expect(screen.getByLabelText('Email')).toHaveValue('anna@example.com');
@@ -412,16 +464,18 @@ it('привязывает серверную ошибку email к полю и 
   const user = await readyForm();
   mode = 'validation';
   await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
-  expect(await screen.findByText('Проверьте email, например name@example.com')).toBeVisible();
+  expect(
+    await screen.findByText('Введите email в формате name@example.com, без пробелов'),
+  ).toBeVisible();
   expect(screen.getByLabelText('Email')).toHaveAccessibleDescription(
-    'Проверьте email, например name@example.com',
+    'Введите email в формате name@example.com, без пробелов',
   );
 });
 it('связывает ошибку сопровождения с группой состава', async () => {
   const user = await readyForm('13');
   await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
   expect(screen.getByRole('group', { name: 'Состав заказа' })).toHaveAccessibleDescription(
-    'Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе',
+    /Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе\. Нажмите «Добавить участника»/,
   );
 });
 
@@ -443,13 +497,20 @@ describe('Эвристическая доводка — test first', () => {
   });
 
   it.each([
-    { name: '', age: '', email: '', field: 'Имя', message: 'Укажите имя', errors: 3 },
+    {
+      name: '',
+      age: '',
+      email: '',
+      field: 'Имя',
+      message: 'Введите имя участника — поле не должно быть пустым',
+      errors: 3,
+    },
     {
       name: 'Анна',
       age: '',
       email: 'bad',
       field: 'Возраст, лет',
-      message: 'Укажите целый возраст от 0',
+      message: 'Введите возраст в полных годах — целое число от 0',
       errors: 2,
     },
     {
@@ -457,7 +518,7 @@ describe('Эвристическая доводка — test first', () => {
       age: '18',
       email: 'bad',
       field: 'Email',
-      message: 'Проверьте email, например name@example.com',
+      message: 'Введите email в формате name@example.com, без пробелов',
       errors: 1,
     },
   ])(
@@ -675,8 +736,8 @@ describe('Эвристическая доводка — test first', () => {
     await screen.findByRole('heading', { name: 'Проверьте заказ' });
     await user.click(screen.getByRole('radio', { name: 'Нет мест' }));
     await user.click(screen.getByRole('button', { name: 'Подтвердить заказ' }));
-    const title = await screen.findByRole('heading', { name: 'Места закончились' });
-    await waitFor(() => expect(title).toHaveFocus());
+    await screen.findByRole('heading', { name: 'Места закончились' });
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveFocus());
     expect(screen.getByTestId('order-total')).toHaveTextContent('2 000');
     expect(requests.filter((request) => request.path === '/api/orders/quote')).toHaveLength(1);
     expect(requests.filter((request) => request.path === '/api/orders')).toHaveLength(1);
@@ -877,7 +938,9 @@ describe('Срок жизни ошибки и справка — test first', ()
     await waitFor(() => expect(screen.queryByRole('alert')).not.toBeInTheDocument());
     expect(group).not.toHaveAttribute('aria-describedby');
     expect(screen.getByRole('button', { name: 'Добавить участника' })).toBeVisible();
-    expect(screen.getByText('Ребёнку младше 14 лет нужен сопровождающий от 18 лет')).toBeVisible();
+    expect(
+      screen.getByText('Ребёнку младше 14 лет нужен сопровождающий от 18 лет в том же заказе'),
+    ).toBeVisible();
     expect(requests).toHaveLength(0);
 
     vi.mocked(fetch).mockResolvedValueOnce(
@@ -892,11 +955,11 @@ describe('Срок жизни ошибки и справка — test first', ()
     );
     await user.click(screen.getByRole('button', { name: 'Проверить заказ' }));
     const alert = await screen.findByRole('alert');
-    expect(alert).toHaveTextContent('Проверьте состав заказа');
+    expect(alert).toHaveTextContent('Сервер не принял состав заказа');
     await user.clear(age);
     await user.type(age, '19');
-    expect(screen.getByRole('alert')).toHaveTextContent('Проверьте состав заказа');
-    expect(group).toHaveAccessibleDescription(/Проверьте состав заказа/);
+    expect(screen.getByRole('alert')).toHaveTextContent('Сервер не принял состав заказа');
+    expect(group).toHaveAccessibleDescription(/Сервер не принял состав заказа/);
     expect(
       vi.mocked(fetch).mock.calls.filter(([input]) => String(input) === '/api/orders/quote'),
     ).toHaveLength(1);

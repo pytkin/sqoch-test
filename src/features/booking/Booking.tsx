@@ -6,7 +6,7 @@ import { Button, HelpTip, Icon, Notice, StepIndicator } from './components';
 import { BookingForm } from './BookingForm';
 import { DemoControl } from './DemoControl';
 import type { DraftField, OrderEditField, RemovedParticipant } from './draft';
-import { emailError, emptyDraft, validAge } from './draft';
+import { ageError, emailError, emptyDraft, nameError, validAge } from './draft';
 import { OrderSummary } from './OrderSummary';
 import { money, ticketCount } from './presentation';
 
@@ -62,7 +62,7 @@ export default function Booking() {
         if (eventAttempt > 0) setFocusIntent({ region: 'title' });
       })
       .catch((e) => {
-        if (!abort.signal.aborted) setEventError(errorMessage(e));
+        if (!abort.signal.aborted) setEventError(errorMessage(e, 'event'));
       });
     return () => abort.abort();
   }, [eventAttempt]);
@@ -88,15 +88,7 @@ export default function Booking() {
   }, [focusIntent, pending, event, step, setFocus]);
   function reportFailure(failure: unknown, operation: 'quote' | 'confirm') {
     if (operation === 'confirm') setStep('review');
-    const uncertain =
-      operation === 'confirm' &&
-      failure instanceof ApiError &&
-      (failure.kind === 'network' || failure.kind === 'timeout' || failure.kind === 'server');
-    setError(
-      uncertain
-        ? `Результат подтверждения неизвестен. ${failure.kind === 'timeout' ? 'Превышено время ожидания ответа.' : failure.kind === 'network' ? 'Не удалось связаться с сервером.' : 'Не удалось получить корректный ответ сервера.'} Данные сохранены. Повторите подтверждение вручную после восстановления связи.`
-        : errorMessage(failure),
-    );
+    setError(errorMessage(failure, operation));
     let intent: FocusIntent = { region: 'error' };
     if (failure instanceof ApiError && failure.kind === 'validation') {
       setQuote(null);
@@ -122,7 +114,7 @@ export default function Booking() {
             const name = `participants.${index}.${property}` as const;
             setFieldError(name, {
               type: 'server',
-              message: property === 'name' ? 'Укажите имя' : 'Укажите целый возраст от 0',
+              message: property === 'name' ? nameError : ageError,
             });
             if (!found) {
               intent = { field: name };
@@ -132,7 +124,7 @@ export default function Booking() {
             setFieldError('root.participants', {
               type: 'server',
               message:
-                'Проверьте состав заказа: от 1 до 4 участников; ребёнку младше 14 лет нужен сопровождающий от 18 лет',
+                'Сервер не принял состав заказа. В заказе должно быть от 1 до 4 участников, а ребёнку младше 14 лет нужен сопровождающий от 18 лет в том же заказе. Проверьте список и повторите расчёт.',
             });
             if (!found) {
               intent = { region: 'participants' };
@@ -191,7 +183,10 @@ export default function Booking() {
     ) {
       setFieldError('root.participants', {
         type: 'validate',
-        message: 'Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе',
+        message:
+          draft.participants.length >= event.max_participants
+            ? 'Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе. Лимит участников уже достигнут — измените состав заказа, чтобы в нём был сопровождающий.'
+            : 'Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе. Нажмите «Добавить участника» и укажите данные сопровождающего.',
       });
       setFocusIntent({ region: 'participants' });
       return;
@@ -234,7 +229,8 @@ export default function Booking() {
       if (!abort.signal.aborted) {
         if (e instanceof ApiError && e.kind === 'sold_out') {
           setStep('sold_out');
-          setFocusIntent({ region: 'title' });
+          setError(errorMessage(e, 'confirm'));
+          setFocusIntent({ region: 'error' });
         } else reportFailure(e, 'confirm');
       }
     } finally {
@@ -279,7 +275,7 @@ export default function Booking() {
                   </Button>
                 </>
               ) : (
-                <output>Загружаем мероприятие…</output>
+                <output>Загружаем данные мероприятия…</output>
               )}
             </div>
           )}
@@ -295,7 +291,18 @@ export default function Booking() {
                         ? 'Заказ подтверждён'
                         : 'Места закончились'}
                 </h1>
-                {step === 'sold_out' && <p>Заказ не создан. Данные участников сохранены</p>}
+                {step === 'review' && (
+                  <p>
+                    Проверьте участников, email и итоговую сумму. Для исправления данных нажмите
+                    «Изменить» рядом с нужной записью.
+                  </p>
+                )}
+                {step === 'success' && (
+                  <p>
+                    Данные и номер заказа доступны только на этой странице — после её обновления они
+                    исчезнут
+                  </p>
+                )}
                 <p className="event-name">{event.title}</p>
               </div>
               {step === 'data' && (
@@ -308,10 +315,13 @@ export default function Booking() {
                     </span>
                     <HelpTip label="Правила покупки билетов">
                       <p>
-                        Возраст указывается в полных годах. Ребёнку младше {event.child_age_limit}{' '}
-                        лет нужен сопровождающий от {event.companion_min_age} лет в том же заказе.
-                        Участник 14–17 лет может идти отдельно, но не считается сопровождающим.
-                        Одного сопровождающего достаточно для нескольких детей.
+                        В одном заказе может быть от 1 до {event.max_participants} участников.
+                        Укажите имя и возраст каждого участника и один email для всего заказа.
+                        Возраст указывается в полных годах; если ребёнку ещё нет года, укажите 0.
+                        Ребёнку младше {event.child_age_limit} лет нужен сопровождающий от{' '}
+                        {event.companion_min_age} лет в том же заказе. Участник 14–17 лет может идти
+                        отдельно, но не считается сопровождающим. Одного сопровождающего достаточно
+                        для нескольких детей.
                       </p>
                     </HelpTip>
                   </div>
@@ -367,7 +377,7 @@ export default function Booking() {
                       retry={step === 'sold_out'}
                     />
                     {requestError}
-                    <Button loading={pending} loadingLabel="Подтверждаем…" onClick={confirm}>
+                    <Button loading={pending} loadingLabel="Подтверждаем заказ…" onClick={confirm}>
                       {step === 'sold_out' ? 'Повторить подтверждение' : 'Подтвердить заказ'}
                     </Button>
                   </div>

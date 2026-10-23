@@ -60,6 +60,11 @@ test('реальный API: отказ из-за мест только на по
   await page.getByRole('button', { name: 'Подтвердить заказ' }).click();
   await response;
   await expect(page.getByRole('heading', { name: 'Места закончились' })).toBeVisible();
+  const refusal = page.getByRole('alert');
+  await expect(refusal).toBeFocused();
+  await expect(refusal).toContainText('Не удалось оформить заказ: места закончились');
+  await expect(refusal).toContainText('Заказ не создан');
+  await expect(refusal).toContainText('«Повторить подтверждение»');
   await expect(page.getByRole('heading', { name: 'Заказ подтверждён' })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Вернуться к проверке' })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Повторить подтверждение' })).toBeEnabled();
@@ -78,7 +83,9 @@ test('ошибки и основной путь доступны клавиат�
       ? 'Alt+Tab'
       : 'Tab';
   await page.getByRole('button', { name: 'Проверить заказ' }).click();
-  await expect(page.getByText('Укажите имя', { exact: true })).toBeVisible();
+  await expect(
+    page.getByText('Введите имя участника — поле не должно быть пустым', { exact: true }),
+  ).toBeVisible();
   await expect(page.getByLabel('Имя', { exact: true })).toBeFocused();
   await page.keyboard.type('Мария');
   await page.keyboard.press(nextControlKey);
@@ -137,7 +144,7 @@ test('серверная проверка email привязана к полю',
   await rejected;
   await expect(page.getByLabel('Email', { exact: true })).toHaveAttribute('aria-invalid', 'true');
   await expect(page.getByLabel('Email', { exact: true })).toHaveAccessibleDescription(
-    'Проверьте email, например name@example.com',
+    'Введите email в формате name@example.com, без пробелов',
   );
   await expect(page.getByLabel('Email', { exact: true })).toHaveValue('john..doe@example.com');
   await noOverflow(page);

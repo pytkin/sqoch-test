@@ -164,7 +164,7 @@ test('состояния: загрузка, восстановление и до
 }, testInfo) => {
   const eventRequests = await holdRequests(page, '**/api/event');
   await page.goto('/');
-  await expect(page.getByText('Загружаем мероприятие…', { exact: true })).toBeVisible();
+  await expect(page.getByText('Загружаем данные мероприятия…', { exact: true })).toBeVisible();
   await expect.poll(() => eventRequests.length).toBe(1);
   await capture(page, testInfo, '06-event-loading');
   await eventRequests[0]!.fulfill({
@@ -172,7 +172,9 @@ test('состояния: загрузка, восстановление и до
     contentType: 'application/json',
     body: JSON.stringify({ detail: 'temporarily_unavailable' }),
   });
-  await expect(page.getByRole('alert')).toContainText('Сервер временно недоступен');
+  await expect(page.getByRole('alert')).toContainText(
+    'Сервер вернул ошибку или некорректный ответ',
+  );
   await capture(page, testInfo, '07-event-failure');
   await page.unroute('**/api/event');
   await page.getByRole('button', { name: 'Повторить загрузку' }).click();
@@ -181,7 +183,9 @@ test('состояния: загрузка, восстановление и до
 
   await page.getByRole('button', { name: 'Проверить заказ' }).click();
   await expect(page.getByLabel('Имя', { exact: true })).toBeFocused();
-  await expect(page.getByText('Укажите имя', { exact: true })).toBeVisible();
+  await expect(
+    page.getByText('Введите имя участника — поле не должно быть пустым', { exact: true }),
+  ).toBeVisible();
   await capture(page, testInfo, '09-field-errors');
   await fillAdult(page);
   await page.getByLabel('Возраст, лет', { exact: true }).fill('13');
@@ -200,7 +204,7 @@ test('состояния: загрузка, восстановление и до
   await emailRejection;
   await expect(page.getByLabel('Email', { exact: true })).toBeFocused();
   await expect(page.getByLabel('Email', { exact: true })).toHaveAccessibleDescription(
-    'Проверьте email, например name@example.com',
+    'Введите email в формате name@example.com, без пробелов',
   );
   await capture(page, testInfo, '11-server-email-error');
 
@@ -218,7 +222,7 @@ test('состояния: загрузка, восстановление и до
   );
   await page.getByRole('button', { name: 'Проверить заказ' }).click();
   await expect(composition).toBeFocused();
-  await expect(composition).toHaveAccessibleDescription(/Проверьте состав заказа/);
+  await expect(composition).toHaveAccessibleDescription(/Сервер не принял состав заказа/);
   await noOverflow(page);
   await capture(page, testInfo, '12-server-composition-error');
 });
@@ -232,7 +236,9 @@ test('восстановление: ожидание, сеть и 15 секун�
   const quotePending = await holdRequests(page, quoteUrl);
   await page.getByRole('button', { name: 'Проверить заказ' }).click();
   await expect.poll(() => quotePending.length).toBe(1);
-  await expect(page.getByRole('button', { name: 'Рассчитываем…', exact: true })).toBeDisabled();
+  await expect(
+    page.getByRole('button', { name: 'Рассчитываем стоимость…', exact: true }),
+  ).toBeDisabled();
   await expect(page.getByLabel('Имя', { exact: true })).toBeDisabled();
   await expect(page.getByRole('radio')).toHaveCount(0);
   await capture(page, testInfo, '13-quote-pending');
@@ -247,7 +253,7 @@ test('восстановление: ожидание, сеть и 15 секун�
   await page.getByRole('button', { name: 'Проверить заказ' }).click();
   await expect.poll(() => quoteTimeout.length).toBe(1);
   await page.clock.fastForward(15_001);
-  await expect(page.getByRole('alert')).toContainText(/время ожидания/);
+  await expect(page.getByRole('alert')).toContainText(/не ответил в течение 15 секунд/);
   await expect(page.getByRole('alert')).toBeFocused();
   await expect(page.getByLabel('Имя', { exact: true })).toHaveValue('Анна');
   await capture(page, testInfo, '15-quote-timeout');
@@ -265,7 +271,7 @@ test('восстановление: ожидание, сеть и 15 секун�
   const confirmPending = await holdRequests(page, confirmUrl);
   await page.getByRole('button', { name: 'Подтвердить заказ' }).click();
   await expect.poll(() => confirmPending.length).toBe(1);
-  const confirming = page.getByRole('button', { name: 'Подтверждаем…', exact: true });
+  const confirming = page.getByRole('button', { name: 'Подтверждаем заказ…', exact: true });
   await expect(confirming).toBeDisabled();
   await expect(page.getByRole('button', { name: 'Изменить участника 1' })).toBeDisabled();
   await confirming.dispatchEvent('click');
@@ -282,14 +288,14 @@ test('восстановление: ожидание, сеть и 15 секун�
   // A later timeout must replace the last sold_out verdict, rather than repeat it as fact.
   await page.getByRole('radio', { name: 'Нет мест', exact: true }).check();
   await page.getByRole('button', { name: 'Подтвердить заказ' }).click();
-  await expect(page.getByRole('heading', { name: 'Места закончились' })).toBeFocused();
+  await expect(page.getByRole('alert')).toBeFocused();
   expect(confirmRequests).toBe(2);
   const confirmTimeout = await holdRequests(page, confirmUrl);
   await page.getByRole('button', { name: 'Повторить подтверждение' }).click();
   await expect.poll(() => confirmTimeout.length).toBe(1);
   await page.clock.fastForward(15_001);
   await expect(page.getByRole('alert')).toContainText('Результат подтверждения неизвестен');
-  await expect(page.getByRole('alert')).toContainText(/время ожидания/);
+  await expect(page.getByRole('alert')).toContainText(/не ответил в течение 15 секунд/);
   await expect(page.getByRole('alert')).toBeFocused();
   await expect(page.getByRole('heading', { name: 'Проверьте заказ' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Места закончились' })).toHaveCount(0);
@@ -343,7 +349,7 @@ test('реальный поток: отмена удаления, перерас
   await page.keyboard.press('ArrowRight');
   await expect(page.getByRole('radio', { name: 'Нет мест', exact: true })).toBeChecked();
   await page.getByRole('button', { name: 'Подтвердить заказ' }).click();
-  await expect(page.getByRole('heading', { name: 'Места закончились' })).toBeFocused();
+  await expect(page.getByRole('alert')).toBeFocused();
   await capture(page, testInfo, '25-sold-out');
   await expect(page.getByRole('button', { name: 'Вернуться к проверке' })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Повторить подтверждение' })).toBeEnabled();

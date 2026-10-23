@@ -221,7 +221,7 @@ describe('API deadline and cancellation — test first', () => {
       failure = error;
     });
     await vi.advanceTimersByTimeAsync(15_000);
-    expect(errorMessage(failure)).toMatch(/время ожидания/i);
+    expect(errorMessage(failure)).toMatch(/не ответил в течение 15 секунд/i);
     expect(errorMessage(failure)).toMatch(/повтор/i);
     expect(errorMessage(failure)).not.toContain('Заказ не создан');
   });

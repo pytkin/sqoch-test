@@ -17,7 +17,9 @@ test('помощь возраста: hover, Escape, touch, reflow и непод�
     await page.mouse.move(0, 0);
     await age.focus();
     await help.hover();
-    await expect(tooltip).toHaveText('Полных лет; 0 — до года');
+    await expect(tooltip).toHaveText(
+      'Укажите число полных лет. Если ребёнку ещё нет года, введите 0',
+    );
     const bounds = await tooltip.boundingBox();
     expect(bounds!.x).toBeGreaterThanOrEqual(0);
     expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);

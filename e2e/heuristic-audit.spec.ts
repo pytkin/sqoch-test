@@ -63,10 +63,12 @@ test('сетевая ошибка и действие восстановлени
 test('помощь возраста доступна с клавиатуры, а лимит объяснён до добавления', async ({ page }) => {
   await page.goto('/');
   const age = page.getByLabel('Возраст, лет', { exact: true });
-  await expect(age).toHaveAccessibleDescription('Полных лет; 0 — до года');
+  await expect(age).toHaveAccessibleDescription(
+    'Укажите число полных лет. Если ребёнку ещё нет года, введите 0',
+  );
   await expect(
     page.getByRole('button', { name: 'Добавить участника' }),
-  ).toHaveAccessibleDescription('В заказе не больше 4 участников');
+  ).toHaveAccessibleDescription('В одном заказе может быть от 1 до 4 участников');
   await age.focus();
   await expect(age).toBeFocused();
   await expect(age).toHaveCSS('outline-style', 'solid');

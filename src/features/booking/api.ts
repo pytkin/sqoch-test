@@ -171,14 +171,23 @@ export function confirmOrder(draft: Draft, scenario: Scenario, signal?: AbortSig
     signal,
   });
 }
-export function errorMessage(error: unknown): string {
-  if (error instanceof ApiError) {
-    if (error.kind === 'timeout')
-      return 'Превышено время ожидания ответа. Проверьте соединение и повторите действие.';
-    if (error.kind === 'network')
-      return 'Не удалось связаться с сервером. Проверьте соединение и попробуйте ещё раз.';
-    if (error.kind === 'validation')
-      return 'Проверьте данные заказа. Сервер не принял введённые значения.';
-  }
-  return 'Сервер временно недоступен. Попробуйте ещё раз.';
+export function errorMessage(
+  error: unknown,
+  operation: 'event' | 'quote' | 'confirm' = 'quote',
+): string {
+  if (error instanceof ApiError && error.kind === 'sold_out')
+    return 'Не удалось оформить заказ: места закончились. Заказ не создан. Данные участников, email и расчёт остались на этой странице. Чтобы проверить успешное оформление в демо, выберите «Успех» и нажмите «Повторить подтверждение».';
+  if (error instanceof ApiError && error.kind === 'validation')
+    return 'Сервер не принял данные заказа. Проверьте введённые значения и состав участников, затем нажмите «Проверить заказ».';
+  const reason =
+    error instanceof ApiError && error.kind === 'timeout'
+      ? 'Сервер не ответил в течение 15 секунд.'
+      : error instanceof ApiError && error.kind === 'network'
+        ? 'Не удалось связаться с сервером.'
+        : 'Сервер вернул ошибку или некорректный ответ.';
+  if (operation === 'confirm')
+    return `Результат подтверждения неизвестен. ${reason} Сервер мог создать заказ, но ответ не получен. Участники, email и расчёт остались на этой странице. Если решите повторить попытку, нажмите «Подтвердить заказ» — автоматически запрос не повторяется.`;
+  if (operation === 'event')
+    return `Не удалось загрузить данные мероприятия. ${reason} Проверьте соединение и нажмите «Повторить загрузку».`;
+  return `Не удалось рассчитать стоимость заказа. ${reason} Данные участников и email остались на этой странице. Повторите расчёт кнопкой «Проверить заказ».`;
 }

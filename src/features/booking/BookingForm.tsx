@@ -4,7 +4,7 @@ import type { FieldArrayWithId, FieldErrors, UseFormRegister } from 'react-hook-
 import type { Draft, Event } from './api';
 import { Button, Field, Icon, Notice } from './components';
 import type { RemovedParticipant } from './draft';
-import { emailError, validAge } from './draft';
+import { ageError, ageHelp, emailError, nameError, validAge } from './draft';
 import { money } from './presentation';
 
 type BookingFormProps = {
@@ -44,7 +44,7 @@ export function BookingForm({
     <Notice kind="info" className="undo-notice">
       <p>Участник{removed.person.name.trim() ? ` «${removed.person.name.trim()}»` : ''} удалён</p>
       <Button variant="text" onClick={onUndoRemoval} aria-label="Вернуть участника">
-        Вернуть
+        Вернуть участника
       </Button>
     </Notice>
   );
@@ -103,16 +103,16 @@ export function BookingForm({
                         label="Имя"
                         required
                         autoComplete="off"
-                        placeholder="Как вас зовут"
+                        placeholder="Например, Анна"
                         error={errors.participants?.[index]?.name?.message}
                         {...register(`participants.${index}.name`, {
-                          validate: (value) => value.trim().length > 0 || 'Укажите имя',
+                          validate: (value) => value.trim().length > 0 || nameError,
                         })}
                       />
                       <Field
                         id={`age-${field.id}`}
                         label="Возраст, лет"
-                        labelHelp="Полных лет; 0 — до года"
+                        labelHelp={ageHelp}
                         required
                         type="text"
                         inputMode="numeric"
@@ -124,8 +124,7 @@ export function BookingForm({
                         }
                         error={errors.participants?.[index]?.age?.message}
                         {...register(`participants.${index}.age`, {
-                          validate: (value) =>
-                            validAge(value) !== null || 'Укажите целый возраст от 0',
+                          validate: (value) => validAge(value) !== null || ageError,
                         })}
                       />
                     </div>
@@ -155,15 +154,18 @@ export function BookingForm({
               id="participant-limit"
               className={fields.length < event.max_participants ? 'sr-only' : 'field-hint'}
             >
-              В заказе не больше {event.max_participants} участников
+              {fields.length >= event.max_participants
+                ? `Достигнут лимит — ${event.max_participants} участника. Чтобы добавить другого человека, сначала удалите одного из списка`
+                : `В одном заказе может быть от 1 до ${event.max_participants} участников`}
             </p>
             <p className="companion-hint">
               Ребёнку младше {event.child_age_limit} лет нужен сопровождающий от{' '}
-              {event.companion_min_age} лет
+              {event.companion_min_age} лет в том же заказе
             </p>
             {fields.length >= event.max_participants && needsCompanion && (
               <p className="field-hint">
-                Измените состав заказа: нужен сопровождающий от {event.companion_min_age} лет
+                В заказе уже {event.max_participants} участника. Измените состав, чтобы с ребёнком
+                был сопровождающий от {event.companion_min_age} лет
               </p>
             )}
           </fieldset>
@@ -177,7 +179,7 @@ export function BookingForm({
             autoComplete="email"
             placeholder="you@example.com"
             error={errors.email?.message}
-            hint="Один адрес на всех участников"
+            hint="Один email для всех участников заказа. В демо письма не отправляются"
             {...register('email', {
               validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) || emailError,
             })}
@@ -190,7 +192,7 @@ export function BookingForm({
           className="form-submit"
           type="submit"
           loading={pending}
-          loadingLabel="Рассчитываем…"
+          loadingLabel="Рассчитываем стоимость…"
         >
           Проверить заказ
         </Button>
