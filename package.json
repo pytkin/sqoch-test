@@ -1,0 +1,55 @@
+{
+  "name": "sqoch-test",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --kill-others --names api,web \"uv run --project backend --locked uvicorn sqoch_api.app:app --host 127.0.0.1 --port 8000 --reload --reload-dir backend/sqoch_api\" \"vite\"",
+    "typecheck": "tsc --noEmit",
+    "lint:frontend": "oxlint src scripts e2e vite.config.ts playwright.config.ts",
+    "format:check": "oxfmt --check --ignore-path .gitignore --ignore-path .oxfmtignore . && uv run --project backend --locked ruff format --check backend",
+    "test:frontend": "vitest run",
+    "build": "vite build",
+    "setup": "pnpm install --frozen-lockfile && pnpm --pm-on-fail=ignore --dir tools/openapi install --frozen-lockfile && uv sync --project backend --locked",
+    "lint:backend": "uv run --project backend --locked ruff check backend && uv run --project backend --locked mypy --config-file backend/pyproject.toml backend/sqoch_api backend/tests",
+    "lint": "pnpm lint:binding && pnpm lint:frontend && pnpm lint:backend",
+    "lint:binding": "node scripts/check-project.mjs --binding",
+    "test:backend": "uv run --project backend --locked pytest backend/tests -q",
+    "test:tooling": "node --test scripts/*.test.mjs",
+    "test": "pnpm test:frontend && pnpm test:backend && pnpm test:tooling",
+    "contracts:generate": "node scripts/openapi.mjs",
+    "contracts:check": "node scripts/openapi.mjs --check",
+    "docs:check": "node scripts/check-project.mjs --docs",
+    "test:e2e": "playwright test",
+    "verify": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm contracts:check && pnpm test && pnpm build && pnpm test:e2e && pnpm docs:check"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-hook-form": "7.90.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@tailwindcss/vite": "4.3.3",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.8",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "concurrently": "10.0.6",
+    "jsdom": "30.1.3",
+    "oxfmt": "0.74.0",
+    "oxlint": "1.89.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
+  },
+  "engines": {
+    "node": ">=24.15.0",
+    "pnpm": ">=11"
+  },
+  "packageManager": "pnpm@12.15.0"
+}

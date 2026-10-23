@@ -1,0 +1,8 @@
+pnpm-lock.yaml
+tools/openapi/pnpm-lock.yaml
+src/features/booking/generated/
+backend/
+dist/
+node_modules/
+test-results/
+playwright-report/

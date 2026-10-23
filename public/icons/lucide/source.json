@@ -1,0 +1,42 @@
+{
+  "library": "Lucide",
+  "release": "1.61.0",
+  "tagCommitReadback": "c29c276f16590cf017126671535ad8c792be64d8",
+  "retrieved": "2026-10-22",
+  "archive": {
+    "url": "https://codeload.github.com/lucide-icons/lucide/tar.gz/refs/tags/1.61.0",
+    "sha256": "3c507183f93fa66664e25210e482b4fc88aaa3ee6702a4a9aa11cd51f9d22df5"
+  },
+  "license": {
+    "file": "LICENSE",
+    "source": "https://github.com/lucide-icons/lucide/blob/1.61.0/LICENSE",
+    "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+  },
+  "files": [
+    {
+      "file": "plus.svg",
+      "source": "https://github.com/lucide-icons/lucide/blob/1.61.0/icons/plus.svg",
+      "sha256": "7f6af73bf1ff6c4bca3f18351c8d1bdec6749c0c2530c4de5da85d520c21df17"
+    },
+    {
+      "file": "pencil.svg",
+      "source": "https://github.com/lucide-icons/lucide/blob/1.61.0/icons/pencil.svg",
+      "sha256": "7e1ca7a6f5c1eb949671df762f2baadd32f5bd841d43153c3a15279af7d78d0c"
+    },
+    {
+      "file": "trash.svg",
+      "source": "https://github.com/lucide-icons/lucide/blob/1.61.0/icons/trash.svg",
+      "sha256": "27299f69ad7c6272be64b1b8e2d48cbd6dcf0ef0d4f92827a1affa945c91700e"
+    },
+    {
+      "file": "check.svg",
+      "source": "https://github.com/lucide-icons/lucide/blob/1.61.0/icons/check.svg",
+      "sha256": "7f33acc9a77a61659531044525fc008edebe215bf4dcf1c789c8674ad3277db0"
+    },
+    {
+      "file": "info.svg",
+      "source": "https://github.com/lucide-icons/lucide/blob/1.61.0/icons/info.svg",
+      "sha256": "bc977a64eb96f3e9c1041ffd09a3fceb70e3e65c02b571f76064062ed31f3cb9"
+    }
+  ]
+}

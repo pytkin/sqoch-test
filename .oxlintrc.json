@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "jsx-a11y"],
+  "categories": { "correctness": "error" },
+  "ignorePatterns": ["src/features/booking/generated/**"]
+}

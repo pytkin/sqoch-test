@@ -1,0 +1,24 @@
+{
+  "entrypoint": "AGENTS.md",
+  "instructions": ["docs/technical-specification.md", "docs/design-system.md"],
+  "operations": {
+    "setup": {
+      "command": "pnpm run setup"
+    },
+    "dev": {
+      "command": "pnpm run dev"
+    },
+    "lint": {
+      "command": "pnpm run lint"
+    },
+    "test": {
+      "command": "pnpm run test"
+    },
+    "build": {
+      "command": "pnpm run build"
+    },
+    "verify": {
+      "command": "pnpm run verify"
+    }
+  }
+}
