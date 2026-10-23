@@ -3,7 +3,7 @@
 Демонстрация оформления билетов на мероприятие: участники, серверный расчёт,
 редактирование, подтверждение и отказ при отсутствии мест. React + FastAPI.
 
-[Видео для просмотра, 44 секунды](docs/demo/checkout.mp4) ·
+[Видео для просмотра, 58 секунд](docs/demo/checkout.mp4) ·
 [Сценарий видео](docs/demo/README.md) · [Результаты проверок](docs/acceptance.md)
 
 ![Оформление заказа на desktop](docs/preview/desktop.jpg)
@@ -118,4 +118,5 @@ uv run --project backend --locked uvicorn sqoch_api.app:app --host 127.0.0.1 --p
 Исходные PDF не переиздаются; требования изложены в брифе. Сторонние assets
 распространяются со своими лицензиями: [Commissioner OFL](public/fonts/commissioner/OFL.txt),
 [Lucide ISC/MIT](public/icons/lucide/LICENSE). Лицензия исходного кода проекта
-отдельно не назначена. Видео не отправлялось HR; репозиторий не публиковался.
+отдельно не назначена. Видео не отправлялось HR.
+Публичный репозиторий — [pytkin/sqoch-test](https://github.com/pytkin/sqoch-test), ветка `main`.
