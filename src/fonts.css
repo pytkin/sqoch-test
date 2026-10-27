@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url(/fonts/golos-text/golos-text.ttf) format('truetype');
+}
+
 /* cyrillic-ext */
 @font-face {
   font-family: 'Commissioner';

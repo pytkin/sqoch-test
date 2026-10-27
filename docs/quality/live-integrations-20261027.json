@@ -1,0 +1,398 @@
+{
+  "started_at": "2026-10-27T09:12:13.199723+00:00",
+  "status": "passed",
+  "database": ".cache/live-integration-20261027/live-496c3361-90dc-4727-93aa-369fe96beecc.sqlite3",
+  "scope": "real DeepSeek HTTPS, real application loopback HTTP, real Mailpit SMTP",
+  "provider_requests": [
+    {
+      "action": "prepare_specific_event",
+      "url": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "tools_enabled": true,
+      "json_mode": false,
+      "replayed_tools": [],
+      "tool_result_count": 0,
+      "http_status": 200,
+      "headers_received_seconds": 0.545
+    },
+    {
+      "action": "prepare_specific_event",
+      "url": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "tools_enabled": true,
+      "json_mode": false,
+      "replayed_tools": ["list_events"],
+      "tool_result_count": 1,
+      "http_status": 200,
+      "headers_received_seconds": 0.372
+    },
+    {
+      "action": "prepare_specific_event",
+      "url": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "tools_enabled": false,
+      "json_mode": true,
+      "replayed_tools": ["list_events", "get_event_context"],
+      "tool_result_count": 2,
+      "http_status": 200,
+      "headers_received_seconds": 0.352
+    },
+    {
+      "action": "rewrite_text_only",
+      "url": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "tools_enabled": false,
+      "json_mode": true,
+      "replayed_tools": [],
+      "tool_result_count": 0,
+      "http_status": 200,
+      "headers_received_seconds": 0.579
+    },
+    {
+      "action": "rewrite_out_of_scope",
+      "url": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "tools_enabled": false,
+      "json_mode": true,
+      "replayed_tools": [],
+      "tool_result_count": 0,
+      "http_status": 200,
+      "headers_received_seconds": 0.559
+    },
+    {
+      "action": "prepare_ambiguous_event",
+      "url": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "tools_enabled": true,
+      "json_mode": false,
+      "replayed_tools": [],
+      "tool_result_count": 0,
+      "http_status": 200,
+      "headers_received_seconds": 0.553
+    },
+    {
+      "action": "prepare_ambiguous_event",
+      "url": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "tools_enabled": true,
+      "json_mode": false,
+      "replayed_tools": ["list_events"],
+      "tool_result_count": 1,
+      "http_status": 200,
+      "headers_received_seconds": 0.386
+    },
+    {
+      "action": "prepare_ambiguous_event",
+      "url": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "tools_enabled": false,
+      "json_mode": true,
+      "replayed_tools": ["list_events"],
+      "tool_result_count": 1,
+      "http_status": 200,
+      "headers_received_seconds": 0.343
+    }
+  ],
+  "actions": [
+    {
+      "name": "startup",
+      "method": "GET",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "startup",
+      "method": "PUT",
+      "http_status": 201,
+      "error_code": null
+    },
+    {
+      "name": "prepare_specific_event",
+      "method": "POST",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "manual_date",
+      "method": "PATCH",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "rewrite_text_only",
+      "method": "POST",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "stale_revision",
+      "method": "POST",
+      "http_status": 409,
+      "error_code": "revision_conflict"
+    },
+    {
+      "name": "rewrite_out_of_scope",
+      "method": "POST",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "prepare_ambiguous_event",
+      "method": "PUT",
+      "http_status": 201,
+      "error_code": null
+    },
+    {
+      "name": "prepare_ambiguous_event",
+      "method": "POST",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "prepare_ambiguous_event",
+      "method": "GET",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "review_text_and_preview",
+      "method": "PATCH",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "review_text_and_preview",
+      "method": "POST",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "startup",
+      "method": "GET",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "startup",
+      "method": "GET",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "manual_text_review_correction",
+      "method": "PATCH",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "manual_text_review_correction",
+      "method": "POST",
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "name": "confirm_local_mailpit_only",
+      "method": "POST",
+      "http_status": 202,
+      "error_code": null
+    },
+    {
+      "name": "smtp_readback",
+      "method": "GET",
+      "http_status": 200,
+      "error_code": null
+    }
+  ],
+  "smtp": {
+    "host": "127.0.0.1",
+    "port": 11025,
+    "mailpit_url": "http://127.0.0.1:18025",
+    "counters": {
+      "total": 8,
+      "pending": 0,
+      "sending": 0,
+      "retry_wait": 0,
+      "sent": 8,
+      "failed": 0,
+      "unknown": 0
+    },
+    "readback": [
+      {
+        "email": "a@example.com",
+        "message_id": "delivery-4d580d5f-43bc-43b6-b1b2-cbc52ee3ba10@sqoch.local",
+        "mailpit_id": "1n3wPpdYJ58h1KT0wbRd30",
+        "matches": 1,
+        "attempts": 1,
+        "subject_and_body_match": true
+      },
+      {
+        "email": "b@example.com",
+        "message_id": "delivery-628a38ae-fb8a-4627-a4d3-793212b2b18c@sqoch.local",
+        "mailpit_id": "2bpxoDZiDuUQncXMI9S2Wj",
+        "matches": 1,
+        "attempts": 1,
+        "subject_and_body_match": true
+      },
+      {
+        "email": "c@example.com",
+        "message_id": "delivery-bd7fea2f-9ec2-49ca-8465-2b9dd8979ed4@sqoch.local",
+        "mailpit_id": "4ME6HxEb99GnAQC0LZGBvx",
+        "matches": 1,
+        "attempts": 1,
+        "subject_and_body_match": true
+      },
+      {
+        "email": "d@example.com",
+        "message_id": "delivery-71d9a746-b587-4efe-af81-b7f5571fbfc2@sqoch.local",
+        "mailpit_id": "0P9sS8L5GbK7Zlw3IQrxsA",
+        "matches": 1,
+        "attempts": 1,
+        "subject_and_body_match": true
+      },
+      {
+        "email": "e@example.com",
+        "message_id": "delivery-a64c5fff-eed9-4f09-a20d-b39dc6de76c3@sqoch.local",
+        "mailpit_id": "3cCS6UUI5DODiHH0oVMGBW",
+        "matches": 1,
+        "attempts": 1,
+        "subject_and_body_match": true
+      },
+      {
+        "email": "f@example.com",
+        "message_id": "delivery-f16b1a65-648f-45f4-9bb3-3fd662392d2b@sqoch.local",
+        "mailpit_id": "0XazjcNPTLbwTIFLj1ddai",
+        "matches": 1,
+        "attempts": 1,
+        "subject_and_body_match": true
+      },
+      {
+        "email": "g@example.com",
+        "message_id": "delivery-623f57ef-26f3-4b08-8e24-89138ca6310e@sqoch.local",
+        "mailpit_id": "4MkojbcTyxmdjiFZp5vA9x",
+        "matches": 1,
+        "attempts": 1,
+        "subject_and_body_match": true
+      },
+      {
+        "email": "h@example.com",
+        "message_id": "delivery-9b2f05ab-bd83-4cd3-b79f-5bc1b9fd90b0@sqoch.local",
+        "mailpit_id": "5hT3sew64aS4wu7eWoktQa",
+        "matches": 1,
+        "attempts": 1,
+        "subject_and_body_match": true
+      }
+    ],
+    "subject_sha256": "c21838de4368b1511c1f8aadc27c42fec091ffcb680c3dc7c61a9937cc190ad5",
+    "body_sha256": "10b92915a55393a4f4c36527d3688fc4a2ce1e897ef5b7c1d83b66cbf3534391"
+  },
+  "model": "deepseek-flash",
+  "protected_before": {
+    "databases": {
+      ".cache/ux31.sqlite3": {
+        "rows": {
+          "campaigns": 6,
+          "deliveries": 8,
+          "events": 2,
+          "purchases": 20,
+          "schema_migrations": 1
+        },
+        "sha256": "e702ae3b1126b4925f86d65eb7c92b4a144544a1b5a01f938752c34d9412c687"
+      }
+    },
+    "working_mailpit": {
+      "count": 22,
+      "ids_sha256": "7637eb64951352f97ea983e0c9089ac010e7cef68a28ca20623eaabfe7f226a1"
+    }
+  },
+  "campaign_id": "339458df-921c-4ad0-9ccb-661fa4bb4b09",
+  "before_confirmation": {
+    "deliveries": 0,
+    "event_unchanged": true,
+    "manual_date_preserved_by_rewrite": true,
+    "out_of_scope_draft_unchanged": true
+  },
+  "verification_phases": [
+    "DeepSeek through loopback API",
+    "manual review then SMTP through same saved draft"
+  ],
+  "text_review": {
+    "finding": "Manual review removed an unsupported promise of a separate follow-up before confirmation; event/date facts retained.",
+    "original_body_sha256": "f5cefbb0a9999ca3ea20c53188d5c8271333bdeb546eb8eac8b1574dcb2ee9b6",
+    "corrected_body_sha256": "10b92915a55393a4f4c36527d3688fc4a2ce1e897ef5b7c1d83b66cbf3534391",
+    "correction_before_confirmation": true
+  },
+  "protected_after": {
+    "databases": {
+      ".cache/ux31.sqlite3": {
+        "rows": {
+          "campaigns": 6,
+          "deliveries": 8,
+          "events": 2,
+          "purchases": 20,
+          "schema_migrations": 1
+        },
+        "sha256": "e702ae3b1126b4925f86d65eb7c92b4a144544a1b5a01f938752c34d9412c687"
+      }
+    },
+    "working_mailpit": {
+      "count": 22,
+      "ids_sha256": "7637eb64951352f97ea983e0c9089ac010e7cef68a28ca20623eaabfe7f226a1"
+    }
+  },
+  "finished_at": "2026-10-27T09:17:43.403459+00:00",
+  "source_verification": {
+    "compared_files": 139,
+    "changed_files": [],
+    "comparison": "SHA-256 before/after the live acceptance"
+  },
+  "smtp_suite": {
+    "command": "pnpm test:mailpit",
+    "exit_code": 0,
+    "passed": 6,
+    "warning": "Existing Starlette/HTTPX TestClient deprecation warning",
+    "log": "live-smtp-20261027.txt"
+  },
+  "browser_readback": {
+    "mailpit_message_id": "1n3wPpdYJ58h1KT0wbRd30",
+    "to": "a@example.com",
+    "subject_and_body_visible": true,
+    "screenshot": "../preview/live-integrations-20261027/mailpit-message.png"
+  },
+  "limitations": [
+    "One live DeepSeek sample per action; model output is nondeterministic and requires organizer text review.",
+    "Loopback SMTP to isolated Mailpit only; no external delivery.",
+    "SMTP failure suite uses controlled fixture text; AI-to-SMTP flow uses manually reviewed and corrected AI text.",
+    "Source/configuration files unchanged; no fresh full pnpm verify in this live-only slice."
+  ],
+  "focused_regression": {
+    "command": "node scripts/backend.mjs pytest backend/tests/test_ai_prepare.py backend/tests/test_ai_rewrite.py backend/tests/test_smtp.py backend/tests/test_reconcile.py backend/tests/test_worker_process.py -q",
+    "exit_code": 0,
+    "passed": 95,
+    "warning": "Existing Starlette/HTTPX TestClient deprecation warning"
+  },
+  "artifact_hygiene": {
+    "credential_value_found": false,
+    "scanned_files": 15,
+    "scope": "Live JSON/log/driver files and the three edited Markdown documents; secret loaded in memory, never printed"
+  },
+  "cleanup": {
+    "isolated_mailpit_container": "stopped and removed",
+    "volume_preserved": "sqoch-mailpit-tests_mailpit-data",
+    "isolated_api_and_worker_processes": "exited",
+    "working_services": "unchanged"
+  },
+  "independent_review": {
+    "reviewer": "review_live_integrations_38",
+    "status": "passed",
+    "confirmed_P0_P2": [],
+    "repeated_live_readback_messages": 8,
+    "source_hashes_compared": 139,
+    "reviewer_called_deepseek": false,
+    "reviewer_sent_smtp": false,
+    "reviewer_queried_primary_mailpit": false,
+    "limits": [
+      "Primary Mailpit preservation relies on author before/after message-ID hashes, not all message bodies.",
+      "Focused 95-test execution is author evidence; reviewer did not repeat it."
+    ]
+  }
+}

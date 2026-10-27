@@ -1,0 +1,218 @@
+/* Composition only. Shared project CSS owns fonts, colors, controls and depth. */
+.prototype-toolbar {
+  border-bottom: 1px solid var(--divider);
+  background: var(--surface);
+}
+
+.prototype-toolbar-content {
+  max-width: 780px;
+  margin: auto;
+  padding: var(--space-4) var(--space-5);
+}
+
+.prototype-toolbar p,
+.prototype-eyebrow,
+.prototype-muted,
+.prototype-facts dt,
+.prototype-date-comparison dt,
+.prototype-counters dt {
+  color: var(--muted);
+}
+
+.prototype-toolbar strong {
+  font-weight: 500;
+}
+
+.prototype-states {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.prototype-states button {
+  min-height: 44px;
+  padding: var(--space-2) 0;
+  color: var(--primary);
+  background: transparent;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.prototype-states button[aria-current] {
+  font-weight: 500;
+  text-decoration-thickness: 2px;
+}
+
+.prototype-eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.prototype-context,
+.prototype-summary {
+  padding: var(--space-5);
+  border-radius: var(--radius-panel);
+  background: var(--selected);
+  margin-bottom: var(--space-7);
+}
+
+.prototype-context p,
+.prototype-context a {
+  display: block;
+  margin-top: var(--space-2);
+}
+
+.prototype-context a {
+  min-height: 44px;
+  padding-top: var(--space-2);
+}
+
+.prototype-stack,
+.prototype-manual {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.prototype-stack > .button,
+.prototype-manual > .button {
+  justify-self: start;
+}
+
+.prototype-action-row {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.prototype-manual {
+  margin-top: var(--space-7);
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--divider);
+}
+
+.prototype-request {
+  margin-bottom: var(--space-5);
+}
+
+.prototype-request p + p {
+  margin-top: var(--space-2);
+}
+
+.prototype-facts,
+.prototype-date-comparison,
+.prototype-counters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin: 0 0 var(--space-7);
+}
+
+.prototype-facts dd,
+.prototype-date-comparison dd,
+.prototype-counters dd {
+  margin: var(--space-2) 0 0;
+  font-weight: 500;
+}
+
+.prototype-year input {
+  max-width: 240px;
+}
+
+.prototype-section-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.prototype-section-heading .button {
+  margin-top: -8px;
+}
+
+.prototype-date-comparison {
+  margin: var(--space-4) 0 0;
+}
+
+.prototype-date-comparison dd span {
+  display: block;
+  margin-top: var(--space-1);
+  font-weight: 400;
+}
+
+.prototype-letter-section,
+.prototype-recipients {
+  margin-top: var(--space-7);
+}
+
+.prototype-subject {
+  font-weight: 500;
+  margin-top: var(--space-4);
+}
+
+.prototype-editor {
+  margin-top: var(--space-5);
+}
+
+.prototype-spaced {
+  margin-top: var(--space-4);
+}
+
+.prototype-counters {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: var(--space-5) 0 0;
+}
+
+.prototype-counters dd {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.prototype-success {
+  color: var(--success);
+}
+
+.prototype-error {
+  color: var(--error);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (width < 720px) {
+  .prototype-toolbar-content {
+    padding-inline: var(--space-4);
+  }
+
+  .prototype-context,
+  .prototype-summary {
+    padding: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  .prototype-facts,
+  .prototype-date-comparison,
+  .prototype-counters {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  .prototype-letter-section,
+  .prototype-recipients,
+  .prototype-manual {
+    margin-top: var(--space-5);
+  }
+
+  .prototype-action-row > .button {
+    width: 100%;
+  }
+
+  .prototype-states {
+    column-gap: var(--space-4);
+  }
+}

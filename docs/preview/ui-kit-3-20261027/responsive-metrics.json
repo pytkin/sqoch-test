@@ -1,0 +1,44 @@
+[
+  {
+    "width": 320,
+    "overflow": false,
+    "errorWidths": [205, 205, 205],
+    "font": "16px",
+    "buttonHeight": 72
+  },
+  {
+    "width": 360,
+    "overflow": false,
+    "errorWidths": [245, 245, 245],
+    "font": "16px",
+    "buttonHeight": 48
+  },
+  {
+    "width": 719,
+    "overflow": false,
+    "errorWidths": [604, 604, 604],
+    "font": "16px",
+    "buttonHeight": 48
+  },
+  {
+    "width": 720,
+    "overflow": false,
+    "errorWidths": [541, 541, 541],
+    "font": "16px",
+    "buttonHeight": 48
+  },
+  {
+    "width": 768,
+    "overflow": false,
+    "errorWidths": [589, 589, 589],
+    "font": "16px",
+    "buttonHeight": 48
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "errorWidths": [616, 616, 616],
+    "font": "16px",
+    "buttonHeight": 48
+  }
+]

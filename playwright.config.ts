@@ -21,8 +21,13 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command:
-      'uv run --project backend --locked uvicorn sqoch_api.app:app --host 127.0.0.1 --port 8000',
+    env: {
+      SQOCH_DATABASE_PATH: '.cache/e2e.sqlite3',
+      DEEPSEEK_API_KEY: '',
+      LLM_PROVIDER: 'deepseek',
+      DEEPSEEK_MODEL: 'deepseek-flash',
+    },
+    command: 'node scripts/e2e-server.mjs',
     url: 'http://127.0.0.1:8000/api/event',
     reuseExistingServer: false,
     timeout: 30000,

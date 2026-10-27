@@ -1,0 +1,124 @@
+{
+  "kind": "local-code-prototype-native-WebArea",
+  "example_date": "2026-10-27",
+  "timezone": "Europe/Moscow",
+  "year_policy": "current year only if future and same year as event; otherwise clarify",
+  "requested_viewports": [
+    {
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "width": 360,
+      "height": 900
+    }
+  ],
+  "limits": "Native WebArea crop differs from requested viewport; no real API/LLM/SMTP in mockups",
+  "screenshots": [
+    {
+      "file": "01-initial-desktop.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1425,
+      "height": 990,
+      "sha256": "cace72effb510bf37db4d913b2b2c264497fa594c96e495e8bcdff37d02697e7"
+    },
+    {
+      "file": "01-initial-mobile-controls.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "6b1f72a36e31ae7d04fe4360971d6dbe187cc28457042c01304bfacba1f4b037"
+    },
+    {
+      "file": "01-initial-mobile.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "9993400da1e70e7324ca7810e8a1f840bba04050ede6289820188769c1954e7f"
+    },
+    {
+      "file": "02-clarification-desktop.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1425,
+      "height": 990,
+      "sha256": "347fc7ca9ef0cf8100cf7042ee22defd9767243edd8363457342315e07051085"
+    },
+    {
+      "file": "02-clarification-mobile-controls.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "adb4df66f2ea10ffc82caf85a470850321fa2524a5e8a2ffdf42d93df83817cb"
+    },
+    {
+      "file": "02-clarification-mobile.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "73f3df770ef5409edfdcabc108b6bf925d9159c6320ecf6ab282f1869331e6c1"
+    },
+    {
+      "file": "03-prepared-desktop.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1425,
+      "height": 990,
+      "sha256": "90aeb27d3837f0af84973575e528f8388273b1d0e74097dbd4d39ccec062d656"
+    },
+    {
+      "file": "03-prepared-mobile-controls.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "02f26950afb03a182b8f5ccc0189f53fd682087d024250201baa683ce0906784"
+    },
+    {
+      "file": "03-prepared-mobile-review.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "02f26950afb03a182b8f5ccc0189f53fd682087d024250201baa683ce0906784"
+    },
+    {
+      "file": "03-prepared-mobile.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "2b4f4dd220e30c42186926a3029425748749def83d89ae654e72afa063e4ed85"
+    },
+    {
+      "file": "04-progress-desktop.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1425,
+      "height": 990,
+      "sha256": "733f19f7841b59c3ce4d381366aa6184edd45fe775304320ac8d75221fa2cd5d"
+    },
+    {
+      "file": "04-progress-mobile.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "f6c89ba5899160b1fb3869fbdfd80ad27cc04741db2b54afc9ba5e0de4b2bb6c"
+    },
+    {
+      "file": "05-clarified-result-desktop.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1425,
+      "height": 990,
+      "sha256": "c00c289187ccd6d09d042fd3eee3985b977b61663d0494e2208b57df55344e15"
+    },
+    {
+      "file": "05-preview-mobile-confirm.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "2675a511cba6e8b80f6f8b2b6884b4c5ef7d15eac433b41f8be44d1246a05de2"
+    },
+    {
+      "file": "05-preview-mobile.jpg",
+      "mime_type": "image/jpeg",
+      "width": 345,
+      "height": 863,
+      "sha256": "d8330b273ea61fe08e2ec25b2791547614dcff696f0749a0eccde78fcd1358cd"
+    }
+  ]
+}

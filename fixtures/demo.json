@@ -1,0 +1,38 @@
+{
+  "events": [
+    {
+      "id": "ceramics",
+      "title": "Керамика",
+      "starts_at": "2026-11-10T19:00:00+03:00",
+      "timezone": "Europe/Moscow"
+    },
+    {
+      "id": "painting",
+      "title": "Живопись",
+      "starts_at": "2026-11-12T18:00:00+03:00",
+      "timezone": "Europe/Moscow"
+    }
+  ],
+  "purchases": [
+    { "id": "p01", "event_id": "ceramics", "email": "a@example.com", "status": "active" },
+    { "id": "p02", "event_id": "ceramics", "email": "b@example.com", "status": "active" },
+    { "id": "p03", "event_id": "ceramics", "email": "c@example.com", "status": "active" },
+    { "id": "p04", "event_id": "ceramics", "email": "d@example.com", "status": "active" },
+    { "id": "p05", "event_id": "ceramics", "email": "e@example.com", "status": "active" },
+    { "id": "p06", "event_id": "ceramics", "email": "f@example.com", "status": "active" },
+    { "id": "p07", "event_id": "ceramics", "email": "g@example.com", "status": "active" },
+    { "id": "p08", "event_id": "ceramics", "email": "h@example.com", "status": "active" },
+    { "id": "p09", "event_id": "ceramics", "email": "  A@EXAMPLE.COM  ", "status": "active" },
+    { "id": "p10", "event_id": "ceramics", "email": "a@example.com", "status": "cancelled" },
+    { "id": "p11", "event_id": "ceramics", "email": "i@example.com", "status": "cancelled" },
+    { "id": "p12", "event_id": "ceramics", "email": "j@example.com", "status": "cancelled" },
+    { "id": "p13", "event_id": "painting", "email": "a@example.com", "status": "active" },
+    { "id": "p14", "event_id": "painting", "email": "k@example.com", "status": "active" },
+    { "id": "p15", "event_id": "painting", "email": "l@example.com", "status": "active" },
+    { "id": "p16", "event_id": "painting", "email": "m@example.com", "status": "active" },
+    { "id": "p17", "event_id": "painting", "email": "n@example.com", "status": "active" },
+    { "id": "p18", "event_id": "painting", "email": "k@example.com", "status": "active" },
+    { "id": "p19", "event_id": "painting", "email": "l@example.com", "status": "cancelled" },
+    { "id": "p20", "event_id": "painting", "email": "o@example.com", "status": "cancelled" }
+  ]
+}

@@ -207,6 +207,7 @@ test('docs rejects file and directory symlinks outside the checkout', (t) => {
   write('README.md', '[External](external.md)');
   fails(run(root, '--docs'), 'README.md');
   write('README.md');
+  rmSync(join(root, 'external.md'));
   symlinkSync(outside, join(root, 'docs', 'external-directory'));
   fails(run(root, '--docs'), 'docs/external-directory');
 });
@@ -227,6 +228,14 @@ test('docs does not exempt arbitrary missing local tools when Kit is absent', (t
   const { root, write } = fixture(t);
   write('README.md', '[Other](.agents/skills/other/SKILL.md)');
   fails(run(root, '--docs'), 'README.md');
+});
+
+test('docs checks standalone root QA reports even when no other document links to them', (t) => {
+  const { root, write } = fixture(t);
+  write('design-qa.md', '[Evidence](docs/missing-capture.png)');
+  fails(run(root, '--docs'), 'design-qa.md');
+  write('docs/missing-capture.png', 'fixture');
+  passes(run(root, '--docs'));
 });
 
 test('unknown CLI flags have usage exit status 2', (t) => {

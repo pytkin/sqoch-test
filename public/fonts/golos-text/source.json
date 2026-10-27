@@ -1,0 +1,17 @@
+{
+  "family": "Golos Text",
+  "files": [
+    {
+      "path": "golos-text.ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/golostext/GolosText%5Bwght%5D.ttf",
+      "bytes": 184292,
+      "sha256": "17bb58fb69aec2dfb047a2ebf52534023e9b688c97a6b7ac795b0a72912c2063"
+    },
+    {
+      "path": "OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/golostext/OFL.txt",
+      "bytes": 4394,
+      "sha256": "ff532f9e8789f09a9fdffc3c0954eedfb0a48be77b2e2eb90f5f82e4f347f50c"
+    }
+  ]
+}

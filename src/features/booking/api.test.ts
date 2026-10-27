@@ -43,6 +43,81 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
+describe('Booking response and request boundaries', () => {
+  it.each([
+    ['event', 201, event, () => getEvent(new AbortController().signal)],
+    ['quote', 201, quote, () => getQuote(draft)],
+    ['confirmation', 200, { ...quote, order_id: 'demo-123' }, () => confirmOrder(draft, 'success')],
+  ] as const)(
+    'rejects a valid %s DTO under an unexpected successful HTTP status',
+    async (_name, status, body, start) => {
+      vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json(body, { status })));
+      await expect(start()).rejects.toMatchObject({ kind: 'server' });
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(vi.getTimerCount()).toBe(0);
+    },
+  );
+
+  it.each([
+    ['no participants', { ...quote, participants: [] }],
+    [
+      'five participants',
+      { ...quote, participants: Array.from({ length: 5 }, () => quote.participants[0]) },
+    ],
+    ['blank name', { ...quote, participants: [{ ...quote.participants[0], name: '  ' }] }],
+    ['fractional age', { ...quote, participants: [{ ...quote.participants[0], age: 1.5 }] }],
+    ['negative price', { ...quote, participants: [{ ...quote.participants[0], price: -1 }] }],
+    [
+      'unknown ticket type',
+      { ...quote, participants: [{ ...quote.participants[0], ticket_type: 'free' }] },
+    ],
+    ['unsafe total', { ...quote, total: Number.MAX_SAFE_INTEGER + 1 }],
+    ['another currency', { ...quote, currency: 'EUR' }],
+  ] as const)('rejects a quote with %s', async (_name, body) => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json(body)));
+    await expect(getQuote(draft)).rejects.toMatchObject({ kind: 'server' });
+  });
+
+  it('rejects an event whose participant limit is zero', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(Response.json({ ...event, max_participants: 0 })),
+    );
+    await expect(getEvent(new AbortController().signal)).rejects.toMatchObject({ kind: 'server' });
+  });
+
+  it('serializes trimmed fields and keeps the demo scenario exclusive to confirmation', async () => {
+    const entered = {
+      participants: [{ name: '  Анна  ', age: '018' }],
+      email: '  anna@example.com  ',
+    };
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(Response.json(quote))
+      .mockResolvedValueOnce(Response.json({ ...quote, order_id: 'demo-123' }, { status: 201 }));
+    vi.stubGlobal('fetch', fetchMock);
+    await getQuote(entered);
+    await confirmOrder(entered, 'sold_out');
+    for (const [, options] of fetchMock.mock.calls as unknown as [string, RequestInit][]) {
+      expect(JSON.parse(String(options.body))).toEqual({
+        participants: [{ name: 'Анна', age: 18 }],
+        email: draft.email,
+      });
+      expect(options.method).toBe('POST');
+      expect(new Headers(options.headers).get('Content-Type')).toBe('application/json');
+    }
+    const quoteHeaders = new Headers(
+      (fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].headers,
+    );
+    const confirmHeaders = new Headers(
+      (fetchMock.mock.calls[1] as unknown as [string, RequestInit])[1].headers,
+    );
+    expect(quoteHeaders.has('X-Demo-Scenario')).toBe(false);
+    expect(confirmHeaders.get('X-Demo-Scenario')).toBe('sold_out');
+    expect(entered.participants[0]!.name).toBe('  Анна  ');
+  });
+});
+
 describe('API deadline and cancellation — test first', () => {
   it.each(['quote', 'confirm', 'event'] as const)(
     '%s stops a stalled fetch after 15 seconds without retrying',

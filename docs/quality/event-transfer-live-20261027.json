@@ -1,0 +1,287 @@
+{
+  "started_at": "2026-10-27T12:11:06.822380+00:00",
+  "status": "passed",
+  "database": ".cache/event-transfer-3944-20261027/live-44-4351e945-4f90-4112-ab48-9eb6d3b4e56f.sqlite3",
+  "provider_requests": [
+    {
+      "action": "auto_current_year",
+      "model": "deepseek-flash",
+      "tools": true,
+      "tool_results": 0,
+      "status": 200
+    },
+    {
+      "action": "auto_current_year",
+      "model": "deepseek-flash",
+      "tools": false,
+      "tool_results": 2,
+      "status": 200
+    },
+    {
+      "action": "past_current_year_question",
+      "model": "deepseek-flash",
+      "tools": true,
+      "tool_results": 0,
+      "status": 200
+    },
+    {
+      "action": "past_current_year_question",
+      "model": "deepseek-flash",
+      "tools": false,
+      "tool_results": 1,
+      "status": 200
+    },
+    {
+      "action": "year_answer_only",
+      "model": "deepseek-flash",
+      "tools": true,
+      "tool_results": 0,
+      "status": 200
+    },
+    {
+      "action": "year_answer_only",
+      "model": "deepseek-flash",
+      "tools": false,
+      "tool_results": 2,
+      "status": 200
+    }
+  ],
+  "actions": [
+    {
+      "action": "startup",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "action": "auto_current_year",
+      "method": "PUT",
+      "status": 201
+    },
+    {
+      "action": "auto_current_year",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "action": "auto_current_year",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "action": "past_current_year_question",
+      "method": "PUT",
+      "status": 201
+    },
+    {
+      "action": "past_current_year_question",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "action": "past_current_year_question",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "action": "year_answer_only",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "action": "year_answer_only",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "action": "year_answer_only",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "action": "explicit_review_and_preview",
+      "method": "PATCH",
+      "status": 200
+    },
+    {
+      "action": "explicit_review_and_preview",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "action": "local_mailpit_confirm",
+      "method": "POST",
+      "status": 202
+    },
+    {
+      "action": "local_mailpit_confirm",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "action": "local_mailpit_confirm",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "protected_before": {
+    ".cache/ux31.sqlite3": "185f3bc48780977735b73162b2dea69c7febf4005ea7c6411d25e00a56db4a88",
+    "working_mailpit": {
+      "3MfsXTfNviqVCfbRied087": "fe4d55d88fe11e0183fcd6c0b1e300bfda069a39a44cbb496ae64d04927d0b22",
+      "3Qa8jpjgK6diNbRjQVmFHh": "c0ec0bb0d431745b71d2f378f23fc5672d07978def0afbf321747db503b3cf2f",
+      "0FCx0ekjHhXGeRJUAlL7Jc": "8026164f2edf0e3a35edf28eb7e190a7003b31fba0001f17a0b117b2947de471",
+      "65QBzVrlS6Uz0pvGZ76sNp": "3ac5586e2895aa3322fb9049a4c5fb25e6a5b6af0a403f340f4ac2e870471192",
+      "289h3VJGES3LpG9ia8PsaZ": "2acdbf58dec3914848fbbd1f3d111cd05485fda0853982853117a4321846671e",
+      "24MitjAO4hUF0l1mIqSLYK": "5fe0cb0e1490f8618d681ade855d5a6042f1322f7fd4a11b1d9ffc674c91d61f",
+      "3Jo4PlnmSg1rnFtg87rTcm": "42df64cb737c07b1622dc502f017d3d4f0b5845f091fe3d1bdaa7c72c4995913",
+      "0G0XmmAdiyc1FuIV2CHt4u": "04090e0874f63191f96faff08f33ce096abd69f1177a96e5fdb1c07c2e72f745",
+      "5o2DA6HALPd9rolJoxS3qq": "4f5ed794a84f7fe5db6cefabd2fe26c7b47b9f123763d35a18290f320f083e79",
+      "7GTLEyPmtEBK2JIeXQnR6z": "b198cd6d3bb1ff21890cc99f65283fd9dcc5c52325dad0dc6be8aa1203f6892a",
+      "79KILkCn4orhHMiKwl7IQz": "04262904ac5f1200cba192fec3f1244033662aa9eed89cae5bc0c69207f041d1",
+      "20hyHHbnRfFEY1WIkJ64Nm": "6a22493d657601eeebc9aab93bd5907f97356e8801eea01b201340493a54c725",
+      "5JDCDJj74XiI1Ys8jZWf3O": "5e9018b970a39a05222a19cf71801eaf7ad8c992c291a505ea916cd5b98e5ae7",
+      "3CIIoBOCrr7OCeaJVpvG0Y": "a5378aaeacd9efb9b250db94d7c0a69c5a5eff368b69a02fd9f5aaa42692bf14",
+      "3kgOCjJrf7m0yZxzb4LnOn": "e2ead61716aa97a5f6797e7f6ad0e2c13d443675f87e1f3ca10941938d367c2d",
+      "1oksAA9uSp6PIZlCbhXv4z": "17a4a15456a680e353e6fc5464a3cc18542514fb1bd4749f449477dbd0b6925d",
+      "7Wh64IY9T1sft19Eq9nL0D": "2fbf047366e91800a73a9aa1b80d9a304df10dbced62c5c917d509c50455d6ac",
+      "7btyaJ3lilrqgLNW8TIqu4": "53541f5869d30f6f95cda9a11f512edd69d2500ee5fe03670b481ca7e637aef0",
+      "5j0X3WiP5KKbT1AYAKwT4T": "9336c4aa41337bffc795833898d03d8a9f630dab69d67faab223df1a11329781",
+      "2IPM1MyWS0Omg3xRpIIoc7": "457a7f2098060512aa71fa03b8daa7373895835abf8805f12725b40085f1ee66",
+      "6WeztJ25VuVRJebHcU6TqN": "2979d8e5a24636bfde6755670b8d8e33de7d6710e4a24205542228720b9f1b34",
+      "27pNpL8locdv3KBzQ9aHbG": "6c77857c681b8eef0d962af6dd03f8e4160589c7a37b6da5d9673cd4aa019a3f"
+    }
+  },
+  "automatic": {
+    "campaign_id": "1804ed61-3930-479d-82fd-3fbb498d6ec0",
+    "date": "2026-12-02T19:00:00+03:00",
+    "year_source": "current_year",
+    "reload_unchanged": true
+  },
+  "clarification": {
+    "campaign_id": "26cc6309-59fe-4163-89cd-324d87a45852",
+    "date": "2027-09-20T19:00:00+03:00",
+    "only_year_asked": true,
+    "reload_unchanged": true
+  },
+  "before_confirm": {
+    "events_unchanged": true,
+    "deliveries": 0
+  },
+  "smtp": {
+    "sent": 8,
+    "exact_content": true,
+    "duplicate_confirm_no_extra_jobs": true,
+    "messages": [
+      {
+        "email": "a@example.com",
+        "message_id": "delivery-be11e0ab-1c56-4260-991e-0722cc7fb3e9@sqoch.local",
+        "count": 1,
+        "received_mime_sha256": "2f905a6e8882c4d34c2f1c72892f87023adb1a7977908db9c1b07d8fcf5e9cd3",
+        "stored_mime_sha256": "71e806d94b24ac7e87cdaa0361a21ee857c2ec06711045223f916c1dc3402a93",
+        "subject_body_recipient_match": true
+      },
+      {
+        "email": "b@example.com",
+        "message_id": "delivery-5901bed5-a5a5-455f-84d1-02eef5548e6c@sqoch.local",
+        "count": 1,
+        "received_mime_sha256": "ac5fb04564a3e0fb94142da6486b9e7b1c65ea6110cf10ed2dfb1e27cad47ec3",
+        "stored_mime_sha256": "ae4c8abf3b8904745550f8067ceaac9a8e5c146d72b83f20ecfcdeeeff8c6116",
+        "subject_body_recipient_match": true
+      },
+      {
+        "email": "c@example.com",
+        "message_id": "delivery-f05da7e9-b8ed-4617-b5f8-fc6443a36772@sqoch.local",
+        "count": 1,
+        "received_mime_sha256": "d4648ee09a63700ffce81b683560aa3bf703642fed247bff8f46bf5be1f67f0a",
+        "stored_mime_sha256": "964bc7404400af186821934f3b4057a7fdb941cc788f1d4a16f50d556778e231",
+        "subject_body_recipient_match": true
+      },
+      {
+        "email": "d@example.com",
+        "message_id": "delivery-86ab37eb-9aa9-4a69-bcd8-21313bc6d62b@sqoch.local",
+        "count": 1,
+        "received_mime_sha256": "3abac528362786a3d7d465952c7575aa1b319af683ec5d50ab35cbfb40c10c6b",
+        "stored_mime_sha256": "9281ba29932e3c0f07c94525bedde146cdd889a09f801e6c0965385ad6a81ab0",
+        "subject_body_recipient_match": true
+      },
+      {
+        "email": "e@example.com",
+        "message_id": "delivery-ce79f274-df32-434a-87dc-c52d75873d24@sqoch.local",
+        "count": 1,
+        "received_mime_sha256": "4d818910d27ccc1447398bb9578100bb5b93db9b7f71c6c762d4a1366c361d95",
+        "stored_mime_sha256": "1d75dbcefabc0e237dc664ee5c7f0998874e3279d12919edfa894ec67fbb9110",
+        "subject_body_recipient_match": true
+      },
+      {
+        "email": "f@example.com",
+        "message_id": "delivery-28217469-409e-4d55-a8c4-e6d459b0e9b1@sqoch.local",
+        "count": 1,
+        "received_mime_sha256": "acbaf5eb35866d77edddc65915f42d0fdf52ec54246afb5598af3b60f33069ef",
+        "stored_mime_sha256": "7c7a7e7203b632e057810e63cf376f0bfbbd9048a9a8d57ff0dc5bce7349c5e3",
+        "subject_body_recipient_match": true
+      },
+      {
+        "email": "g@example.com",
+        "message_id": "delivery-fddfee74-26b8-4b33-b821-a48df3c7a903@sqoch.local",
+        "count": 1,
+        "received_mime_sha256": "6026d4bcd83bff8369279522cf2ae4e34b480681073eb3c2ecf285de9baef53b",
+        "stored_mime_sha256": "9e231cae1028c44c67849f935c6784dfdd1714f6ea4d2ea06dd3a4e9d30a3a85",
+        "subject_body_recipient_match": true
+      },
+      {
+        "email": "h@example.com",
+        "message_id": "delivery-b078107e-3375-4bf3-af0b-360220fd3d91@sqoch.local",
+        "count": 1,
+        "received_mime_sha256": "67cb9bd83a7e7c2263ae5d0ddad6434853e1feaf9adb823d8358abd25486a6d3",
+        "stored_mime_sha256": "9160d93adbeb79225ee3bd429d37747183bcc8adcd8d1aee5f69530c9ec81365",
+        "subject_body_recipient_match": true
+      }
+    ]
+  },
+  "review": {
+    "reason": "Проверены название, прежнее начало 20 ноября 2026 года 19:00 и новое начало 2 декабря 2026 года 19:00 по Москве. Неподтверждённых обещаний нет. В тему явно добавлен 2026 год; тело сохранено после проверки.",
+    "subject": "Новая дата мастер-класса «Керамика»: 2 декабря 2026 года",
+    "body": "Здравствуйте!\n\nСообщаем, что мастер-класс «Керамика» переносится.\n\nНовые дата и время: 2 декабря 2026 года, 19:00 по московскому времени.\n\nПрежнее время: 20 ноября 2026 года, 19:00 (МСК).\n\nС уважением,\nорганизаторы"
+  },
+  "protected_after": {
+    ".cache/ux31.sqlite3": "185f3bc48780977735b73162b2dea69c7febf4005ea7c6411d25e00a56db4a88",
+    "working_mailpit": {
+      "3MfsXTfNviqVCfbRied087": "fe4d55d88fe11e0183fcd6c0b1e300bfda069a39a44cbb496ae64d04927d0b22",
+      "3Qa8jpjgK6diNbRjQVmFHh": "c0ec0bb0d431745b71d2f378f23fc5672d07978def0afbf321747db503b3cf2f",
+      "0FCx0ekjHhXGeRJUAlL7Jc": "8026164f2edf0e3a35edf28eb7e190a7003b31fba0001f17a0b117b2947de471",
+      "65QBzVrlS6Uz0pvGZ76sNp": "3ac5586e2895aa3322fb9049a4c5fb25e6a5b6af0a403f340f4ac2e870471192",
+      "289h3VJGES3LpG9ia8PsaZ": "2acdbf58dec3914848fbbd1f3d111cd05485fda0853982853117a4321846671e",
+      "24MitjAO4hUF0l1mIqSLYK": "5fe0cb0e1490f8618d681ade855d5a6042f1322f7fd4a11b1d9ffc674c91d61f",
+      "3Jo4PlnmSg1rnFtg87rTcm": "42df64cb737c07b1622dc502f017d3d4f0b5845f091fe3d1bdaa7c72c4995913",
+      "0G0XmmAdiyc1FuIV2CHt4u": "04090e0874f63191f96faff08f33ce096abd69f1177a96e5fdb1c07c2e72f745",
+      "5o2DA6HALPd9rolJoxS3qq": "4f5ed794a84f7fe5db6cefabd2fe26c7b47b9f123763d35a18290f320f083e79",
+      "7GTLEyPmtEBK2JIeXQnR6z": "b198cd6d3bb1ff21890cc99f65283fd9dcc5c52325dad0dc6be8aa1203f6892a",
+      "79KILkCn4orhHMiKwl7IQz": "04262904ac5f1200cba192fec3f1244033662aa9eed89cae5bc0c69207f041d1",
+      "20hyHHbnRfFEY1WIkJ64Nm": "6a22493d657601eeebc9aab93bd5907f97356e8801eea01b201340493a54c725",
+      "5JDCDJj74XiI1Ys8jZWf3O": "5e9018b970a39a05222a19cf71801eaf7ad8c992c291a505ea916cd5b98e5ae7",
+      "3CIIoBOCrr7OCeaJVpvG0Y": "a5378aaeacd9efb9b250db94d7c0a69c5a5eff368b69a02fd9f5aaa42692bf14",
+      "3kgOCjJrf7m0yZxzb4LnOn": "e2ead61716aa97a5f6797e7f6ad0e2c13d443675f87e1f3ca10941938d367c2d",
+      "1oksAA9uSp6PIZlCbhXv4z": "17a4a15456a680e353e6fc5464a3cc18542514fb1bd4749f449477dbd0b6925d",
+      "7Wh64IY9T1sft19Eq9nL0D": "2fbf047366e91800a73a9aa1b80d9a304df10dbced62c5c917d509c50455d6ac",
+      "7btyaJ3lilrqgLNW8TIqu4": "53541f5869d30f6f95cda9a11f512edd69d2500ee5fe03670b481ca7e637aef0",
+      "5j0X3WiP5KKbT1AYAKwT4T": "9336c4aa41337bffc795833898d03d8a9f630dab69d67faab223df1a11329781",
+      "2IPM1MyWS0Omg3xRpIIoc7": "457a7f2098060512aa71fa03b8daa7373895835abf8805f12725b40085f1ee66",
+      "6WeztJ25VuVRJebHcU6TqN": "2979d8e5a24636bfde6755670b8d8e33de7d6710e4a24205542228720b9f1b34",
+      "27pNpL8locdv3KBzQ9aHbG": "6c77857c681b8eef0d962af6dd03f8e4160589c7a37b6da5d9673cd4aa019a3f"
+    }
+  },
+  "completed_at": "2026-10-27T12:12:22.839353+00:00",
+  "after_confirm": {
+    "ceramics_start": "2026-12-02T16:00:00Z",
+    "other_event_unchanged": true,
+    "total_deliveries": 8
+  },
+  "smtp_failure_suite": {
+    "command": "pnpm test:mailpit",
+    "passed": 6,
+    "scope": "real local SMTP 451/crash/restart/unknown; isolated sqoch-mailpit-tests only"
+  },
+  "harness_notes": [
+    "Successful run used six real HTTPS calls. A separate first run used two HTTPS calls and stopped before SMTP because its assertion expected UTC text instead of the contracted Moscow-offset timestamp. Application state was correct; only the one-off verification expectation changed.",
+    "Human test operator reviewed generated text and added the explicit year to its subject before setting the review flag. No automatic semantic text scanner was added."
+  ]
+}

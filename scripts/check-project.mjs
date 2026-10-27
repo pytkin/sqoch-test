@@ -123,6 +123,11 @@ function documentsBelow(directory, seen = new Set()) {
 
 function checkDocs() {
   const sources = ['AGENTS.md', 'README.md', 'backend/TDD.md'].map((name) => join(root, name));
+  sources.push(
+    ...readdirSync(root)
+      .filter((name) => name.endsWith('.md') && !['AGENTS.md', 'README.md'].includes(name))
+      .map((name) => join(root, name)),
+  );
   sources.push(...documentsBelow(join(root, 'docs')));
   // Project inline links/images only; reference links and anchor names are not validated.
   const links = /!?\[[^\]\n]*\]\(\s*(?:<([^>\n]+)>|([^\s)]*))(?:\s+"[^"\n]*")?\s*\)/g;

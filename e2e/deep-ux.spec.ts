@@ -108,7 +108,7 @@ test('повреждённый HTTP 201 сохраняет сводку до р�
   const alert = page.getByRole('alert');
   await expect(alert).toContainText('Результат подтверждения неизвестен');
   await expect(alert).toContainText('«Подтвердить заказ»');
-  await expect(alert).toContainText('автоматически запрос не повторяется');
+  await expect(alert).toContainText('Автоматически запрос не повторяется');
   await expect(alert).not.toContainText('Заказ не создан');
   await expect(alert).toBeFocused();
   await expect(page.getByRole('heading', { name: 'Проверьте заказ' })).toBeVisible();

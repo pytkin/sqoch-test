@@ -1,0 +1,121 @@
+[
+  {
+    "path": "00-before.jpg",
+    "format": "JPEG",
+    "width": 1265,
+    "height": 712,
+    "sha256": "7cf6bc872d1ed1c44b8488317c529953c8d1dfdd5b3a2c460784d5e40cb68fa4"
+  },
+  {
+    "path": "01-booking-error-first.png",
+    "format": "PNG",
+    "width": 1374,
+    "height": 1145,
+    "sha256": "d089d3755b79b89296324b40303fe2b7b512b60e790fa1f0c4aa4f2613473ff5"
+  },
+  {
+    "path": "02-booking-error-desktop.png",
+    "format": "PNG",
+    "width": 1359,
+    "height": 1262,
+    "sha256": "6a609623a45e0a807a9a974cd81301706afdc1e0a43e5555b637610abd899a06"
+  },
+  {
+    "path": "03-booking-errors-mobile.png",
+    "format": "PNG",
+    "width": 360,
+    "height": 1522,
+    "sha256": "f93a8dd8ec950116a8301da4a2a9186f0fd45ab8a30957edba032c5e3e88fd93"
+  },
+  {
+    "path": "04-booking-desktop.png",
+    "format": "PNG",
+    "width": 1440,
+    "height": 1230,
+    "sha256": "ddb959e6fd340bd9625de15edabe2378dcfd4c2ba5e8cd1af99e63a69fb17fa9"
+  },
+  {
+    "path": "05-organizer-list-desktop.png",
+    "format": "PNG",
+    "width": 1440,
+    "height": 1830,
+    "sha256": "cf1b84bb866aa1937eae46a5a9713621908ea39844a4fe8b24c24f8a04fc662f"
+  },
+  {
+    "path": "06-organizer-draft-desktop.png",
+    "format": "PNG",
+    "width": 1440,
+    "height": 2406,
+    "sha256": "3ec3e372dfa119cd64df87fc816d8d2481cfd7a5f91630dc546396abd3756c40"
+  },
+  {
+    "path": "07-organizer-errors-mobile.png",
+    "format": "PNG",
+    "width": 360,
+    "height": 3114,
+    "sha256": "3ec1ae272c8586d11d6c88352211be7957d1fdf51bb8713f4cc238508b66dead"
+  },
+  {
+    "path": "08-organizer-errors-desktop.png",
+    "format": "PNG",
+    "width": 1440,
+    "height": 2566,
+    "sha256": "500e71ce0ff7946c93ba79d871374bf308738bdf72b1935a6125fe7ad3063ccf"
+  },
+  {
+    "path": "09-organizer-progress-desktop.png",
+    "format": "PNG",
+    "width": 1440,
+    "height": 2658,
+    "sha256": "9d83f175a201ec2e509dda9538c90ef95bf120887a06ac1890b998fe4751ae2e"
+  },
+  {
+    "path": "10-organizer-progress-mobile.png",
+    "format": "PNG",
+    "width": 360,
+    "height": 3490,
+    "sha256": "f593517721ad9c03308b1916756e049a398f8fae16c51ae3d28372ef67b7f9c6"
+  },
+  {
+    "path": "11-booking-reference-state.png",
+    "format": "PNG",
+    "width": 1374,
+    "height": 1262,
+    "sha256": "ba720ea202b102129e4af93515d8c7f8088cc0fe69ac00cf4dee66dc350d477c"
+  },
+  {
+    "path": "12-comparison-full.png",
+    "format": "PNG",
+    "width": 2748,
+    "height": 1145,
+    "sha256": "f0b2622ad7de98cb2a14edd0d3024a979d04c754867ddc018bf9a47ff99108ae"
+  },
+  {
+    "path": "13-comparison-form.png",
+    "format": "PNG",
+    "width": 1511,
+    "height": 1094,
+    "sha256": "86800aeba83626a8a74b32bab61f01dc060dc4f5674b3d1c424e51125dd6c154"
+  },
+  {
+    "path": "14-organizer-progress-mobile-top.png",
+    "format": "PNG",
+    "width": 360,
+    "height": 900,
+    "sha256": "578dbb21ef20448df4f3191fbe981c7f19455a124cde8eca49453849daa0e937"
+  },
+  {
+    "path": "15-organizer-errors-mobile-top.png",
+    "format": "PNG",
+    "width": 360,
+    "height": 1100,
+    "sha256": "0d013f2d8bbdae0ea1dafcd7c2a49a088c5078eab76c54f39b110a0ed3f3b675"
+  },
+  {
+    "path": "16-booking-preview.png",
+    "format": "PNG",
+    "width": 780,
+    "height": 1230,
+    "sha256": "0e79cf423cf4d603068a19b9692b994cd8a33161d9bf385aa4f3b94b6503ae1d"
+  }
+]

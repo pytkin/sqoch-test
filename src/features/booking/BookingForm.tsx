@@ -49,15 +49,13 @@ export function BookingForm({
     </Notice>
   );
   return (
-    <form noValidate aria-describedby="form-instructions" onSubmit={onSubmit}>
+    <form noValidate onSubmit={onSubmit}>
       <fieldset className="form-content" disabled={pending}>
         <legend className="sr-only">Данные заказа</legend>
-        <div className="section-row participants-section">
+        <section className="section-row participants-section" aria-labelledby="participants-title">
           <div className="section-label section-caption">
-            <h2>Участники</h2>
-            <span>
-              {fields.length} из {event.max_participants}
-            </span>
+            <h2 id="participants-title">Участники</h2>
+            <p>Укажите имя и возраст каждого участника</p>
           </div>
           <fieldset
             className="participants-list"
@@ -81,22 +79,20 @@ export function BookingForm({
                 <Fragment key={field.id}>
                   {removed?.index === index && undoNotice}
                   <fieldset className="participant" aria-labelledby={`participant-${field.id}`}>
-                    <legend>
-                      <span className="participant-heading">
-                        <span id={`participant-${field.id}`}>Участник {index + 1}</span>
-                        {fields.length > 1 && (
-                          <Button
-                            variant="destructive"
-                            onClick={() => onRemoveParticipant(index)}
-                            aria-label={`Удалить участника ${index + 1}`}
-                            title={`Удалить участника ${index + 1}`}
-                            className="icon-button"
-                          >
-                            <Icon name="trash-2" />
-                          </Button>
-                        )}
-                      </span>
+                    <legend className="sr-only" id={`participant-${field.id}`}>
+                      Участник {index + 1}
                     </legend>
+                    {fields.length > 1 && (
+                      <Button
+                        variant="destructive"
+                        onClick={() => onRemoveParticipant(index)}
+                        aria-label={`Удалить участника ${index + 1}`}
+                        title={`Удалить участника ${index + 1}`}
+                        className="icon-button participant-remove"
+                      >
+                        <Icon name="trash-2" />
+                      </Button>
+                    )}
                     <div className="participant-fields">
                       <Field
                         id={`name-${field.id}`}
@@ -140,27 +136,31 @@ export function BookingForm({
               );
             })}
             {removed && removed.index >= fields.length && undoNotice}
-            <Button
-              variant="text"
-              className="add-button"
-              onClick={onAddParticipant}
-              disabled={fields.length >= event.max_participants}
-              aria-describedby="participant-limit"
-            >
-              <Icon name="plus" />
-              Добавить участника
-            </Button>
+            <div className="participant-addition">
+              <Button
+                variant="secondary"
+                className="add-button"
+                onClick={onAddParticipant}
+                disabled={fields.length >= event.max_participants}
+                aria-describedby="participant-limit"
+              >
+                <Icon name="plus" />
+                Добавить участника
+              </Button>
+              <span className="participant-capacity" aria-hidden="true">
+                До {event.max_participants} участников
+              </span>
+            </div>
             <p
               id="participant-limit"
               className={fields.length < event.max_participants ? 'sr-only' : 'field-hint'}
             >
               {fields.length >= event.max_participants
-                ? `Достигнут лимит — ${event.max_participants} участника. Чтобы добавить другого человека, сначала удалите одного из списка`
+                ? `Достигнут лимит: ${event.max_participants} участника. Чтобы добавить другого человека, сначала удалите одного из списка`
                 : `В одном заказе может быть от 1 до ${event.max_participants} участников`}
             </p>
             <p className="companion-hint">
-              Ребёнку младше {event.child_age_limit} лет нужен сопровождающий от{' '}
-              {event.companion_min_age} лет в том же заказе
+              {`Ребёнку младше ${event.child_age_limit}\u00a0лет нужен сопровождающий от\u00a0${event.companion_min_age}\u00a0лет в\u00a0том же заказе`}
             </p>
             {fields.length >= event.max_participants && needsCompanion && (
               <p className="field-hint">
@@ -169,7 +169,7 @@ export function BookingForm({
               </p>
             )}
           </fieldset>
-        </div>
+        </section>
         <div className="section-row email-section">
           <Field
             id="email"

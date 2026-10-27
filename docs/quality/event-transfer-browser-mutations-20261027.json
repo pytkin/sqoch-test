@@ -1,0 +1,911 @@
+{
+  "schemaVersion": 1,
+  "runId": "57f657ee-b51e-430e-8703-de55129fbd4c",
+  "status": "complete",
+  "source": ".",
+  "scope": "curated semantic mutations; not exhaustive AST coverage",
+  "controls": [
+    {
+      "group": "orders",
+      "outcome": "passed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_orders.py",
+        "backend/tests/test_confirmation.py",
+        "-q"
+      ]
+    },
+    {
+      "group": "booking-client",
+      "outcome": "passed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/booking/api.test.ts",
+        "src/features/booking/draft.test.ts",
+        "src/features/booking/presentation.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "group": "organizer-client",
+      "outcome": "passed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "group": "delivery",
+      "outcome": "passed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_claim.py",
+        "backend/tests/test_progress.py",
+        "backend/tests/test_reconcile.py",
+        "-q"
+      ]
+    },
+    {
+      "group": "campaigns",
+      "outcome": "passed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_campaign_flow.py",
+        "backend/tests/test_draft_contract.py",
+        "-q"
+      ]
+    },
+    {
+      "group": "ai",
+      "outcome": "passed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_prepare.py",
+        "backend/tests/test_ai_rewrite.py",
+        "-q"
+      ]
+    },
+    {
+      "group": "preparation-policy",
+      "outcome": "passed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_intake.py",
+        "backend/tests/test_date_resolver.py",
+        "-q"
+      ]
+    },
+    {
+      "group": "organizer-navigation",
+      "outcome": "passed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/App.navigation.test.tsx",
+        "--reporter=dot"
+      ]
+    }
+  ],
+  "mutations": [
+    {
+      "id": "order-child-price-boundary",
+      "group": "orders",
+      "purpose": "Age 14 must receive the full price",
+      "path": "backend/sqoch_api/orders.py",
+      "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+      "mutatedSha256": "fb8ad2a71a53158120d0ec0174b3bc2adcb11e44355f52724d29b39e5cb0e38d",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_orders.py",
+        "backend/tests/test_confirmation.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "order-child-type-boundary",
+      "group": "orders",
+      "purpose": "Age 14 must receive the full ticket type",
+      "path": "backend/sqoch_api/orders.py",
+      "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+      "mutatedSha256": "2b07029234650139cf4f1c76c0fa1f04a5f1e5759c134734c9bd282b55be3a04",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_orders.py",
+        "backend/tests/test_confirmation.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "order-adult-boundary",
+      "group": "orders",
+      "purpose": "Age 18 is sufficient as a companion",
+      "path": "backend/sqoch_api/orders.py",
+      "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+      "mutatedSha256": "4886455d87b5617c05ff6fe5fbce6317c907b5d0c363478736711d91c6cfef66",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_orders.py",
+        "backend/tests/test_confirmation.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "order-participant-cap",
+      "group": "orders",
+      "purpose": "The API must reject five participants",
+      "path": "backend/sqoch_api/orders.py",
+      "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+      "mutatedSha256": "9a2e4a49c75e65f5d0f128e36a40f6f35d696be086b2c74d81059a7cd5451abf",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_orders.py",
+        "backend/tests/test_confirmation.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "order-price-total",
+      "group": "orders",
+      "purpose": "The total must sum all participants",
+      "path": "backend/sqoch_api/orders.py",
+      "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+      "mutatedSha256": "275a0a69277ab10530106788f193d742f038709df66691ab8651958be2597b70",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_orders.py",
+        "backend/tests/test_confirmation.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "booking-empty-age",
+      "group": "booking-client",
+      "purpose": "An empty age must not become zero",
+      "path": "src/features/booking/draft.ts",
+      "sourceSha256": "e14a80c0075d1b5f771d1dbf790c13387efa13564c1aa323103d4d32bee9e7f9",
+      "mutatedSha256": "6253225b8248fd8a5e4efa38efb49a36b64cba58964ba3450953eb9bc53dcd7c",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/booking/api.test.ts",
+        "src/features/booking/draft.test.ts",
+        "src/features/booking/presentation.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "booking-safe-integer",
+      "group": "booking-client",
+      "purpose": "Unsafe integer ages must be rejected",
+      "path": "src/features/booking/draft.ts",
+      "sourceSha256": "e14a80c0075d1b5f771d1dbf790c13387efa13564c1aa323103d4d32bee9e7f9",
+      "mutatedSha256": "98c5b70e4d1708f893672e22696686c2ddcf254a478b2f607f93e9e8813a0883",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/booking/api.test.ts",
+        "src/features/booking/draft.test.ts",
+        "src/features/booking/presentation.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "booking-teen-plural",
+      "group": "booking-client",
+      "purpose": "Russian age wording must handle 11 through 14",
+      "path": "src/features/booking/presentation.ts",
+      "sourceSha256": "7be3fca06834782bee0b2538dc35ec4aa073055ca15429281e903607f47f17fa",
+      "mutatedSha256": "37cb673ddf8159a5415114fd74c629261029ca72b1155af93a5aa81149103cd9",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/booking/api.test.ts",
+        "src/features/booking/draft.test.ts",
+        "src/features/booking/presentation.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "booking-http-status",
+      "group": "booking-client",
+      "purpose": "A valid DTO under the wrong successful status must be rejected",
+      "path": "src/features/booking/api.ts",
+      "sourceSha256": "a544b91d0d46cc1f4d4720faa3879bc45ecd2790e594366437a6d19c3e2a2963",
+      "mutatedSha256": "e4967642aa37bdcf23b294782c005b80638bdb932277e6fae0103ed66fd3c42f",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/booking/api.test.ts",
+        "src/features/booking/draft.test.ts",
+        "src/features/booking/presentation.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "booking-quote-participant-cap",
+      "group": "booking-client",
+      "purpose": "A five-participant quote must be rejected",
+      "path": "src/features/booking/api.ts",
+      "sourceSha256": "a544b91d0d46cc1f4d4720faa3879bc45ecd2790e594366437a6d19c3e2a2963",
+      "mutatedSha256": "ab564997fc64d6f7fcd960571a4ca47d7890a50d84bde4d82d6106d91db4b82e",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/booking/api.test.ts",
+        "src/features/booking/draft.test.ts",
+        "src/features/booking/presentation.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-ordinary-deadline",
+      "group": "organizer-client",
+      "purpose": "A normal request must remain pending until 15 seconds",
+      "path": "src/features/organizer/api.ts",
+      "sourceSha256": "d522b41c3975b770b0118368d59384d84ae35f7c7dd785dd5e1a9daf7079e4d2",
+      "mutatedSha256": "9db48f212c774d8a2e62caabb6f5f319293db296ff505b45e898ca45882d688c",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-ai-deadline",
+      "group": "organizer-client",
+      "purpose": "AI actions must retain their full 60-second deadline",
+      "path": "src/features/organizer/api.ts",
+      "sourceSha256": "d522b41c3975b770b0118368d59384d84ae35f7c7dd785dd5e1a9daf7079e4d2",
+      "mutatedSha256": "54701082c08bd5655fb677851678520b9c9ba9ad18130df3b676c2f878c60def",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-state-counts",
+      "group": "organizer-client",
+      "purpose": "Counters must match the actual delivery states",
+      "path": "src/features/organizer/responseGuards.ts",
+      "sourceSha256": "52c4a2eb6244129d33f9cebe7dd2b10e17f8707a32489ee8050880769a559da4",
+      "mutatedSha256": "54f2163a54b50a30ea8dd5e496d03ebf322231d204a0a0f84acb6a3b60505fd2",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-duplicate-recipients",
+      "group": "organizer-client",
+      "purpose": "The preview must reject duplicate recipients",
+      "path": "src/features/organizer/responseGuards.ts",
+      "sourceSha256": "52c4a2eb6244129d33f9cebe7dd2b10e17f8707a32489ee8050880769a559da4",
+      "mutatedSha256": "eaaf41cdb476a41ec8bb61987af0761b95c0a108bd4210d0ef5136d9ac4d8061",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-delivery-attempt-cap",
+      "group": "organizer-client",
+      "purpose": "A response cannot contain a sixth delivery attempt",
+      "path": "src/features/organizer/responseGuards.ts",
+      "sourceSha256": "52c4a2eb6244129d33f9cebe7dd2b10e17f8707a32489ee8050880769a559da4",
+      "mutatedSha256": "b9857b97a6b58bae9d3371adfd685296aec5580ef526b97c16754b272f864af0",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-preview-identity",
+      "group": "organizer-client",
+      "purpose": "A saved preview must belong to the displayed campaign",
+      "path": "src/features/organizer/responseGuards.ts",
+      "sourceSha256": "52c4a2eb6244129d33f9cebe7dd2b10e17f8707a32489ee8050880769a559da4",
+      "mutatedSha256": "8d9fb0d5c3279dead53a311d74bfc4e368879ab14f1f636ac84941d8357af6ae",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-ai-draft-only",
+      "group": "organizer-client",
+      "purpose": "AI actions may only return drafts",
+      "path": "src/features/organizer/api.ts",
+      "sourceSha256": "d522b41c3975b770b0118368d59384d84ae35f7c7dd785dd5e1a9daf7079e4d2",
+      "mutatedSha256": "bc8e0e5f989c9fe0dbb1ac6eec85a0ada5781e7db49f4ccbe3039013347e2864",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-calendar-roundtrip",
+      "group": "organizer-client",
+      "purpose": "An impossible calendar date must not normalize to the next month",
+      "path": "src/features/organizer/presentation.ts",
+      "sourceSha256": "770eba22bf3cd60438b582aaf2d193d4e3f337d5ed11035f42b712e6ed3dab71",
+      "mutatedSha256": "e6e5c40d59d6307a5fd7e40d6c7832d2494b63248612142e2a983f3977bed327",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/organizer/api.test.ts",
+        "src/features/organizer/presentation.test.ts",
+        "src/features/organizer/form.test.ts",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "delivery-retry-cap",
+      "group": "delivery",
+      "purpose": "The fifth temporary failure must be final",
+      "path": "backend/sqoch_api/notifications/delivery.py",
+      "sourceSha256": "b0dce0d82bda553a048d060a19e794b1f5999faefd10d2fb94fe2ffedf740136",
+      "mutatedSha256": "3d42c2a38446a3294354fdec3bd54941f99bee742871c060d9ca2b5c8ee9e65c",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_claim.py",
+        "backend/tests/test_progress.py",
+        "backend/tests/test_reconcile.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "delivery-retry-delay",
+      "group": "delivery",
+      "purpose": "The first retry must wait five seconds",
+      "path": "backend/sqoch_api/notifications/delivery.py",
+      "sourceSha256": "b0dce0d82bda553a048d060a19e794b1f5999faefd10d2fb94fe2ffedf740136",
+      "mutatedSha256": "1f87df30f9328dc379a311eef5a2e312b81e88fb40fe40ff3b9a2e2bbb791b4b",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_claim.py",
+        "backend/tests/test_progress.py",
+        "backend/tests/test_reconcile.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "delivery-stale-state",
+      "group": "delivery",
+      "purpose": "Late results cannot overwrite reconciled or recovered states",
+      "path": "backend/sqoch_api/notifications/delivery.py",
+      "sourceSha256": "b0dce0d82bda553a048d060a19e794b1f5999faefd10d2fb94fe2ffedf740136",
+      "mutatedSha256": "92abf7662f0702b08abacec0d8c34085b694eb5967ec881eb97c2083c16c82b3",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_claim.py",
+        "backend/tests/test_progress.py",
+        "backend/tests/test_reconcile.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "delivery-stale-attempt",
+      "group": "delivery",
+      "purpose": "An older attempt cannot overwrite the current sending attempt",
+      "path": "backend/sqoch_api/notifications/delivery.py",
+      "sourceSha256": "b0dce0d82bda553a048d060a19e794b1f5999faefd10d2fb94fe2ffedf740136",
+      "mutatedSha256": "d32ce3bb1de4694f1b4634698a0a58addcaf278ea2a3c85acb8be50518d12128",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_claim.py",
+        "backend/tests/test_progress.py",
+        "backend/tests/test_reconcile.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "campaign-unsettled-sending",
+      "group": "campaigns",
+      "purpose": "A sending delivery must prevent a second transfer of the same event",
+      "path": "backend/sqoch_api/notifications/service.py",
+      "sourceSha256": "e7c1b282eaeda8fd539801f49d2ba6d2a12f304598a0e1c36565c966ffd94b4e",
+      "mutatedSha256": "cabd9674358ff4306c43c9d6117a0f87f7237b7678630c1fb1873ab68c5119e2",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_campaign_flow.py",
+        "backend/tests/test_draft_contract.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "campaign-unsettled-retry",
+      "group": "campaigns",
+      "purpose": "A pending retry must prevent a second transfer of the same event",
+      "path": "backend/sqoch_api/notifications/service.py",
+      "sourceSha256": "e7c1b282eaeda8fd539801f49d2ba6d2a12f304598a0e1c36565c966ffd94b4e",
+      "mutatedSha256": "9e1c26784387bec10b0c71f687b4f8a49b831b07cdee6072bc0fa1ad7ddc4e91",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_campaign_flow.py",
+        "backend/tests/test_draft_contract.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "campaign-unsettled-unknown",
+      "group": "campaigns",
+      "purpose": "An unknown result must prevent a second transfer of the same event",
+      "path": "backend/sqoch_api/notifications/service.py",
+      "sourceSha256": "e7c1b282eaeda8fd539801f49d2ba6d2a12f304598a0e1c36565c966ffd94b4e",
+      "mutatedSha256": "9d7f8f93eafcf09920eaf31565004519ae4f5a49f8447c02fa8243ac9bcb4dcc",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_campaign_flow.py",
+        "backend/tests/test_draft_contract.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "campaign-event-isolation",
+      "group": "campaigns",
+      "purpose": "A campaign for another event must not block this transfer",
+      "path": "backend/sqoch_api/notifications/service.py",
+      "sourceSha256": "e7c1b282eaeda8fd539801f49d2ba6d2a12f304598a0e1c36565c966ffd94b4e",
+      "mutatedSha256": "2c4e11cbc5db54c2ecaf1b812330447e3e12b47278c85bdfc66f40d36955f98d",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_campaign_flow.py",
+        "backend/tests/test_draft_contract.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "campaign-processing-priority",
+      "group": "delivery",
+      "purpose": "Outstanding work has priority over terminal outcomes",
+      "path": "backend/sqoch_api/notifications/campaign_queries.py",
+      "sourceSha256": "4e5775093ef39e3dade4e52014d2889af09d25d3d4ea8ed9b92502808e2172a1",
+      "mutatedSha256": "46b562bff0a073ba4ca0504b4794e78ad85752e7e0ea2a5cddfe8aecdb8948f0",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_claim.py",
+        "backend/tests/test_progress.py",
+        "backend/tests/test_reconcile.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "campaign-unknown-priority",
+      "group": "delivery",
+      "purpose": "Unknown outcomes must remain needs_attention",
+      "path": "backend/sqoch_api/notifications/campaign_queries.py",
+      "sourceSha256": "4e5775093ef39e3dade4e52014d2889af09d25d3d4ea8ed9b92502808e2172a1",
+      "mutatedSha256": "3a6582a175b68b9cc3daa7efe8d180d1165798b3217f1ea3c34148b2fe95cd8c",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_claim.py",
+        "backend/tests/test_progress.py",
+        "backend/tests/test_reconcile.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "campaign-failed-status",
+      "group": "delivery",
+      "purpose": "A permanent failure must not become completed success",
+      "path": "backend/sqoch_api/notifications/campaign_queries.py",
+      "sourceSha256": "4e5775093ef39e3dade4e52014d2889af09d25d3d4ea8ed9b92502808e2172a1",
+      "mutatedSha256": "8d92a9bc7854bb5081ee834d763d5a1ae4f2501870b2103072624aaef3713252",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_claim.py",
+        "backend/tests/test_progress.py",
+        "backend/tests/test_reconcile.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "ai-tool-id-reuse",
+      "group": "ai",
+      "purpose": "A tool-call ID cannot be reused in a later round",
+      "path": "backend/sqoch_api/notifications/ai.py",
+      "sourceSha256": "2b04f2c0abef39e2241c4e837a4e3fbd2154f4c806721bbc135bfa631fa8806c",
+      "mutatedSha256": "7e75be5b0658b756b5041c0d6d8c14e3fff8708a4973fcfded0678d2e8ae60ff",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_prepare.py",
+        "backend/tests/test_ai_rewrite.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "ai-final-tool-rejection",
+      "group": "ai",
+      "purpose": "The final JSON-only response cannot request tools",
+      "path": "backend/sqoch_api/notifications/deepseek.py",
+      "sourceSha256": "19ebad4ccb1b99c08f11554f20ef0d7ee409512eb0fa22d40bbe0e61dec5853f",
+      "mutatedSha256": "fe9b06e729b4ae550c79ce17b49606bc28fc7b42040dbd04c02378dd9cb88b2f",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_prepare.py",
+        "backend/tests/test_ai_rewrite.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "ai-http-budget-boundary",
+      "group": "ai",
+      "purpose": "Three bounded tool rounds must still allow the final JSON request",
+      "path": "backend/sqoch_api/notifications/ai.py",
+      "sourceSha256": "2b04f2c0abef39e2241c4e837a4e3fbd2154f4c806721bbc135bfa631fa8806c",
+      "mutatedSha256": "7e327164efae0c8a1af45893406de025222d0e30f4e265e01615866b9184928e",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_prepare.py",
+        "backend/tests/test_ai_rewrite.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "ai-optimistic-revision",
+      "group": "ai",
+      "purpose": "A provider response cannot overwrite a draft edited during HTTP",
+      "path": "backend/sqoch_api/notifications/errors.py",
+      "sourceSha256": "496b4c3c3b553b392ea780e9c9074987fc8331e91fa32d9d8aece5d8c5ba4f9a",
+      "mutatedSha256": "d9b3db472adf542137f7b9e2a4f922c906323b7a033fce3c347e78ea1a8e4ea1",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_prepare.py",
+        "backend/tests/test_ai_rewrite.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "date-current-year-only",
+      "group": "preparation-policy",
+      "purpose": "A missing year may default only to the current year, never the next year",
+      "path": "backend/sqoch_api/notifications/date_resolver.py",
+      "sourceSha256": "18c468115e17ceb21e9172586d9c6eefc1e6b3c0670103f63b8d7c6346de57cf",
+      "mutatedSha256": "b114b70628ef2f90fb237d0ceabe7f9f93926af04e76d6044a743d8d724b2f87",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_intake.py",
+        "backend/tests/test_date_resolver.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "date-moscow-year",
+      "group": "preparation-policy",
+      "purpose": "The default year must come from the Moscow clock at the UTC year boundary",
+      "path": "backend/sqoch_api/notifications/date_resolver.py",
+      "sourceSha256": "18c468115e17ceb21e9172586d9c6eefc1e6b3c0670103f63b8d7c6346de57cf",
+      "mutatedSha256": "a4d8a05c3665537844e776f841c38e0238ba2f906d19513e036e66143a8fd6a9",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_intake.py",
+        "backend/tests/test_date_resolver.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "date-event-year-guard",
+      "group": "preparation-policy",
+      "purpose": "An event in another year must require explicit year clarification",
+      "path": "backend/sqoch_api/notifications/date_resolver.py",
+      "sourceSha256": "18c468115e17ceb21e9172586d9c6eefc1e6b3c0670103f63b8d7c6346de57cf",
+      "mutatedSha256": "b9892dea4853a695078a67e1a2ecb57c04da5192b554d120f20121921e1649c0",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_intake.py",
+        "backend/tests/test_date_resolver.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "date-persisted-default-year",
+      "group": "preparation-policy",
+      "purpose": "A saved automatic year must survive reload and must not silently advance on retry",
+      "path": "backend/sqoch_api/notifications/date_resolver.py",
+      "sourceSha256": "18c468115e17ceb21e9172586d9c6eefc1e6b3c0670103f63b8d7c6346de57cf",
+      "mutatedSha256": "95e3e1262fc4ca53baabfdd4bf026d0834b8086b61a05c95fd944e0d7e1f1c9a",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_intake.py",
+        "backend/tests/test_date_resolver.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "date-default-must-be-future",
+      "group": "preparation-policy",
+      "purpose": "A date with an automatic year must remain strictly in the future",
+      "path": "backend/sqoch_api/notifications/date_resolver.py",
+      "sourceSha256": "18c468115e17ceb21e9172586d9c6eefc1e6b3c0670103f63b8d7c6346de57cf",
+      "mutatedSha256": "dd288328dd6bcc05d0911392eda6867579dce9bf9d7324f884baecf2c0469236",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_intake.py",
+        "backend/tests/test_date_resolver.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "date-reject-multiple-dates",
+      "group": "preparation-policy",
+      "purpose": "Several dates must require clarification instead of selecting the first",
+      "path": "backend/sqoch_api/notifications/date_resolver.py",
+      "sourceSha256": "18c468115e17ceb21e9172586d9c6eefc1e6b3c0670103f63b8d7c6346de57cf",
+      "mutatedSha256": "03285c594ad66a6fa9844067284ac040b83c7239fec7d39ffef459d698e46fe9",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_intake.py",
+        "backend/tests/test_date_resolver.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "assistant-no-auto-review",
+      "group": "preparation-policy",
+      "purpose": "Preparing a transfer must never mark its text as reviewed by a human",
+      "path": "backend/sqoch_api/notifications/ai_preparation.py",
+      "sourceSha256": "6118c26e822b6f9e7c24a3d06c3a16e7a377b5ce65bd0308d7541a0cecea96df",
+      "mutatedSha256": "385780c696b4ebec7022c171c14d505aba868e23e4657b95a3df920fde93cfef",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/Documents/sqoch-test/backend/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_ai_intake.py",
+        "backend/tests/test_date_resolver.py",
+        "-q"
+      ]
+    },
+    {
+      "id": "event-history-isolation",
+      "group": "organizer-navigation",
+      "purpose": "An event page must exclude preparations and confirmed history for other events",
+      "path": "src/features/organizer/Events.tsx",
+      "sourceSha256": "3c54094e7d8112557787b89697e14a4f7279ff5226d9ecd7ca46f255b7976fb8",
+      "mutatedSha256": "afc3b6074a97cd7847b5c44e98e667af940890049703949cca545e12a39f2f55",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/App.navigation.test.tsx",
+        "--reporter=dot"
+      ]
+    },
+    {
+      "id": "organizer-no-put-on-read",
+      "group": "organizer-navigation",
+      "purpose": "Opening, returning to or refreshing a campaign must only read the existing ID",
+      "path": "src/features/organizer/api.ts",
+      "sourceSha256": "d522b41c3975b770b0118368d59384d84ae35f7c7dd785dd5e1a9daf7079e4d2",
+      "mutatedSha256": "8727b5f7c0eafc69d28bbb8c9b9c1b2dfccca70288e7a0e8763437ad867d9638",
+      "outcome": "killed",
+      "command": [
+        "/Users/pytkin/.nvm/versions/node/v26.12.1/bin/node",
+        "/Users/pytkin/Documents/sqoch-test/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/App.navigation.test.tsx",
+        "--reporter=dot"
+      ]
+    }
+  ],
+  "counts": {
+    "killed": 42,
+    "survived": 0,
+    "invalid": 0,
+    "timeout": 0
+  }
+}

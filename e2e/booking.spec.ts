@@ -84,7 +84,7 @@ test('ошибки и основной путь доступны клавиат�
       : 'Tab';
   await page.getByRole('button', { name: 'Проверить заказ' }).click();
   await expect(
-    page.getByText('Введите имя участника — поле не должно быть пустым', { exact: true }),
+    page.getByText('Введите имя участника: поле не должно быть пустым', { exact: true }),
   ).toBeVisible();
   await expect(page.getByLabel('Имя', { exact: true })).toBeFocused();
   await page.keyboard.type('Мария');

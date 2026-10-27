@@ -47,18 +47,18 @@ test('дизайн: реальные размеры, 4 участника, дл�
       () =>
         [...document.fonts].some(
           (font) =>
-            font.family.replaceAll(/["']/g, '') === 'Commissioner' && font.status === 'loaded',
-        ) && document.fonts.check('18px Commissioner', 'Оформление билетов Ёж'),
+            font.family.replaceAll(/["']/g, '') === 'Golos Text' && font.status === 'loaded',
+        ) && document.fonts.check('16px "Golos Text"', 'Оформление билетов Ёж'),
     ),
   ).toBe(true);
   const firstName = page.getByLabel('Имя', { exact: true }).first();
   const firstAge = page.getByLabel('Возраст, лет', { exact: true }).first();
-  await expect(firstName).toHaveCSS('font-size', '18px');
-  await expect(firstAge).toHaveCSS('font-size', '18px');
+  await expect(firstName).toHaveCSS('font-size', '16px');
+  await expect(firstAge).toHaveCSS('font-size', '16px');
   for (const field of [firstName, firstAge]) {
     const box = await field.boundingBox();
     expect(box).not.toBeNull();
-    expect(box!.height).toBeGreaterThanOrEqual(56);
+    expect(box!.height).toBeGreaterThanOrEqual(48);
     if (testInfo.project.name === 'mobile-360') {
       expect(box!.y).toBeGreaterThanOrEqual(0);
       expect(box!.y + box!.height).toBeLessThanOrEqual(800);
@@ -74,7 +74,7 @@ test('дизайн: реальные размеры, 4 участника, дл�
   expect(textSizes.length).toBeGreaterThan(0);
   expect(textSizes.every((size) => size >= 16)).toBe(true);
   const primaryBox = await page.getByRole('button', { name: 'Проверить заказ' }).boundingBox();
-  expect(primaryBox!.height).toBeGreaterThanOrEqual(56);
+  expect(primaryBox!.height).toBeGreaterThanOrEqual(48);
   const layoutBox = await page.locator('.layout').boundingBox();
   expect(layoutBox!.width).toBeLessThanOrEqual(800);
   await expect(page.getByText('Шаг 1 из 2 · Данные', { exact: true })).toBeVisible();
@@ -136,8 +136,7 @@ test('дизайн: реальные размеры, 4 участника, дл�
       height: innerHeight,
       deviceScaleFactor: devicePixelRatio,
       fontReady: [...document.fonts].some(
-        (font) =>
-          font.family.replaceAll(/["']/g, '') === 'Commissioner' && font.status === 'loaded',
+        (font) => font.family.replaceAll(/["']/g, '') === 'Golos Text' && font.status === 'loaded',
       ),
     }));
     expect(metrics).toEqual({ width: 720, height: 525, deviceScaleFactor: 2, fontReady: true });
@@ -145,7 +144,7 @@ test('дизайн: реальные размеры, 4 участника, дл�
       body: JSON.stringify({ ...metrics, sourceViewport: '1440×1050', nativeBrowserZoom: false }),
       contentType: 'application/json',
     });
-    await expect(reflowPage.getByLabel('Имя', { exact: true })).toHaveCSS('font-size', '18px');
+    await expect(reflowPage.getByLabel('Имя', { exact: true })).toHaveCSS('font-size', '16px');
     await fillAdult(reflowPage);
     await noOverflow(reflowPage);
     await capture(reflowPage, testInfo, '29-reflow-200-emulated-data');
@@ -184,7 +183,7 @@ test('состояния: загрузка, восстановление и до
   await page.getByRole('button', { name: 'Проверить заказ' }).click();
   await expect(page.getByLabel('Имя', { exact: true })).toBeFocused();
   await expect(
-    page.getByText('Введите имя участника — поле не должно быть пустым', { exact: true }),
+    page.getByText('Введите имя участника: поле не должно быть пустым', { exact: true }),
   ).toBeVisible();
   await capture(page, testInfo, '09-field-errors');
   await fillAdult(page);

@@ -1,0 +1,33 @@
+[
+  {
+    "before": "docs/preview/ui-kit-3-20261027/04-booking-desktop.png",
+    "after": "docs/preview/refactoring-20261027/01-booking-desktop.png",
+    "beforePixels": [1440, 1230],
+    "afterPixels": [1440, 1230],
+    "changedPixels": 0,
+    "boundingBox": null
+  },
+  {
+    "before": "docs/preview/ui-kit-3-20261027/05-organizer-list-desktop.png",
+    "after": "docs/preview/refactoring-20261027/04-organizer-list.png",
+    "beforePixels": [1440, 1830],
+    "afterPixels": [1440, 1830],
+    "changedPixels": 0,
+    "boundingBox": null
+  },
+  {
+    "before": "docs/preview/ui-kit-3-20261027/06-organizer-draft-desktop.png",
+    "after": "docs/preview/refactoring-20261027/05-organizer-draft.png",
+    "beforePixels": [1440, 2406],
+    "afterPixels": [1440, 2406],
+    "changedPixels": 0,
+    "boundingBox": null
+  },
+  {
+    "before": "docs/preview/ui-kit-3-20261027/07-organizer-errors-mobile.png",
+    "after": "docs/preview/refactoring-20261027/06-organizer-validation-mobile.png",
+    "beforePixels": [360, 3114],
+    "afterPixels": [360, 2934],
+    "comparison": "Not pixel-comparable: full-page capture scrollbar/client-width state differs; use native CSS metrics and E2E for mobile reflow."
+  }
+]

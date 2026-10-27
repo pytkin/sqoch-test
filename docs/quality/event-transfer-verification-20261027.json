@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-27",
+  "scope": "SQOCH-39 through SQOCH-44 and approved-prototype fidelity correction",
+  "status": "passed",
+  "automated": {
+    "command": "pnpm verify",
+    "exit_code": 0,
+    "frontend": 336,
+    "backend": 418,
+    "tooling": 45,
+    "browser": 74,
+    "total": 873,
+    "also_passed": ["typecheck", "lint", "format", "contracts:check", "build", "docs:check"],
+    "log": ".cache/event-transfer-3944-20261027/fidelity-verify-closure.log",
+    "log_sha256": "1ee8a91b169b85f8567a3c79319e8c68e086c919558de0317a28a52ed0864f2c",
+    "responsive_regressions": "Four browser failures exposed two genuine regressions: unbroken subject overflow at 360/320 and recovery controls below the first viewport. Source fixes preserve full text, one recovery action, and all existing E2E assertions. Final full run passes."
+  },
+  "mutations": {
+    "report": "docs/quality/event-transfer-mutations-20261027.json",
+    "counts": {
+      "killed": 42,
+      "survived": 0,
+      "invalid": 0,
+      "timeout": 0
+    },
+    "all_target_source_sha_current": true,
+    "scope": "42 curated semantic mutations, including all historical 33. Not exhaustive AST mutation coverage."
+  },
+  "live": {
+    "report": "docs/quality/event-transfer-live-20261027.json",
+    "deepseek_https_calls_successful_run": 6,
+    "exact_mailpit_messages": 8,
+    "real_smtp_fault_suite_passed": 6,
+    "destination": "isolated local Mailpit only",
+    "note": "Live API/SMTP acceptance precedes the final frontend-only fidelity port; backend contracts and delivery source are unchanged by that port."
+  },
+  "preservation": {
+    "database": ".cache/ux31.sqlite3",
+    "integrity": "ok",
+    "schema_versions": [1, 2],
+    "original_business_rows_and_columns_unchanged": {
+      "campaigns": true,
+      "deliveries": true,
+      "events": true,
+      "purchases": true
+    },
+    "counts": {
+      "campaigns": 10,
+      "deliveries": 8,
+      "events": 2,
+      "purchases": 20
+    },
+    "original_mailpit_message_count": 22,
+    "current_mailpit_message_count": 22,
+    "all_original_mailpit_raw_hashes_match": true,
+    "working_api_root_http_200": true,
+    "organizer_get_events_and_campaigns_http_200": true,
+    "source_manifest_entries": 329,
+    "original_files_missing": [],
+    "all_42_mutation_target_sha_match_current_source": true,
+    "limits": "Read-only local verification. No demo reset/load or external delivery. Source checks preserve existing files; accumulated changes are intentionally retained."
+  },
+  "migration": {
+    "report": ".cache/event-transfer-3944-20261027/working-migration-report.json",
+    "backup": ".cache/event-transfer-3944-20261027/pre-migration-002.sqlite3",
+    "from": 1,
+    "to": 2,
+    "demo_reset_or_load_on_working_data": false
+  },
+  "visual": {
+    "audit": "docs/design/event-transfer-alignment-20261027.md",
+    "directory": "docs/preview/event-transfer-20261027/alignment/",
+    "accepted_final_capture_suffixes": [
+      "1440x720.png",
+      "360x720.png",
+      "03-prepared-panel-732x460.png"
+    ],
+    "method": "CUA with CDP PNG capture limited to the painted 720px viewport; ordinary scrolling for controls. Reference toolbar is excluded from product comparisons. Saved files inspected.",
+    "fixture": "Separate SQLite and test MockTransport on loopback port8014. No SMTP worker. Initial/clarification/prepared/preview use reference ceramics data. Progress uses synthetic 6sent/1failed/1unknown. Overview reads the preserved working database.",
+    "legitimate_differences": [
+      "Dynamic dates, recipient details and operational error states",
+      "One safe recovery action before detailed mobile counters",
+      "Server-derived generic clarification copy and additional request recovery"
+    ],
+    "rejected": "Older 900/1000-height captures, 732x700 panel and full-page captures contain repeated or blank off-surface content. They are retained as rejected acquisition attempts, not final proof.",
+    "limits": "Scoped visual correspondence and browser regression checks, not exhaustive WCAG certification or full-app pixel identity. Temporary visual helper does not test production Origin middleware."
+  },
+  "reviews": [
+    "Independent slice reviews39 through43",
+    "Fresh whole44 acceptance review",
+    "Fresh source fidelity review with conflict-focus fix",
+    "Independent responsive amendment review:35 tests, no confirmedP0-P2"
+  ],
+  "excluded": ["video recording", "push", "publication", "external delivery"]
+}

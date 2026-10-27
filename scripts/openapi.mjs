@@ -11,7 +11,7 @@ const schema = execFileSync(
 );
 writeFileSync(join(root, '.cache/openapi.json'), schema);
 const check = process.argv.includes('--check');
-const target = join(root, 'src/features/booking/generated');
+const target = join(root, 'src/api/generated');
 const output = check ? mkdtempSync(join(root, '.cache/types-')) : target;
 try {
   execFileSync('pnpm', ['--pm-on-fail=ignore', '--dir', 'tools/openapi', 'generate'], {

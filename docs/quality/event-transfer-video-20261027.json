@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-27",
+  "file": "docs/demo/event-transfer.mp4",
+  "poster": "docs/demo/event-transfer-poster.jpg",
+  "duration_seconds": 87.933333,
+  "bytes": 1743539,
+  "sha256": "1fe6e21a450387726d8ea6118a1bdd5baf420245cc500739bdd32bf7e4ea1257",
+  "codec": "H.264",
+  "pixel_format": "yuv420p",
+  "width": 1440,
+  "height": 900,
+  "fps": 30,
+  "output_frames": 2638,
+  "audio_tracks": 0,
+  "faststart_moov_before_mdat": true,
+  "full_decode": "passed",
+  "source_frames": 115,
+  "source_hashes_unchanged": true,
+  "segments": [
+    {
+      "directory": ".cache/event-transfer-browser-20261027/video-frames",
+      "capture_clock": "filemtime reception chronology; original event metadata unavailable",
+      "captured_frames": 101,
+      "start_seconds": 0.0,
+      "end_seconds": 61.333333333333336,
+      "original_span_seconds": 233.42621111869812
+    },
+    {
+      "directory": ".cache/event-transfer-browser-20261027/video-tail-01-result",
+      "capture_clock": "durable capture metadata",
+      "captured_frames": 3,
+      "start_seconds": 61.333333333333336,
+      "end_seconds": 68.93333333333334,
+      "original_span_seconds": 3.558945894241333
+    },
+    {
+      "directory": ".cache/event-transfer-browser-20261027/video-tail-02-mailpit",
+      "capture_clock": "durable capture metadata",
+      "captured_frames": 6,
+      "start_seconds": 68.93333333333334,
+      "end_seconds": 76.4,
+      "original_span_seconds": 3.3678059577941895
+    },
+    {
+      "directory": ".cache/event-transfer-browser-20261027/video-tail-03-history",
+      "capture_clock": "durable capture metadata",
+      "captured_frames": 5,
+      "start_seconds": 76.4,
+      "end_seconds": 87.93333333333334,
+      "original_span_seconds": 7.42982292175293
+    }
+  ],
+  "keyframes_extracted_from_final_mp4": [
+    {
+      "label": "01-events",
+      "output_frame": 3,
+      "video_seconds": 0.1,
+      "image": "docs/preview/event-transfer-browser-20261027/video/01-events.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000000.jpg"
+    },
+    {
+      "label": "02-assistant-pending",
+      "output_frame": 376,
+      "video_seconds": 12.533333333333333,
+      "image": "docs/preview/event-transfer-browser-20261027/video/02-assistant-pending.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000025.jpg"
+    },
+    {
+      "label": "03-prepared-current-year",
+      "output_frame": 745,
+      "video_seconds": 24.833333333333332,
+      "image": "docs/preview/event-transfer-browser-20261027/video/03-prepared-current-year.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000034.jpg"
+    },
+    {
+      "label": "04-letter-editor",
+      "output_frame": 823,
+      "video_seconds": 27.433333333333334,
+      "image": "docs/preview/event-transfer-browser-20261027/video/04-letter-editor.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000050.jpg"
+    },
+    {
+      "label": "05-letter-saved",
+      "output_frame": 922,
+      "video_seconds": 30.733333333333334,
+      "image": "docs/preview/event-transfer-browser-20261027/video/05-letter-saved.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000067.jpg"
+    },
+    {
+      "label": "06-human-review",
+      "output_frame": 1004,
+      "video_seconds": 33.46666666666667,
+      "image": "docs/preview/event-transfer-browser-20261027/video/06-human-review.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000070.jpg"
+    },
+    {
+      "label": "07-preview-eight-recipients",
+      "output_frame": 1189,
+      "video_seconds": 39.63333333333333,
+      "image": "docs/preview/event-transfer-browser-20261027/video/07-preview-eight-recipients.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000075.jpg"
+    },
+    {
+      "label": "08-confirming",
+      "output_frame": 1399,
+      "video_seconds": 46.63333333333333,
+      "image": "docs/preview/event-transfer-browser-20261027/video/08-confirming.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000090.jpg"
+    },
+    {
+      "label": "09-eight-sent",
+      "output_frame": 1651,
+      "video_seconds": 55.03333333333333,
+      "image": "docs/preview/event-transfer-browser-20261027/video/09-eight-sent.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-frames/000098.jpg"
+    },
+    {
+      "label": "10-delivery-results",
+      "output_frame": 1951,
+      "video_seconds": 65.03333333333333,
+      "image": "docs/preview/event-transfer-browser-20261027/video/10-delivery-results.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-tail-01-result/000002.jpg"
+    },
+    {
+      "label": "11-mailpit-list",
+      "output_frame": 2071,
+      "video_seconds": 69.03333333333333,
+      "image": "docs/preview/event-transfer-browser-20261027/video/11-mailpit-list.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-tail-02-mailpit/000000.jpg"
+    },
+    {
+      "label": "12-mailpit-message",
+      "output_frame": 2175,
+      "video_seconds": 72.5,
+      "image": "docs/preview/event-transfer-browser-20261027/video/12-mailpit-message.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-tail-02-mailpit/000005.jpg"
+    },
+    {
+      "label": "13-event-history",
+      "output_frame": 2295,
+      "video_seconds": 76.5,
+      "image": "docs/preview/event-transfer-browser-20261027/video/13-event-history.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-tail-03-history/000000.jpg"
+    },
+    {
+      "label": "14-event-history-end",
+      "output_frame": 2521,
+      "video_seconds": 84.03333333333333,
+      "image": "docs/preview/event-transfer-browser-20261027/video/14-event-history-end.jpg",
+      "source": "/Users/pytkin/Documents/sqoch-test/.cache/event-transfer-browser-20261027/video-tail-03-history/000004.jpg"
+    }
+  ],
+  "contact_sheet": "docs/preview/event-transfer-browser-20261027/video/contact-sheet.jpg",
+  "keyframe_visual_review": "passed: all14 extractedMP4keyframes and contact sheet opened; Mailpit full1440x900 without repeated sidebar; plain text, date, recipients and history readable",
+  "timing_edited": true,
+  "maximum_idle_hold_seconds": 6,
+  "limits": "Product demo assembled from genuine browser capture segments in action order. All source frames retained, short native blank/loading transitions included. Core chronology uses received JPEG filemtime after event metadata was lost; tails use durable CDP event timestamps. Long idle pauses shortened and segment gaps omitted. No UI pixels or application states were generated or replaced. This is not a continuous wall-clock capture or performance measurement. SMTP destination is local Mailpit only.",
+  "capture_browser": "Chrome, separate task-owned tab controlled through CUA",
+  "campaign_id": "737e443d-036b-46a8-9064-4b698e84d64f",
+  "encoding_notes": "LossyH264CRF20 with standard JPEG full-range to video limited-range conversion; sourceJPEGs unchanged"
+}

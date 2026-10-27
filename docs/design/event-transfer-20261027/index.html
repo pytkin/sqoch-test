@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Подготовка переноса · макеты Sqoch</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="stylesheet" href="./prototype.css" />
+    <script type="module" src="./prototype.js"></script>
+  </head>
+  <body>
+    <div class="prototype-toolbar">
+      <div class="prototype-toolbar-content">
+        <p>
+          <strong>SQOCH-39</strong> · макеты состояний, данные условные. Дата примера: 27 октября
+          2026 года по Москве
+        </p>
+        <nav aria-label="Состояния макета" class="prototype-states">
+          <button type="button" data-show="initial">Начало</button>
+          <button type="button" data-show="clarification">Уточнение</button>
+          <button type="button" data-show="prepared">Готовый перенос</button>
+          <button type="button" data-show="progress">Отправка</button>
+        </nav>
+      </div>
+    </div>
+
+    <div class="page">
+      <header class="site-header">
+        <a class="brand" href="#events" data-show="events" aria-label="Sqoch, мероприятия"
+          >sqoch.</a
+        >
+        <nav class="organizer-nav" aria-label="Разделы приложения">
+          <a href="/#/booking">Билеты</a>
+          <a href="#events" data-show="events" aria-current="page">Мероприятия</a>
+        </nav>
+      </header>
+
+      <main class="layout organizer" id="prototype-main">
+        <section data-view="initial" aria-labelledby="initial-title">
+          <div class="checkout-heading">
+            <p class="prototype-eyebrow">Подготовка переноса</p>
+            <h1 id="initial-title" tabindex="-1">Перенос мероприятия</h1>
+            <p>
+              Опишите новую дату и время. Помощник подготовит перенос и уведомление, а вы проверите
+              результат перед подтверждением.
+            </p>
+          </div>
+          <div class="prototype-context">
+            <h2>Мастер-класс «Керамика»</h2>
+            <p>Сейчас: 20 ноября 2026 года, 19:00 по Москве</p>
+            <a href="#events" data-show="events">Выбрать другое мероприятие</a>
+          </div>
+          <form id="assistant-form" class="prototype-stack">
+            <div class="field">
+              <label for="initial-request">Как переносим мероприятие?</label>
+              <textarea
+                id="initial-request"
+                name="request"
+                rows="4"
+                placeholder="Переносим Керамику на 2 декабря, 19:00"
+                aria-describedby="initial-request-help"
+              ></textarea>
+              <p id="initial-request-help" class="field-hint">
+                Год можно не указывать: для будущей даты помощник использует текущий год по Москве,
+                если мероприятие проходит в этом же году. Если дата уже прошла или годы расходятся,
+                понадобится уточнение.
+              </p>
+              <p id="initial-request-error" class="field-error" hidden>
+                Опишите перенос или выберите ручное заполнение
+              </p>
+            </div>
+            <div class="prototype-action-row">
+              <button class="button primary" type="submit">Подготовить перенос</button>
+              <button
+                class="button secondary"
+                type="button"
+                id="manual-toggle"
+                aria-expanded="false"
+                aria-controls="manual-panel"
+              >
+                Заполнить вручную
+              </button>
+            </div>
+            <p class="prototype-muted">
+              Дата мероприятия пока не изменится. Письма отправятся только после отдельного
+              подтверждения.
+            </p>
+          </form>
+          <section id="manual-panel" class="prototype-manual" aria-labelledby="manual-title" hidden>
+            <h2 id="manual-title">Ручная подготовка</h2>
+            <p class="prototype-muted">
+              Заполните дату и письмо самостоятельно. Перед отправкой останется проверить состав
+              переноса.
+            </p>
+            <div class="organizer-date-fields">
+              <div class="field">
+                <label for="manual-date">Новая дата</label
+                ><input id="manual-date" type="date" value="2026-12-02" />
+              </div>
+              <div class="field">
+                <label for="manual-time">Новое время по Москве</label
+                ><input id="manual-time" type="time" value="19:00" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="manual-subject">Тема письма</label
+              ><input
+                id="manual-subject"
+                value="Новая дата мастер-класса «Керамика»: 2 декабря 2026 года"
+              />
+            </div>
+            <div class="field">
+              <label for="manual-body">Текст письма</label
+              ><textarea id="manual-body" rows="6">
+Здравствуйте!
+
+Мастер-класс «Керамика» переносится на 2 декабря 2026 года, 19:00 по московскому времени.
+
+Пожалуйста, учтите новую дату при планировании.</textarea>
+            </div>
+            <button class="button primary" type="button" data-show="prepared">
+              Посмотреть подготовленный перенос
+            </button>
+          </section>
+        </section>
+
+        <section data-view="clarification" aria-labelledby="clarification-title" hidden>
+          <div class="checkout-heading">
+            <p class="prototype-eyebrow">Подготовка переноса</p>
+            <h1 id="clarification-title" tabindex="-1">Уточните год</h1>
+            <p id="clarification-reason">
+              20 сентября 2026 года уже прошло: сегодня 27 октября 2026 года по Москве. День и время
+              сохранены. Укажите будущий год проведения.
+            </p>
+          </div>
+          <div class="prototype-context">
+            <h2>Мастер-класс «Керамика»</h2>
+            <p>Сейчас: 20 ноября 2026 года, 19:00 по Москве</p>
+          </div>
+          <div class="prototype-request">
+            <p class="prototype-muted">Ваш запрос</p>
+            <p id="clarification-request">Переносим Керамику на 20 сентября, 19:00</p>
+          </div>
+          <dl class="prototype-facts">
+            <div>
+              <dt>Новый день</dt>
+              <dd id="clarification-day">20 сентября</dd>
+            </div>
+            <div>
+              <dt>Время</dt>
+              <dd>19:00 по Москве</dd>
+            </div>
+          </dl>
+          <form id="clarification-form" class="prototype-stack">
+            <div class="field prototype-year">
+              <label for="clarification-year">В каком году состоится мероприятие?</label>
+              <input
+                id="clarification-year"
+                name="year"
+                inputmode="numeric"
+                pattern="[0-9]{4}"
+                maxlength="4"
+                placeholder="Например, 2027"
+                aria-describedby="clarification-year-help"
+              />
+              <p class="field-hint" id="clarification-year-help">
+                Укажите будущий год четырьмя цифрами. 20 сентября и 19:00 повторно вводить не нужно.
+              </p>
+              <p class="field-error" id="clarification-year-error" hidden>
+                Укажите год не раньше 2027 четырьмя цифрами
+              </p>
+            </div>
+            <div class="prototype-action-row">
+              <button class="button primary" type="submit">Продолжить подготовку</button>
+              <button class="button secondary" type="button" data-show="initial" data-open-manual>
+                Изменить данные вручную
+              </button>
+            </div>
+            <p class="prototype-muted">
+              До подтверждения дата мероприятия и отправка писем не изменятся.
+            </p>
+          </form>
+        </section>
+
+        <section data-view="prepared" aria-labelledby="prepared-title" hidden>
+          <div class="checkout-heading">
+            <p class="prototype-eyebrow">Подготовка завершена</p>
+            <h1 id="prepared-title" tabindex="-1">Проверьте перенос</h1>
+            <p>
+              Помощник заполнил мероприятие, дату и письмо из вашего запроса. Проверьте данные и при
+              необходимости измените их.
+            </p>
+          </div>
+          <section class="prototype-summary" aria-labelledby="prepared-event-title">
+            <div class="prototype-section-heading">
+              <h2 id="prepared-event-title">Мастер-класс «Керамика»</h2>
+              <button class="button text" type="button" data-show="initial" data-open-manual>
+                <span class="button-label"
+                  ><span class="icon icon-pencil" aria-hidden="true"></span>Изменить</span
+                >
+              </button>
+            </div>
+            <dl class="prototype-date-comparison">
+              <div>
+                <dt>Текущая дата</dt>
+                <dd>20 ноября 2026 года<span>19:00 по Москве</span></dd>
+              </div>
+              <div class="prototype-new-date">
+                <dt>Новая дата</dt>
+                <dd>2 декабря 2026 года<span>19:00 по Москве</span></dd>
+              </div>
+            </dl>
+            <p class="field-hint prototype-spaced prototype-year-source">
+              Год 2026 выбран по текущей дате в Москве. До подтверждения его можно изменить.
+            </p>
+          </section>
+          <section class="prototype-letter-section" aria-labelledby="prepared-letter-title">
+            <div class="prototype-section-heading">
+              <h2 id="prepared-letter-title">Уведомление покупателям</h2>
+              <button
+                class="button text"
+                type="button"
+                id="letter-edit-toggle"
+                aria-expanded="false"
+                aria-controls="letter-editor"
+              >
+                <span class="button-label"
+                  ><span class="icon icon-pencil" aria-hidden="true"></span>Изменить</span
+                >
+              </button>
+            </div>
+            <p class="prototype-subject">
+              Новая дата мастер-класса «Керамика»: 2 декабря 2026 года
+            </p>
+            <div class="organizer-letter"></div>
+            <div class="prototype-editor prototype-stack" id="letter-editor" hidden>
+              <div class="field">
+                <label for="prepared-subject">Тема</label
+                ><input
+                  id="prepared-subject"
+                  value="Новая дата мастер-класса «Керамика»: 2 декабря 2026 года"
+                />
+              </div>
+              <div class="field">
+                <label for="prepared-body">Текст письма</label
+                ><textarea id="prepared-body" rows="6">
+Здравствуйте!
+
+Мастер-класс «Керамика» переносится на 2 декабря 2026 года, 19:00 по московскому времени.
+
+Пожалуйста, учтите новую дату при планировании.</textarea>
+              </div>
+              <div class="field">
+                <label for="prepared-rewrite">Что изменить с помощником?</label
+                ><textarea
+                  id="prepared-rewrite"
+                  rows="2"
+                  placeholder="Например, сделай обращение менее официальным"
+                ></textarea>
+                <p class="field-hint">Мероприятие и новая дата останутся прежними.</p>
+              </div>
+              <button class="button secondary" type="button" id="letter-edit-done">
+                Вернуться к проверке
+              </button>
+            </div>
+          </section>
+          <form id="review-form" class="organizer-form-actions">
+            <label class="organizer-checkbox" for="prepared-reviewed"
+              ><input type="checkbox" id="prepared-reviewed" /><span
+                >Текст соответствует мероприятию и новой дате</span
+              ></label
+            >
+            <p class="field-error" id="prepared-reviewed-error" hidden>
+              Проверьте текст и отметьте его соответствие мероприятию и новой дате
+            </p>
+            <div class="organizer-actions">
+              <button class="button primary" type="submit">Проверить перенос</button>
+            </div>
+            <p class="organizer-confirm-help prototype-spaced">
+              На следующем экране будет полный список получателей и отдельное подтверждение переноса
+              и отправки.
+            </p>
+          </form>
+        </section>
+
+        <section data-view="preview" aria-labelledby="preview-title" hidden>
+          <div class="checkout-heading">
+            <p class="prototype-eyebrow">Подтверждение</p>
+            <h1 id="preview-title" tabindex="-1">Подтвердите перенос</h1>
+            <p>
+              После подтверждения дата мероприятия изменится и начнётся уведомление покупателей.
+            </p>
+          </div>
+          <section class="prototype-summary" aria-labelledby="preview-event-title">
+            <h2 id="preview-event-title">Мастер-класс «Керамика»</h2>
+            <dl class="prototype-date-comparison">
+              <div>
+                <dt>Текущая дата</dt>
+                <dd>20 ноября 2026 года<span>19:00 по Москве</span></dd>
+              </div>
+              <div class="prototype-new-date">
+                <dt>Новая дата</dt>
+                <dd>2 декабря 2026 года<span>19:00 по Москве</span></dd>
+              </div>
+            </dl>
+            <p class="field-hint prototype-spaced prototype-year-source">
+              Год 2026 выбран по текущей дате в Москве. До подтверждения его можно изменить.
+            </p>
+          </section>
+          <section class="prototype-letter-section" aria-labelledby="preview-letter-title">
+            <h2 id="preview-letter-title">Уведомление покупателям</h2>
+            <p class="prototype-subject">
+              Новая дата мастер-класса «Керамика»: 2 декабря 2026 года
+            </p>
+            <div class="organizer-letter"></div>
+          </section>
+          <section class="prototype-recipients" aria-labelledby="preview-recipients-title">
+            <h2 id="preview-recipients-title">Получатели: 8 адресов</h2>
+            <p class="prototype-muted">
+              По одному уведомлению на email с действующей покупкой этого мероприятия.
+            </p>
+            <ul class="organizer-recipients">
+              <li>a@example.com</li>
+              <li>b@example.com</li>
+              <li>c@example.com</li>
+              <li>d@example.com</li>
+              <li>e@example.com</li>
+              <li>f@example.com</li>
+              <li>g@example.com</li>
+              <li>h@example.com</li>
+            </ul>
+          </section>
+          <div class="organizer-confirm">
+            <p>Вы подтверждаете новую дату и отправку именно этого текста указанным получателям.</p>
+            <p>
+              После подтверждения новая дата и задания на отправку фиксируются. Отменить перенос или
+              изменить письмо в этом демо нельзя. Для другой даты понадобится новый перенос.
+            </p>
+            <div class="prototype-action-row prototype-spaced">
+              <button type="button" class="button primary" data-show="progress">
+                Подтвердить перенос и уведомить покупателей</button
+              ><button type="button" class="button secondary" data-show="prepared">
+                Вернуться к редактированию
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section data-view="progress" aria-labelledby="progress-title" hidden>
+          <div class="checkout-heading">
+            <p class="prototype-eyebrow">Результат переноса</p>
+            <h1 id="progress-title" tabindex="-1">Уведомление покупателей</h1>
+            <p id="progress-introduction">
+              Дата мастер-класса «Керамика» изменена на 2 декабря 2026 года, 19:00 по Москве.
+            </p>
+            <p class="field-hint prototype-year-origin">
+              При подготовке год 2026 был выбран по текущей дате в Москве.
+            </p>
+          </div>
+          <div class="prototype-context">
+            <h2>Отправлено 6 из 8</h2>
+            <p>Одно письмо не отправлено. Для ещё одного требуется сверка результата.</p>
+            <dl class="prototype-counters">
+              <div>
+                <dt>Отправлено</dt>
+                <dd>6</dd>
+              </div>
+              <div>
+                <dt>Не отправлено</dt>
+                <dd>1</dd>
+              </div>
+              <div>
+                <dt>Требует проверки</dt>
+                <dd>1</dd>
+              </div>
+            </dl>
+          </div>
+          <section class="prototype-stack" aria-labelledby="recovery-title">
+            <h2 id="recovery-title">Что требует внимания</h2>
+            <div class="notice warning">
+              <strong>Для g@example.com результат неизвестен</strong>
+              <p>
+                Письмо могло быть принято. Сначала проверьте результат, чтобы не отправить его
+                повторно.
+              </p>
+              <button class="button secondary" type="button" id="mock-reconcile">
+                Проверить результат отправки
+              </button>
+              <p id="mock-reconcile-result" role="status" hidden>
+                Это макет действия. В приложении будет выполнена сверка Mailpit без повторной
+                отправки письма.
+              </p>
+            </div>
+          </section>
+          <section aria-labelledby="delivery-results-title">
+            <h2 id="delivery-results-title">Результат каждого получателя</h2>
+            <ul class="organizer-deliveries">
+              <li>
+                <span>a@example.com</span><span class="prototype-success">Отправлено</span>
+                <p>Одна попытка</p>
+              </li>
+              <li>
+                <span>b@example.com</span><span class="prototype-success">Отправлено</span>
+                <p>Одна попытка</p>
+              </li>
+              <li>
+                <span>c@example.com</span><span class="prototype-success">Отправлено</span>
+                <p>Одна попытка</p>
+              </li>
+              <li>
+                <span>d@example.com</span><span class="prototype-success">Отправлено</span>
+                <p>Одна попытка</p>
+              </li>
+              <li>
+                <span>e@example.com</span><span class="prototype-success">Отправлено</span>
+                <p>Одна попытка</p>
+              </li>
+              <li>
+                <span>f@example.com</span><span class="prototype-success">Отправлено</span>
+                <p>Одна попытка</p>
+              </li>
+              <li>
+                <span>g@example.com</span><span class="organizer-warning">Требует проверки</span>
+                <p>Одна попытка. Результат приёма письма не подтверждён.</p>
+              </li>
+              <li>
+                <span>h@example.com</span><span class="prototype-error">Не отправлено</span>
+                <p>Исчерпан лимит: 5 попыток. Успешные письма повторно не отправляются.</p>
+              </li>
+            </ul>
+          </section>
+          <p class="organizer-back">
+            <a href="#events" data-show="events">К мероприятию и истории переносов</a>
+          </p>
+        </section>
+
+        <section data-view="events" aria-labelledby="events-title" hidden>
+          <div class="checkout-heading">
+            <p class="prototype-eyebrow">Кабинет организатора</p>
+            <h1 id="events-title" tabindex="-1">Мероприятия</h1>
+            <p>
+              Расписание и уведомления покупателям. Откройте мероприятие, чтобы подготовить перенос
+              или проверить результат отправки.
+            </p>
+          </div>
+          <button type="button" class="button primary" data-show="initial">
+            Подготовить перенос
+          </button>
+          <ul class="organizer-campaigns">
+            <li>
+              <h2>Мастер-класс «Керамика»</h2>
+              <span>20 ноября 2026 года, 19:00 по Москве</span>
+              <div class="organizer-actions">
+                <button type="button" class="button secondary" data-show="initial">
+                  Перенести мероприятие
+                </button>
+              </div>
+            </li>
+            <li>
+              <h2>Мастер-класс «Живопись»</h2>
+              <span>12 ноября 2026 года, 18:00 по Москве</span>
+              <p class="prototype-spaced prototype-muted">
+                В этом макете показан сценарий «Керамики».
+              </p>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <span>Sqoch · кабинет организатора</span
+        ><span>Макет интерфейса, письма не отправляются</span>
+      </footer>
+    </div>
+    <p class="sr-only" id="prototype-status" role="status" aria-live="polite"></p>
+  </body>
+</html>

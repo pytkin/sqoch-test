@@ -10,6 +10,9 @@ test('помощь возраста: hover, Escape, touch, reflow и непод�
   const age = page.getByLabel('Возраст, лет', { exact: true });
   const tooltip = page.getByRole('tooltip');
   for (const width of [320, 360, 719, 720, 768, 1440]) {
+    // Keep resizing from moving the help trigger under a resting mouse pointer.
+    await page.mouse.move(0, 0);
+    await age.focus();
     await page.setViewportSize({ width, height: 800 });
     await age.scrollIntoViewIfNeeded();
     const before = await age.evaluate((input) => input.getBoundingClientRect().top + scrollY);

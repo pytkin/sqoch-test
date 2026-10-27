@@ -1,0 +1,356 @@
+{
+  "date": "2026-10-27",
+  "status": "passed",
+  "scope": "User-authorized reset, fresh browser acceptance of event transfer, fixes, and final product demo video",
+  "browser_report": "docs/reports/event-transfer-browser-20261027.md",
+  "reset": {
+    "database": ".cache/ux31.sqlite3",
+    "fixture": "fixtures/demo.json",
+    "command": "SQOCH_DATABASE_PATH=.cache/ux31.sqlite3 pnpm demo:reset --yes",
+    "consistent_backups": [
+      ".cache/event-transfer-browser-20261027/before-reset.sqlite3",
+      ".cache/event-transfer-browser-20261027/before-video.sqlite3"
+    ],
+    "initial_mailpit_raw_backup": ".cache/event-transfer-browser-20261027/mailpit-before/",
+    "audit_mailpit_raw_backup": ".cache/event-transfer-browser-20261027/mailpit-before-video/",
+    "initial_records_removed": {
+      "campaigns": 10,
+      "deliveries": 8,
+      "mailpit_messages": 22
+    },
+    "before_video_audit_results_backed_up_then_removed": {
+      "campaigns": 6,
+      "deliveries": 8,
+      "mailpit_messages": 8
+    },
+    "clean_start": {
+      "events": 2,
+      "purchases": 20,
+      "campaigns": 0,
+      "deliveries": 0,
+      "mailpit_messages": 0
+    },
+    "mailpit_volume_removed": false,
+    "authorization": "Explicit user request to reset project test data"
+  },
+  "automated": {
+    "command": "pnpm verify",
+    "exit_code": 0,
+    "frontend": 346,
+    "backend": 432,
+    "tooling": 45,
+    "browser": 74,
+    "total": 897,
+    "includes": [
+      "typecheck",
+      "lint",
+      "format",
+      "contracts:check",
+      "build",
+      "desktop and mobile E2E",
+      "docs:check"
+    ],
+    "log": ".cache/event-transfer-browser-20261027/verify.log",
+    "log_sha256": "295c906e5bf2c546b036b501b24c983ff2deeffa5952e1412f0a87b9283a5cb2"
+  },
+  "mutations": {
+    "report": "docs/quality/event-transfer-browser-mutations-20261027.json",
+    "counts": {
+      "killed": 42,
+      "survived": 0,
+      "invalid": 0,
+      "timeout": 0
+    },
+    "all_current_target_sha_match": true,
+    "raw_report_copy_identical": true,
+    "limit": "42 curated semantic mutations, including historical33; not exhaustive AST coverage"
+  },
+  "fixes": [
+    {
+      "id": "R1",
+      "problem": "Rewrite preferred stale letter time over the updated structured start",
+      "solution": "Explicit canonical old/new Moscow transfer facts and factual precedence in provider request",
+      "red_cases": 3,
+      "independent_focused_green": 9,
+      "live_repeat": "Correct new20:00 observed; text review stays manual. No semantic scanner or output guarantee introduced."
+    },
+    {
+      "id": "R2",
+      "problem": "Intermediate assistant save replaced targeted questions and cleared local answers while network was pending; folded rewrite hid busy feedback",
+      "solution": "Preserve exact questions and local answers/dirty until durable intake or final result; one visible AI busy status",
+      "backend_red_cases": 7,
+      "frontend_red_cases": 5,
+      "independent_backend_green": 50,
+      "live_repeat": "Only time question remained and18:45 stayed visible while disabled"
+    },
+    {
+      "id": "R3",
+      "problem": "A competing final readback could be mistaken for the locally submitted clarification",
+      "solution": "Correlate original prompt, intake revision and exact answers before applying; retain local answer/dirty on conflict",
+      "negative_red_cases": 2,
+      "independent_focused_green": 10
+    },
+    {
+      "id": "R4",
+      "problem": "README described the superseded campaign flow, explicit-year policy and old test counts",
+      "solution": "Updated existing documentation to the event flow and current-year policy"
+    }
+  ],
+  "fresh_browser": {
+    "primary": "CUA in-app browser, real local API/SQLite/DeepSeek/SMTP Mailpit",
+    "viewports": ["1440x720", "360x720", "320x720"],
+    "covered": [
+      "booking navigation to events",
+      "no empty writes on visit/toggle/invalid input",
+      "current Moscow year without explicit year",
+      "year-only clarification and invalid year",
+      "reload and dirty-navigation cancellation",
+      "event lookup without context",
+      "time-only clarification",
+      "explicit event-conflict acceptance",
+      "manual entry and offline-save recovery",
+      "manual time and letter edits",
+      "live rewrite",
+      "human review gate",
+      "server preview and edit return",
+      "separate confirm",
+      "8local SMTP accepts and exact message readback",
+      "reload without duplicates",
+      "event history with immutable old/new dates"
+    ],
+    "screenshots": "docs/preview/event-transfer-browser-20261027/",
+    "rejected": ["22-mailpit-eight.png", "23-mailpit-message.png"],
+    "rejection_reason": "In-app capture beyond the native painted width repeated the sidebar; final Chrome video keyframes provide Mailpit visual proof",
+    "limits": "Fresh manual browser coverage plus automated checks; not exhaustive WCAG certification. R3 competing-client failure is covered by independent deferred-request regression tests, not a live provider race."
+  },
+  "audit_delivery": {
+    "label": "audit",
+    "campaign_id": "e2e1298e-b3df-4586-ad34-8b371238a299",
+    "event_id": "ceramics",
+    "new_start": "2026-11-20T20:00:00+03:00",
+    "snapshot": {
+      "id": "ceramics",
+      "title": "Керамика",
+      "old_start": "2026-11-10T19:00:00+03:00",
+      "new_start": "2026-11-20T20:00:00+03:00",
+      "timezone": "Europe/Moscow",
+      "event_revision_before": 0
+    },
+    "subject": "Перенос занятия «Керамика»: 20 ноября 2026 года, 20:00",
+    "body": "Здравствуйте!\n\nЗанятие «Керамика» переносится с 10 ноября 2026 года, 19:00 на 20 ноября 2026 года, 20:00 по Москве.\n\nПожалуйста, учтите новую дату и время при планировании. Спасибо за понимание.",
+    "counters": {
+      "total": 8,
+      "pending": 0,
+      "sending": 0,
+      "retry_wait": 0,
+      "sent": 8,
+      "failed": 0,
+      "unknown": 0
+    },
+    "events": [
+      {
+        "id": "ceramics",
+        "title": "Керамика",
+        "starts_at": "2026-11-20T20:00:00+03:00",
+        "timezone": "Europe/Moscow",
+        "revision": 1
+      },
+      {
+        "id": "painting",
+        "title": "Живопись",
+        "starts_at": "2026-11-12T18:00:00+03:00",
+        "timezone": "Europe/Moscow",
+        "revision": 0
+      }
+    ],
+    "all_to_subject_body_match": true,
+    "each_single_message_id_once": true,
+    "all_attempts_one": true,
+    "messages": [
+      {
+        "to": "a@example.com",
+        "message_id": "<delivery-4de25466-69cf-42b9-8ea9-995066367d97@sqoch.local>",
+        "mailpit_id": "1ckxiyRipS4SwUYncWnj6t",
+        "raw_sha256": "eeec00fcec417988d146a6067e8b279233c35647d2e44384ee02f84652bd1305"
+      },
+      {
+        "to": "b@example.com",
+        "message_id": "<delivery-d84cd2bb-8627-4eb6-8b77-680b774b5fa3@sqoch.local>",
+        "mailpit_id": "4TK9Xqf3JQm5j1GdhYCwYU",
+        "raw_sha256": "b8c88a8c78dcf86f0ec089f75a1caee29c69c60455a312484691c8f84d84b4ab"
+      },
+      {
+        "to": "c@example.com",
+        "message_id": "<delivery-2ffb50e3-f473-41fe-84d9-b0238f1cac8c@sqoch.local>",
+        "mailpit_id": "7b25LDDTDPDUkLkvvK5TEF",
+        "raw_sha256": "f7e55469af62bb79d92a49cf979964f9b431f37bcf7451d86eed86ea076a827a"
+      },
+      {
+        "to": "d@example.com",
+        "message_id": "<delivery-58aed6d3-34d3-4de2-a0ec-4370305c393e@sqoch.local>",
+        "mailpit_id": "44K64d29kGEetCfB412JgV",
+        "raw_sha256": "ab1c56c0052d6e3375a2dcb35b228afb3ce6f9ea6b84c5d080ab54db82150809"
+      },
+      {
+        "to": "e@example.com",
+        "message_id": "<delivery-e4fde8d9-37bd-45cc-b27e-dcc4eab604bc@sqoch.local>",
+        "mailpit_id": "5JASBiLt31oLP6xkvg28zt",
+        "raw_sha256": "06046dd1924a78807953ac6c13d01dd51605f80169d5f4d1e21286aa64c5b8c4"
+      },
+      {
+        "to": "f@example.com",
+        "message_id": "<delivery-2d349a74-6c8a-4885-92aa-7c53970be1fc@sqoch.local>",
+        "mailpit_id": "1bxxm2zMX6O82kIJOSHEPU",
+        "raw_sha256": "8e7d051441c5505328fb9c0251f2df73fff5402c40f3f6cfb92d73354fc9ec7f"
+      },
+      {
+        "to": "g@example.com",
+        "message_id": "<delivery-d8a3f2b5-11a1-4dc5-905a-b819483407e2@sqoch.local>",
+        "mailpit_id": "6vf1S17XPnqVPcIOgzcAwF",
+        "raw_sha256": "551e3ba6c8b3780f4e93c9aea7f0b3fcf4e720c20015994eca1a95f9bc7b8ff8"
+      },
+      {
+        "to": "h@example.com",
+        "message_id": "<delivery-25d4a86d-2299-4e57-b7db-3728b7bd9a4a@sqoch.local>",
+        "mailpit_id": "6CQVUUVkHWIqCdqoLEcceO",
+        "raw_sha256": "504d92eb825d4fe740735a3c7b81597bb1379259ff28cffa4abcfe1ca16b5b4f"
+      }
+    ],
+    "body_comparison": "RFC line endings and terminal newline normalized; all substantive text exact",
+    "destination": "local Mailpit only; no external recipients"
+  },
+  "video_before_confirm": {
+    "events": [
+      ["ceramics", "2026-11-10T16:00:00Z", 0],
+      ["painting", "2026-11-12T15:00:00Z", 0]
+    ],
+    "campaigns": 1,
+    "deliveries": 0,
+    "mailpit_count": 0
+  },
+  "video_delivery": {
+    "label": "video",
+    "campaign_id": "737e443d-036b-46a8-9064-4b698e84d64f",
+    "event_id": "ceramics",
+    "new_start": "2026-11-20T19:00:00+03:00",
+    "snapshot": {
+      "id": "ceramics",
+      "title": "Керамика",
+      "old_start": "2026-11-10T19:00:00+03:00",
+      "new_start": "2026-11-20T19:00:00+03:00",
+      "timezone": "Europe/Moscow",
+      "event_revision_before": 0
+    },
+    "subject": "Керамика: новая дата 20 ноября 2026 года, 19:00",
+    "body": "Здравствуйте!\n\nЗанятие «Керамика» переносится с 10 ноября 2026 года, 19:00 на 20 ноября 2026 года, 19:00 по Москве.\n\nПожалуйста, учтите новую дату при планировании. Спасибо за понимание.",
+    "counters": {
+      "total": 8,
+      "pending": 0,
+      "sending": 0,
+      "retry_wait": 0,
+      "sent": 8,
+      "failed": 0,
+      "unknown": 0
+    },
+    "events": [
+      {
+        "id": "ceramics",
+        "title": "Керамика",
+        "starts_at": "2026-11-20T19:00:00+03:00",
+        "timezone": "Europe/Moscow",
+        "revision": 1
+      },
+      {
+        "id": "painting",
+        "title": "Живопись",
+        "starts_at": "2026-11-12T18:00:00+03:00",
+        "timezone": "Europe/Moscow",
+        "revision": 0
+      }
+    ],
+    "all_to_subject_body_match": true,
+    "each_single_message_id_once": true,
+    "all_attempts_one": true,
+    "messages": [
+      {
+        "to": "a@example.com",
+        "message_id": "<delivery-05e60983-b80d-4903-b1f1-225c7ca3a206@sqoch.local>",
+        "mailpit_id": "3oLO1G02ZYSqlndw7feNpb",
+        "raw_sha256": "5ee97247d2bae576eeda0639e190f0ac305f6bdf22fba6c99a2589ae505ae7ab"
+      },
+      {
+        "to": "b@example.com",
+        "message_id": "<delivery-da679e77-2f95-4131-82b2-e4b28e584ab9@sqoch.local>",
+        "mailpit_id": "6FiAZMMVUxRtITxQtrMUdV",
+        "raw_sha256": "78d982d3a0e184132fa2e47156ea5425bac0e091085d598c0f5bb0be7246ce59"
+      },
+      {
+        "to": "c@example.com",
+        "message_id": "<delivery-f611ac51-3953-476a-b4d1-0e6618fe868b@sqoch.local>",
+        "mailpit_id": "6hYDByqF8Bfwh1dbXkPVi7",
+        "raw_sha256": "1a439b7423eadaf620c80807be541c81a4df2c7bc1a2513fe9f5f0327c0006b2"
+      },
+      {
+        "to": "d@example.com",
+        "message_id": "<delivery-4ae0a108-0783-483a-ae05-6a6492ebefa2@sqoch.local>",
+        "mailpit_id": "6udhppdD1TkSZ2yYzTaKEp",
+        "raw_sha256": "a89a7091b4dacc88f13c39e4150b8f82d90671e2844fd18bb6a0d0e1b059bfc2"
+      },
+      {
+        "to": "e@example.com",
+        "message_id": "<delivery-9ee3bcc5-e2d5-4bde-b7cb-e2afb5aa8176@sqoch.local>",
+        "mailpit_id": "7LP2qVL9f3CEd2qawAUXkX",
+        "raw_sha256": "2e38d2f9f002a7b59ecfe05d8681dfe14f92f40570f957f452798f33c085d0a7"
+      },
+      {
+        "to": "f@example.com",
+        "message_id": "<delivery-77955fea-2d32-4ee9-a7f5-c48cafe23dd6@sqoch.local>",
+        "mailpit_id": "2nvcw9CIt0d9kTDvGAzFwU",
+        "raw_sha256": "d368dc8eb993f32ceb8522f6765c0954b531242430e25554956987b78e73ea63"
+      },
+      {
+        "to": "g@example.com",
+        "message_id": "<delivery-0498fcb7-d578-4c16-9ffb-6032439305dc@sqoch.local>",
+        "mailpit_id": "5LiA4ET6RtPPkqpQo12615",
+        "raw_sha256": "250831d06b555f5d54a2d41ec9dfda4701854a9e506088d142a413985f289f29"
+      },
+      {
+        "to": "h@example.com",
+        "message_id": "<delivery-ba5ceec4-1019-4f92-9ece-879d9e3038eb@sqoch.local>",
+        "mailpit_id": "4t38gTVascwQVofWwgfnuJ",
+        "raw_sha256": "e90452b15dd636fe14d126cce0fd2832e482899f1b429b9010a2d7162522280f"
+      }
+    ],
+    "body_comparison": "RFC line endings and terminal newline normalized; all substantive text exact",
+    "destination": "local Mailpit only; no external recipients"
+  },
+  "video": {
+    "report": "docs/quality/event-transfer-video-20261027.json",
+    "file": "docs/demo/event-transfer.mp4",
+    "poster": "docs/demo/event-transfer-poster.jpg",
+    "duration_seconds": 87.933333,
+    "sha256": "1fe6e21a450387726d8ea6118a1bdd5baf420245cc500739bdd32bf7e4ea1257",
+    "timing_edited": true,
+    "limit": "Genuine browser capture segments in action order; idle pauses shortened. No generated UI. Not continuous wall-clock or performance proof."
+  },
+  "final_runtime": {
+    "database": ".cache/ux31.sqlite3",
+    "integrity": "ok",
+    "counts": {
+      "events": 2,
+      "purchases": 20,
+      "campaigns": 1,
+      "deliveries": 8
+    },
+    "draft_campaigns": 0,
+    "sent_deliveries_one_attempt": 8,
+    "mailpit_messages": 8,
+    "api": "http://127.0.0.1:8000",
+    "smtp": "127.0.0.1:1025",
+    "mailpit": "http://127.0.0.1:8025",
+    "api_and_worker_restarted_after_regression_tests": true,
+    "ceramics_start": "2026-11-20T19:00:00+03:00",
+    "painting_start_unchanged": "2026-11-12T18:00:00+03:00"
+  },
+  "excluded": ["external SMTP recipients", "push", "publication"]
+}

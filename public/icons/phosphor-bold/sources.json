@@ -1,0 +1,27 @@
+[
+  {
+    "name": "plus",
+    "url": "https://raw.githubusercontent.com/phosphor-icons/core/main/assets/bold/plus-bold.svg",
+    "sha256": "3d20a4b2e00657baeb922bed94f13fbfa288968b738991d047dd252cb64005d8"
+  },
+  {
+    "name": "info",
+    "url": "https://raw.githubusercontent.com/phosphor-icons/core/main/assets/bold/info-bold.svg",
+    "sha256": "b8241eb546c8764cda301e10c63fc2a9c52c36d75a568832ef7244cb10d15d9b"
+  },
+  {
+    "name": "pencil-simple",
+    "url": "https://raw.githubusercontent.com/phosphor-icons/core/main/assets/bold/pencil-simple-bold.svg",
+    "sha256": "163a4e787655de6b5b50bfb0dc0e6818c015ba32106eb14fe12c3daf033a892b"
+  },
+  {
+    "name": "trash",
+    "url": "https://raw.githubusercontent.com/phosphor-icons/core/main/assets/bold/trash-bold.svg",
+    "sha256": "14f3fa7bf3588b279a104e6a19b16809fa54f1c2185e2811d3c47cab559f79d5"
+  },
+  {
+    "name": "check",
+    "url": "https://raw.githubusercontent.com/phosphor-icons/core/main/assets/bold/check-bold.svg",
+    "sha256": "d0ca4e324ff5bb3a1a3bacb9f7580359b8e03cc6862a614d5ed14458db64bedf"
+  }
+]

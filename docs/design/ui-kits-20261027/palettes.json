@@ -1,0 +1,56 @@
+[
+  {
+    "name": "mineral",
+    "canvas": "#F2F5F8",
+    "surface": "#FFFFFF",
+    "ink": "#203247",
+    "muted": "#536478",
+    "primary": "#365D80",
+    "control": "#7C8998",
+    "error": "#A62E41",
+    "errorBg": "#FFF2F4",
+    "contrast": {
+      "textOnSurface": 13.054485011755776,
+      "mutedOnCanvas": 5.54376949927709,
+      "whiteOnPrimary": 6.920878632435019,
+      "controlOnSurface": 3.566163629349451,
+      "errorOnErrorBg": 6.2357178546261185
+    }
+  },
+  {
+    "name": "paper",
+    "canvas": "#F4F1EC",
+    "surface": "#FFFEFC",
+    "ink": "#2B3037",
+    "muted": "#645F58",
+    "primary": "#4C5C50",
+    "control": "#827C72",
+    "error": "#A53536",
+    "errorBg": "#FFF2EF",
+    "contrast": {
+      "textOnSurface": 13.180757418337945,
+      "mutedOnCanvas": 5.615013968816564,
+      "whiteOnPrimary": 7.10901485984834,
+      "controlOnSurface": 4.105129038448967,
+      "errorOnErrorBg": 6.07114731389553
+    }
+  },
+  {
+    "name": "deep-teal",
+    "canvas": "#EEF3F1",
+    "surface": "#FFFFFF",
+    "ink": "#1D3435",
+    "muted": "#4C6564",
+    "primary": "#256365",
+    "control": "#748B88",
+    "error": "#A82B40",
+    "errorBg": "#FFF1F3",
+    "contrast": {
+      "textOnSurface": 13.167406919745083,
+      "mutedOnCanvas": 5.585148044451666,
+      "whiteOnPrimary": 6.8822761730278685,
+      "controlOnSurface": 3.6262146281164367,
+      "errorOnErrorBg": 6.201336147821396
+    }
+  }
+]

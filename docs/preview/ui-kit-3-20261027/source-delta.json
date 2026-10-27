@@ -1,0 +1,44 @@
+[
+  {
+    "path": "src/styles.css",
+    "changed": true,
+    "baselineSha256": "c3f3b251497d40014c3db2c493d6e11ae86e730d7e9947e435be5e2669b2d7ea",
+    "currentSha256": "3c434826af81efe44db8ae4a25a80d76947f7fef432f77e0785d28639b928354"
+  },
+  {
+    "path": "src/fonts.css",
+    "changed": true,
+    "baselineSha256": "c01da6a0e64e9fb97c7cfdcc63790ea85bb8c8b9a22bfb8ea64c65fbd2d8b09a",
+    "currentSha256": "640c697cbc1e1593e9fd4fcb739f57e09a67a362aadce9d5b2ff1c6dd5da1036"
+  },
+  {
+    "path": "src/features/booking/Booking.tsx",
+    "changed": true,
+    "baselineSha256": "6caeb7ccdb9ffaa648de8c02fba97d70232bca2182a93e10d5f286dc410acd8f",
+    "currentSha256": "7bee1d4123c88615c270bfcefcc411466cf14924f85d55d6a5c352264ff9dc23"
+  },
+  {
+    "path": "src/features/booking/BookingForm.tsx",
+    "changed": true,
+    "baselineSha256": "33538b09a61310ce5988f03f4f19f4976859d2b10176252e2ddd1cad2d56a459",
+    "currentSha256": "5c6c29b33d62a66a066e246259b16e68a2162e67f51ae7474a3ce7cca9ecaa7b"
+  },
+  {
+    "path": "src/App.test.tsx",
+    "changed": true,
+    "baselineSha256": "1100ef07fa0cd9b472e5735f250a9cc9761b57b0c3411fb34f786d08da468e9b",
+    "currentSha256": "02c3d04d9b1661c2003be71618e21732dcd0f46b400b651ac2b3a3e4fb9579f6"
+  },
+  {
+    "path": "e2e/design-system.spec.ts",
+    "changed": true,
+    "baselineSha256": "4444f6bc75c2a2b6f9162040a385b4068ff5d9c97d2f1545825c4704a338745c",
+    "currentSha256": "33d18dd92e685d6525b7925c78ca386a4ac05b1f1837556f15022bd71f7ef50b"
+  },
+  {
+    "path": "index.html",
+    "changed": true,
+    "baselineSha256": "94b157d8d76598a1ea87ce8785da401e31cef497437c8d0674acbe01e97b6362",
+    "currentSha256": "0039849954ad5a0ad64b3aa3d466e11773f98be1d5e8df7ca5c0209b2e163866"
+  }
+]

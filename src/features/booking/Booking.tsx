@@ -3,6 +3,7 @@ import { useFieldArray, useForm, useWatch } from 'react-hook-form';
 import { ApiError, confirmOrder, errorMessage, getEvent, getQuote } from './api';
 import type { ConfirmedOrder, Draft, Event, Quote, Scenario } from './api';
 import { Button, HelpTip, Icon, Notice, StepIndicator } from './components';
+import { AppHeader } from '../../components/AppHeader';
 import { BookingForm } from './BookingForm';
 import { DemoControl } from './DemoControl';
 import type { DraftField, OrderEditField, RemovedParticipant } from './draft';
@@ -185,7 +186,7 @@ export default function Booking() {
         type: 'validate',
         message:
           draft.participants.length >= event.max_participants
-            ? 'Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе. Лимит участников уже достигнут — измените состав заказа, чтобы в нём был сопровождающий.'
+            ? 'Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе. Лимит участников уже достигнут. Измените состав заказа, чтобы в нём был сопровождающий.'
             : 'Для ребёнка младше 14 лет нужен сопровождающий от 18 лет в том же заказе. Нажмите «Добавить участника» и укажите данные сопровождающего.',
       });
       setFocusIntent({ region: 'participants' });
@@ -250,12 +251,10 @@ export default function Booking() {
 
   return (
     <div className="page">
-      <header className="site-header">
-        <span className="brand">sqoch.</span>
-        <StepIndicator current={stageIndex} />
-      </header>
+      <AppHeader section="booking" />
       <main className="layout">
         <section className="checkout" aria-label="Оформление заказа">
+          <StepIndicator current={stageIndex} />
           {!event && (
             <div className="status-panel">
               {eventError ? (
@@ -299,7 +298,7 @@ export default function Booking() {
                 )}
                 {step === 'success' && (
                   <p>
-                    Данные и номер заказа доступны только на этой странице — после её обновления они
+                    Данные и номер заказа доступны только на этой странице. После её обновления они
                     исчезнут
                   </p>
                 )}
@@ -307,11 +306,17 @@ export default function Booking() {
               </div>
               {step === 'data' && (
                 <div className="event-context section-row">
-                  <span className="section-caption">Билеты</span>
+                  <span className="sr-only">Билеты</span>
                   <div className="rules-content">
                     <span className="event-tariffs">
-                      От {event.child_age_limit} лет — {money(event.full_ticket_price)} · Младше{' '}
-                      {event.child_age_limit} лет — {money(event.child_ticket_price)}
+                      <span>
+                        От {event.child_age_limit} лет:{' '}
+                        <strong>{money(event.full_ticket_price)}</strong>
+                      </span>
+                      <span>
+                        Младше {event.child_age_limit} лет:{' '}
+                        <strong>{money(event.child_ticket_price)}</strong>
+                      </span>
                     </span>
                     <HelpTip label="Правила покупки билетов">
                       <p>
@@ -326,11 +331,6 @@ export default function Booking() {
                     </HelpTip>
                   </div>
                 </div>
-              )}
-              {step === 'data' && (
-                <p className="form-instructions content-column" id="form-instructions">
-                  Все поля обязательны
-                </p>
               )}
               {step === 'data' && (
                 <BookingForm

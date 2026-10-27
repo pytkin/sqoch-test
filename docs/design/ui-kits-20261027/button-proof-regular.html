@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>Sqoch: Golos Text и Phosphor</title
+  ><style>
+    @font-face {
+      font-family: Golos;
+      src: url(fonts/golos-text.ttf);
+      font-weight: 400 900;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #f2f5f8;
+      color: #203247;
+      font-family: Golos, sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.01em;
+      padding: 48px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+    header img {
+      width: 122px;
+      height: 56px;
+    }
+    h1 {
+      font-size: 28px;
+      line-height: 36px;
+      font-weight: 600;
+      letter-spacing: 0.005em;
+      margin: 0;
+    }
+    p {
+      margin: 8px 0 0;
+      color: #536478;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #d5dde4;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow:
+        0 1px 2px #2032470a,
+        0 12px 32px #2032470f;
+      margin-bottom: 28px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 48px;
+      border: 1px solid #365d80;
+      border-radius: 8px;
+      padding: 11px 18px;
+      background: #365d80;
+      color: white;
+      font: inherit;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: inherit;
+      cursor: pointer;
+    }
+    .secondary {
+      background: #f0f5f9;
+      color: #203247;
+      border-color: #7c8998;
+    }
+    .button:disabled {
+      background: #e6ebef;
+      color: #536478;
+      border-color: #bcc6cf;
+      cursor: default;
+    }
+    .button:focus-visible {
+      outline: 3px solid #365d80;
+      outline-offset: 3px;
+    }
+    .icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      display: inline-block;
+      background: currentColor;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+    .icon-only {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: #fff;
+      color: #203247;
+      border: 1px solid #7c8998;
+      border-radius: 8px;
+    }
+    .label {
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .caption {
+      margin-top: 24px;
+      max-width: 62ch;
+    }
+  </style>
+  <header>
+    <img src="assets/sqoch-wordmark-source.png" alt="sqoch." />
+    <div>
+      <h1>Golos Text и Phosphor Regular</h1>
+      <p>Реальные SVG и локальный шрифт, без растрового приближения</p>
+    </div>
+  </header>
+  <section class="panel">
+    <div class="label">Кнопки</div>
+    <div class="row">
+      <button class="button">Проверить заказ</button
+      ><button class="button secondary">
+        <span
+          aria-hidden="true"
+          class="icon"
+          style="mask-image: url(icons/phosphor-regular/plus.svg)"
+        ></span
+        ><span>Добавить участника</span></button
+      ><button class="button secondary">
+        <span
+          aria-hidden="true"
+          class="icon"
+          style="mask-image: url(icons/phosphor-regular/pencil-simple.svg)"
+        ></span
+        ><span>Изменить данные</span>
+      </button>
+    </div>
+    <p class="caption">Высота 48 px · иконка 18 px · gap 6 px · padding по горизонтали 18 px</p>
+  </section>
+  <section class="panel">
+    <div class="label">Иконки действий</div>
+    <div class="row">
+      <button class="icon-only" aria-label="Добавить">
+        <span
+          aria-hidden="true"
+          class="icon"
+          style="mask-image: url(icons/phosphor-regular/plus.svg)"
+        ></span></button
+      ><button class="icon-only" aria-label="Информация">
+        <span
+          aria-hidden="true"
+          class="icon"
+          style="mask-image: url(icons/phosphor-regular/info.svg)"
+        ></span></button
+      ><button class="icon-only" aria-label="Редактировать">
+        <span
+          aria-hidden="true"
+          class="icon"
+          style="mask-image: url(icons/phosphor-regular/pencil-simple.svg)"
+        ></span></button
+      ><button class="icon-only" aria-label="Удалить">
+        <span
+          aria-hidden="true"
+          class="icon"
+          style="mask-image: url(icons/phosphor-regular/trash.svg)"
+        ></span></button
+      ><button class="icon-only" aria-label="Готово">
+        <span
+          aria-hidden="true"
+          class="icon"
+          style="mask-image: url(icons/phosphor-regular/check.svg)"
+        ></span>
+      </button>
+    </div>
+    <p class="caption">
+      Глиф 18 px внутри области нажатия 44 px. Одна семья и одинаковый оптический масштаб.
+    </p>
+  </section>
+  <section class="panel">
+    <div class="label">Текст и ритм</div>
+    <p>
+      Укажите имя и возраст каждого участника. Стоимость билетов рассчитаем перед подтверждением.
+    </p>
+    <p>Один email для всех участников заказа. В демо письма не отправляются</p>
+    <p class="caption">Golos Text · 16 / 24 px · вес 400/500 · letter-spacing +0.01em</p>
+  </section>
+</html>

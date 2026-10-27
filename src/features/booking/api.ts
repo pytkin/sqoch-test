@@ -1,11 +1,12 @@
+import { withDeadline } from '../../api/abortable';
 import type {
   Event,
   OrderRequest,
   Quote,
   ConfirmedOrder,
   ValidationIssue,
-} from './generated/types.gen';
-export type { Event, Quote, ConfirmedOrder } from './generated/types.gen';
+} from '../../api/generated/types.gen';
+export type { Event, Quote, ConfirmedOrder } from '../../api/generated/types.gen';
 export type Draft = { participants: { name: string; age: string }[]; email: string };
 export type Scenario = 'success' | 'sold_out';
 export class ApiError extends Error {
@@ -121,30 +122,12 @@ async function request<T>(
   valid: (value: unknown) => value is T,
   init?: RequestInit,
 ): Promise<T> {
-  const external = init?.signal;
-  const cancelled = () => new DOMException('Request cancelled', 'AbortError');
-  if (external?.aborted) throw cancelled();
-  const controller = new AbortController();
-  let rejectCancellation!: (error: Error) => void;
-  const cancellation = new Promise<never>((_resolve, reject) => {
-    rejectCancellation = reject;
+  return withDeadline((signal) => readResponse(url, expectedStatus, valid, { ...init, signal }), {
+    signal: init?.signal ?? undefined,
+    timeoutMs: 15000,
+    timeoutError: () => new ApiError('timeout'),
+    cancelledError: () => new DOMException('Request cancelled', 'AbortError'),
   });
-  const cancel = (error: Error) => {
-    controller.abort(error);
-    rejectCancellation(error);
-  };
-  const onAbort = () => cancel(cancelled());
-  external?.addEventListener('abort', onAbort, { once: true });
-  const deadline = setTimeout(() => cancel(new ApiError('timeout')), 15_000);
-  try {
-    return await Promise.race([
-      readResponse(url, expectedStatus, valid, { ...init, signal: controller.signal }),
-      cancellation,
-    ]);
-  } finally {
-    clearTimeout(deadline);
-    external?.removeEventListener('abort', onAbort);
-  }
 }
 export function getEvent(signal: AbortSignal) {
   return request<Event>('/api/event', 200, isEvent, { signal });
@@ -186,7 +169,7 @@ export function errorMessage(
         ? 'Не удалось связаться с сервером.'
         : 'Сервер вернул ошибку или некорректный ответ.';
   if (operation === 'confirm')
-    return `Результат подтверждения неизвестен. ${reason} Сервер мог создать заказ, но ответ не получен. Участники, email и расчёт остались на этой странице. Если решите повторить попытку, нажмите «Подтвердить заказ» — автоматически запрос не повторяется.`;
+    return `Результат подтверждения неизвестен. ${reason} Сервер мог создать заказ, но ответ не получен. Участники, email и расчёт остались на этой странице. Если решите повторить попытку, нажмите «Подтвердить заказ». Автоматически запрос не повторяется.`;
   if (operation === 'event')
     return `Не удалось загрузить данные мероприятия. ${reason} Проверьте соединение и нажмите «Повторить загрузку».`;
   return `Не удалось рассчитать стоимость заказа. ${reason} Данные участников и email остались на этой странице. Повторите расчёт кнопкой «Проверить заказ».`;

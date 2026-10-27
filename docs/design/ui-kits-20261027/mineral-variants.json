@@ -1,0 +1,20 @@
+[
+  {
+    "file": "mineral-variant-1.png",
+    "source": "exec-52b32560-c15f-40a5-a62c-8e23d959897e.png",
+    "size": [1448, 1086],
+    "sha256": "4f11c42b38b794147578e558ae338bfc461deab7437ce4b8263669b2e170fd3d"
+  },
+  {
+    "file": "mineral-variant-2.png",
+    "source": "exec-a754509c-72e9-42b1-987e-5788659d2a47.png",
+    "size": [1448, 1086],
+    "sha256": "9e712d69d17add993b9e97f4d41a37a1f5f6b3518f5fadd104c95892dcd6f4ab"
+  },
+  {
+    "file": "mineral-variant-3.png",
+    "source": "exec-810c9a8f-03c9-4991-9cf2-be95e74e5612.png",
+    "size": [1374, 1145],
+    "sha256": "304ddb27df81db8342e53cda4764eff1447665827546ff87d1d8a94ca0b097c9"
+  }
+]

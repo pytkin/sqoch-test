@@ -1,0 +1,652 @@
+{
+  "schemaVersion": 1,
+  "scope": "33 curated semantic mutations, not whole-project exhaustive AST mutation coverage",
+  "comparison": "original source + original tests versus refactored source + strengthened tests",
+  "before": {
+    "counts": {
+      "killed": 11,
+      "survived": 22,
+      "invalid": 0,
+      "timeout": 0
+    },
+    "controls": [
+      {
+        "group": "orders",
+        "outcome": "passed"
+      },
+      {
+        "group": "booking-client",
+        "outcome": "passed"
+      },
+      {
+        "group": "organizer-client",
+        "outcome": "passed"
+      },
+      {
+        "group": "delivery",
+        "outcome": "passed"
+      },
+      {
+        "group": "campaigns",
+        "outcome": "passed"
+      },
+      {
+        "group": "ai",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "after": {
+    "counts": {
+      "killed": 33,
+      "survived": 0,
+      "invalid": 0,
+      "timeout": 0
+    },
+    "controls": [
+      {
+        "group": "orders",
+        "outcome": "passed"
+      },
+      {
+        "group": "booking-client",
+        "outcome": "passed"
+      },
+      {
+        "group": "organizer-client",
+        "outcome": "passed"
+      },
+      {
+        "group": "delivery",
+        "outcome": "passed"
+      },
+      {
+        "group": "campaigns",
+        "outcome": "passed"
+      },
+      {
+        "group": "ai",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "mutations": [
+    {
+      "id": "order-child-price-boundary",
+      "group": "orders",
+      "purpose": "Age 14 must receive the full price",
+      "before": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "fb8ad2a71a53158120d0ec0174b3bc2adcb11e44355f52724d29b39e5cb0e38d",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "fb8ad2a71a53158120d0ec0174b3bc2adcb11e44355f52724d29b39e5cb0e38d",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "order-child-type-boundary",
+      "group": "orders",
+      "purpose": "Age 14 must receive the full ticket type",
+      "before": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "2b07029234650139cf4f1c76c0fa1f04a5f1e5759c134734c9bd282b55be3a04",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "2b07029234650139cf4f1c76c0fa1f04a5f1e5759c134734c9bd282b55be3a04",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "order-adult-boundary",
+      "group": "orders",
+      "purpose": "Age 18 is sufficient as a companion",
+      "before": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "4886455d87b5617c05ff6fe5fbce6317c907b5d0c363478736711d91c6cfef66",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "4886455d87b5617c05ff6fe5fbce6317c907b5d0c363478736711d91c6cfef66",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "order-participant-cap",
+      "group": "orders",
+      "purpose": "The API must reject five participants",
+      "before": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "9a2e4a49c75e65f5d0f128e36a40f6f35d696be086b2c74d81059a7cd5451abf",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "9a2e4a49c75e65f5d0f128e36a40f6f35d696be086b2c74d81059a7cd5451abf",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "order-price-total",
+      "group": "orders",
+      "purpose": "The total must sum all participants",
+      "before": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "275a0a69277ab10530106788f193d742f038709df66691ab8651958be2597b70",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/orders.py",
+        "sourceSha256": "d5d9c3c1efe05164e048ce9bfce6293ad3d76fd9829151c9a2eb2c1da0e9342e",
+        "mutatedSha256": "275a0a69277ab10530106788f193d742f038709df66691ab8651958be2597b70",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "booking-empty-age",
+      "group": "booking-client",
+      "purpose": "An empty age must not become zero",
+      "before": {
+        "path": "src/features/booking/draft.ts",
+        "sourceSha256": "e14a80c0075d1b5f771d1dbf790c13387efa13564c1aa323103d4d32bee9e7f9",
+        "mutatedSha256": "6253225b8248fd8a5e4efa38efb49a36b64cba58964ba3450953eb9bc53dcd7c",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "src/features/booking/draft.ts",
+        "sourceSha256": "e14a80c0075d1b5f771d1dbf790c13387efa13564c1aa323103d4d32bee9e7f9",
+        "mutatedSha256": "6253225b8248fd8a5e4efa38efb49a36b64cba58964ba3450953eb9bc53dcd7c",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "booking-safe-integer",
+      "group": "booking-client",
+      "purpose": "Unsafe integer ages must be rejected",
+      "before": {
+        "path": "src/features/booking/draft.ts",
+        "sourceSha256": "e14a80c0075d1b5f771d1dbf790c13387efa13564c1aa323103d4d32bee9e7f9",
+        "mutatedSha256": "98c5b70e4d1708f893672e22696686c2ddcf254a478b2f607f93e9e8813a0883",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/booking/draft.ts",
+        "sourceSha256": "e14a80c0075d1b5f771d1dbf790c13387efa13564c1aa323103d4d32bee9e7f9",
+        "mutatedSha256": "98c5b70e4d1708f893672e22696686c2ddcf254a478b2f607f93e9e8813a0883",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "booking-teen-plural",
+      "group": "booking-client",
+      "purpose": "Russian age wording must handle 11 through 14",
+      "before": {
+        "path": "src/features/booking/presentation.ts",
+        "sourceSha256": "7be3fca06834782bee0b2538dc35ec4aa073055ca15429281e903607f47f17fa",
+        "mutatedSha256": "37cb673ddf8159a5415114fd74c629261029ca72b1155af93a5aa81149103cd9",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/booking/presentation.ts",
+        "sourceSha256": "7be3fca06834782bee0b2538dc35ec4aa073055ca15429281e903607f47f17fa",
+        "mutatedSha256": "37cb673ddf8159a5415114fd74c629261029ca72b1155af93a5aa81149103cd9",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "booking-http-status",
+      "group": "booking-client",
+      "purpose": "A valid DTO under the wrong successful status must be rejected",
+      "before": {
+        "path": "src/features/booking/api.ts",
+        "sourceSha256": "97aea6a87e27cbe6d5bf2c0a59c73d27318a6e4965b390f09bb3a28e4974339f",
+        "mutatedSha256": "1b1ea0e1b32b25e34ee4d2c222603eda919705f2d028199f74173cf5b206b824",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/booking/api.ts",
+        "sourceSha256": "a544b91d0d46cc1f4d4720faa3879bc45ecd2790e594366437a6d19c3e2a2963",
+        "mutatedSha256": "e4967642aa37bdcf23b294782c005b80638bdb932277e6fae0103ed66fd3c42f",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "booking-quote-participant-cap",
+      "group": "booking-client",
+      "purpose": "A five-participant quote must be rejected",
+      "before": {
+        "path": "src/features/booking/api.ts",
+        "sourceSha256": "97aea6a87e27cbe6d5bf2c0a59c73d27318a6e4965b390f09bb3a28e4974339f",
+        "mutatedSha256": "e0103036ab24ef68feeb5905bbfb48f3d83a6a9f1f18dedc107b4bfc1ed1df85",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/booking/api.ts",
+        "sourceSha256": "a544b91d0d46cc1f4d4720faa3879bc45ecd2790e594366437a6d19c3e2a2963",
+        "mutatedSha256": "ab564997fc64d6f7fcd960571a4ca47d7890a50d84bde4d82d6106d91db4b82e",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "organizer-ordinary-deadline",
+      "group": "organizer-client",
+      "purpose": "A normal request must remain pending until 15 seconds",
+      "before": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "e9341d730755d635232d85d0e572e38188a7487b116499663d12d50535cb095a",
+        "mutatedSha256": "648ffb3da28f4d1f8b9135f55b72a66c1fe1d7d6e88208248cf0befbd29553c1",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "a300b36985f4fa5b97e82caf3ffd9e4cdd04b97d80bdf200b1fa08850551a1d6",
+        "mutatedSha256": "b5eb51ec48cf97b9874d86dee7ea368020dc854aee0ac9075d3630298125a2e5",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "organizer-ai-deadline",
+      "group": "organizer-client",
+      "purpose": "AI actions must retain their full 60-second deadline",
+      "before": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "e9341d730755d635232d85d0e572e38188a7487b116499663d12d50535cb095a",
+        "mutatedSha256": "17b99fb9f02431b0c73151b6a0cd2dcebf551db749904bb2e3aece0b49f5f762",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "a300b36985f4fa5b97e82caf3ffd9e4cdd04b97d80bdf200b1fa08850551a1d6",
+        "mutatedSha256": "aad1f5c3c72622a330ef727dfe20b1307462894e71235da372605b8f5b3af6b2",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "organizer-state-counts",
+      "group": "organizer-client",
+      "purpose": "Counters must match the actual delivery states",
+      "before": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "e9341d730755d635232d85d0e572e38188a7487b116499663d12d50535cb095a",
+        "mutatedSha256": "1c8323925d8346cff3044d19a4dea23ea19aa1e190b988556f5181cd53e7f8ed",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/organizer/responseGuards.ts",
+        "sourceSha256": "50380bca4efb6add31806f568f8fd8f28108b13c2e858a100e96aec850d40225",
+        "mutatedSha256": "377a6c97d6cdef0f089fcfc8a303f11cb9ffca8bdd2f782e8f630786f438f662",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "organizer-duplicate-recipients",
+      "group": "organizer-client",
+      "purpose": "The preview must reject duplicate recipients",
+      "before": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "e9341d730755d635232d85d0e572e38188a7487b116499663d12d50535cb095a",
+        "mutatedSha256": "24d1a02804e37c0d0341a202bd48cfae436fa2d370fce83b9825ba01cb968925",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/organizer/responseGuards.ts",
+        "sourceSha256": "50380bca4efb6add31806f568f8fd8f28108b13c2e858a100e96aec850d40225",
+        "mutatedSha256": "7092ca08f7def7eae75ac66d07335f150bfb236cfae8ec24bbb159127644b18c",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "organizer-delivery-attempt-cap",
+      "group": "organizer-client",
+      "purpose": "A response cannot contain a sixth delivery attempt",
+      "before": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "e9341d730755d635232d85d0e572e38188a7487b116499663d12d50535cb095a",
+        "mutatedSha256": "6634cf42ee93460bf13b9e927165c09feef6aeeeb73e380e031dda7209c54dd7",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/organizer/responseGuards.ts",
+        "sourceSha256": "50380bca4efb6add31806f568f8fd8f28108b13c2e858a100e96aec850d40225",
+        "mutatedSha256": "cc566f2d72f676ee4b5ff860ed9d9388e9ea34b931f4f2d3cd5ace8c3f67bc0b",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "organizer-preview-identity",
+      "group": "organizer-client",
+      "purpose": "A saved preview must belong to the displayed campaign",
+      "before": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "e9341d730755d635232d85d0e572e38188a7487b116499663d12d50535cb095a",
+        "mutatedSha256": "9f78712fff62b5eab9727e72edb928fb2b63051056b8c8ebb9651fba37ba1e43",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/organizer/responseGuards.ts",
+        "sourceSha256": "50380bca4efb6add31806f568f8fd8f28108b13c2e858a100e96aec850d40225",
+        "mutatedSha256": "f696c76e69841c788acc46e7f48c7cd9a3d00532299e15c5dba15bed3c7d935a",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "organizer-ai-draft-only",
+      "group": "organizer-client",
+      "purpose": "AI actions may only return drafts",
+      "before": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "e9341d730755d635232d85d0e572e38188a7487b116499663d12d50535cb095a",
+        "mutatedSha256": "77b807da5baed1d29ea016f2e1da58200472cb3598bff33184319b04c4a6b3f4",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/organizer/api.ts",
+        "sourceSha256": "a300b36985f4fa5b97e82caf3ffd9e4cdd04b97d80bdf200b1fa08850551a1d6",
+        "mutatedSha256": "abc4179f84f0a97e072187119e340fa6336a1cdf86d0e22f6a330604eed1fad1",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "organizer-calendar-roundtrip",
+      "group": "organizer-client",
+      "purpose": "An impossible calendar date must not normalize to the next month",
+      "before": {
+        "path": "src/features/organizer/presentation.ts",
+        "sourceSha256": "bdc22a5c38f2050c1ba837e9457b67e9d83a69bce5e6fce2dec866031d64c9d8",
+        "mutatedSha256": "224589bfedf8ade57e73e851e254478bb2a2dc3f8e96954cb5d7a8386c79e5de",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "src/features/organizer/presentation.ts",
+        "sourceSha256": "116cce66ef2409078a75a7d2447f3fd3861ca9d5d4be5942dbc71009a4671f34",
+        "mutatedSha256": "d0f7d7772d6375f911315b15570d8ecd043a5d5c6ff792dfa49930893e410bb4",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "delivery-retry-cap",
+      "group": "delivery",
+      "purpose": "The fifth temporary failure must be final",
+      "before": {
+        "path": "backend/sqoch_api/notifications/delivery.py",
+        "sourceSha256": "d142f7a51cda44c5005345f163ac843543d6b5cf1a1305a18d9815d0666f2240",
+        "mutatedSha256": "d2c8689d5a88b3cd41ca60f03b42c7260533ca714e644e43c064f69653904956",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/delivery.py",
+        "sourceSha256": "b0dce0d82bda553a048d060a19e794b1f5999faefd10d2fb94fe2ffedf740136",
+        "mutatedSha256": "3d42c2a38446a3294354fdec3bd54941f99bee742871c060d9ca2b5c8ee9e65c",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "delivery-retry-delay",
+      "group": "delivery",
+      "purpose": "The first retry must wait five seconds",
+      "before": {
+        "path": "backend/sqoch_api/notifications/delivery.py",
+        "sourceSha256": "d142f7a51cda44c5005345f163ac843543d6b5cf1a1305a18d9815d0666f2240",
+        "mutatedSha256": "8e919d93e8deeaa615811c2c4644de74fa67af95aa86a69c49eb75d41ffc4f81",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/delivery.py",
+        "sourceSha256": "b0dce0d82bda553a048d060a19e794b1f5999faefd10d2fb94fe2ffedf740136",
+        "mutatedSha256": "1f87df30f9328dc379a311eef5a2e312b81e88fb40fe40ff3b9a2e2bbb791b4b",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "delivery-stale-state",
+      "group": "delivery",
+      "purpose": "Late results cannot overwrite reconciled or recovered states",
+      "before": {
+        "path": "backend/sqoch_api/notifications/delivery.py",
+        "sourceSha256": "d142f7a51cda44c5005345f163ac843543d6b5cf1a1305a18d9815d0666f2240",
+        "mutatedSha256": "abf698c2b923571c689b5a4af01fde943bf4d365293dc076d2637779c2dbcf62",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/delivery.py",
+        "sourceSha256": "b0dce0d82bda553a048d060a19e794b1f5999faefd10d2fb94fe2ffedf740136",
+        "mutatedSha256": "92abf7662f0702b08abacec0d8c34085b694eb5967ec881eb97c2083c16c82b3",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "delivery-stale-attempt",
+      "group": "delivery",
+      "purpose": "An older attempt cannot overwrite the current sending attempt",
+      "before": {
+        "path": "backend/sqoch_api/notifications/delivery.py",
+        "sourceSha256": "d142f7a51cda44c5005345f163ac843543d6b5cf1a1305a18d9815d0666f2240",
+        "mutatedSha256": "1e50454fab646649cd44c106b613064443d4c04032ed524e97c4d91ed0bb4088",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/delivery.py",
+        "sourceSha256": "b0dce0d82bda553a048d060a19e794b1f5999faefd10d2fb94fe2ffedf740136",
+        "mutatedSha256": "d32ce3bb1de4694f1b4634698a0a58addcaf278ea2a3c85acb8be50518d12128",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "campaign-unsettled-sending",
+      "group": "campaigns",
+      "purpose": "A sending delivery must prevent a second transfer of the same event",
+      "before": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "3f95e3f4cf0aa2fdc371fb66a03372c8d5beab6c5d9ecadb7fcb818cd4f2d6bf",
+        "mutatedSha256": "23967cfc89e2e178d43c9bbe197f920963c1a7e4ac8977a0234ac802dc11026f",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "5ba7cd09e8cdfd294d5aa7cd7ca9176b0739e1148c3b0aa624d316ddb07b0cfe",
+        "mutatedSha256": "6942ada074096f3cfbfd6f29d154cd9b6d66c7de04ecd36c0a6919bc131456a1",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "campaign-unsettled-retry",
+      "group": "campaigns",
+      "purpose": "A pending retry must prevent a second transfer of the same event",
+      "before": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "3f95e3f4cf0aa2fdc371fb66a03372c8d5beab6c5d9ecadb7fcb818cd4f2d6bf",
+        "mutatedSha256": "e3dd4f9a2746fa3345ee8bc7f9ebc72c627ce7592bd6e0512d5694dc0ad3034a",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "5ba7cd09e8cdfd294d5aa7cd7ca9176b0739e1148c3b0aa624d316ddb07b0cfe",
+        "mutatedSha256": "d18fea8a161c754c9b27f5a415ed31c240cd4b0570a875293c9a5fe6c9c587a7",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "campaign-unsettled-unknown",
+      "group": "campaigns",
+      "purpose": "An unknown result must prevent a second transfer of the same event",
+      "before": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "3f95e3f4cf0aa2fdc371fb66a03372c8d5beab6c5d9ecadb7fcb818cd4f2d6bf",
+        "mutatedSha256": "10edb8366fab5041bf898003359981fa584f8af4ef4952812a842634c1a6c650",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "5ba7cd09e8cdfd294d5aa7cd7ca9176b0739e1148c3b0aa624d316ddb07b0cfe",
+        "mutatedSha256": "5316dbc6832ece446ed5b58c5ce4e293bceb97b6f2c61d8cd544e2ed8cee3c5f",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "campaign-event-isolation",
+      "group": "campaigns",
+      "purpose": "A campaign for another event must not block this transfer",
+      "before": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "3f95e3f4cf0aa2fdc371fb66a03372c8d5beab6c5d9ecadb7fcb818cd4f2d6bf",
+        "mutatedSha256": "dd43183f5a62d70ff437ccb391795a94f2f0e6d8a7279bd5d3bcfcda9078a1ec",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "5ba7cd09e8cdfd294d5aa7cd7ca9176b0739e1148c3b0aa624d316ddb07b0cfe",
+        "mutatedSha256": "a2ca3950a55c7ad5dc5c7e39f17ce4fc55034acdf1a427c1343272406ca6ff68",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "campaign-processing-priority",
+      "group": "delivery",
+      "purpose": "Outstanding work has priority over terminal outcomes",
+      "before": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "3f95e3f4cf0aa2fdc371fb66a03372c8d5beab6c5d9ecadb7fcb818cd4f2d6bf",
+        "mutatedSha256": "cf6695625524c2452fee2fbdeae1aa3532b929250489f1e5411835564e88576b",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/campaign_queries.py",
+        "sourceSha256": "9b95903a4eba5d5b8d61c30cd2f5bdc2063fab08a1ed4ec9ee3a1129178a171f",
+        "mutatedSha256": "31efabe3db9d7024255aaec51d3a38e2ae58d4d0e016c067b7a4ecb1a1774841",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "campaign-unknown-priority",
+      "group": "delivery",
+      "purpose": "Unknown outcomes must remain needs_attention",
+      "before": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "3f95e3f4cf0aa2fdc371fb66a03372c8d5beab6c5d9ecadb7fcb818cd4f2d6bf",
+        "mutatedSha256": "5df0dd7601b3ef37635e530e057c599aea0a87e628f69d27ea032fb805be22a0",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/campaign_queries.py",
+        "sourceSha256": "9b95903a4eba5d5b8d61c30cd2f5bdc2063fab08a1ed4ec9ee3a1129178a171f",
+        "mutatedSha256": "b6535b41c7706635161e97b6b0333673853f6cb0971c1eaa8ad924c2a9b1312d",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "campaign-failed-status",
+      "group": "delivery",
+      "purpose": "A permanent failure must not become completed success",
+      "before": {
+        "path": "backend/sqoch_api/notifications/service.py",
+        "sourceSha256": "3f95e3f4cf0aa2fdc371fb66a03372c8d5beab6c5d9ecadb7fcb818cd4f2d6bf",
+        "mutatedSha256": "8eb283f40c39ec79a95ab796727cc3bd943cc64f97b47fe928e04e75357dcdcb",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/campaign_queries.py",
+        "sourceSha256": "9b95903a4eba5d5b8d61c30cd2f5bdc2063fab08a1ed4ec9ee3a1129178a171f",
+        "mutatedSha256": "7c8f1352f32d3300fd6e87cd3d7fbed24dab251c895afc4342edd4faf588fa77",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "ai-tool-id-reuse",
+      "group": "ai",
+      "purpose": "A tool-call ID cannot be reused in a later round",
+      "before": {
+        "path": "backend/sqoch_api/notifications/ai.py",
+        "sourceSha256": "a7bd060304a78d06a73e14423bef6b114ca1667b98b9ab17f1d06248b1cefb35",
+        "mutatedSha256": "ade88b3062b2d04834d5096243a4c42878120c7d9028e6d7b0eefe83f1b2ba24",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/ai.py",
+        "sourceSha256": "3408e323070471538674c7f40fba13f1a0db19445aa334883f2a49d391a16f7c",
+        "mutatedSha256": "bf2ca9ac4a1575471e21138ad38ac291b6bd8e1994ad3a190ed07c99ae403b3c",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "ai-final-tool-rejection",
+      "group": "ai",
+      "purpose": "The final JSON-only response cannot request tools",
+      "before": {
+        "path": "backend/sqoch_api/notifications/ai.py",
+        "sourceSha256": "a7bd060304a78d06a73e14423bef6b114ca1667b98b9ab17f1d06248b1cefb35",
+        "mutatedSha256": "e21a08484dddc1982047f7d463367ca98ceb77571ccd7ffea215c70b56c869d9",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/deepseek.py",
+        "sourceSha256": "19ebad4ccb1b99c08f11554f20ef0d7ee409512eb0fa22d40bbe0e61dec5853f",
+        "mutatedSha256": "fe9b06e729b4ae550c79ce17b49606bc28fc7b42040dbd04c02378dd9cb88b2f",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "ai-http-budget-boundary",
+      "group": "ai",
+      "purpose": "Three bounded tool rounds must still allow the final JSON request",
+      "before": {
+        "path": "backend/sqoch_api/notifications/ai.py",
+        "sourceSha256": "a7bd060304a78d06a73e14423bef6b114ca1667b98b9ab17f1d06248b1cefb35",
+        "mutatedSha256": "296736dd25532f90f36927e3664d238cf31b9ba2421b69ffa6c9a1bcf1898a67",
+        "outcome": "survived"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/ai.py",
+        "sourceSha256": "3408e323070471538674c7f40fba13f1a0db19445aa334883f2a49d391a16f7c",
+        "mutatedSha256": "16aabc4a6edd0f0bffd78fbf772545f130ec85f10d0547237ea10fc459f32fc6",
+        "outcome": "killed"
+      }
+    },
+    {
+      "id": "ai-optimistic-revision",
+      "group": "ai",
+      "purpose": "A provider response cannot overwrite a draft edited during HTTP",
+      "before": {
+        "path": "backend/sqoch_api/notifications/ai.py",
+        "sourceSha256": "a7bd060304a78d06a73e14423bef6b114ca1667b98b9ab17f1d06248b1cefb35",
+        "mutatedSha256": "812ceb821c55559a93190e2a7ee528f4a2aca1fdb0c1da3f09898678ca8ca75d",
+        "outcome": "killed"
+      },
+      "after": {
+        "path": "backend/sqoch_api/notifications/errors.py",
+        "sourceSha256": "496b4c3c3b553b392ea780e9c9074987fc8331e91fa32d9d8aece5d8c5ba4f9a",
+        "mutatedSha256": "d9b3db472adf542137f7b9e2a4f922c906323b7a033fce3c347e78ea1a8e4ea1",
+        "outcome": "killed"
+      }
+    }
+  ],
+  "advisor": {
+    "recommendations": [
+      {
+        "strategy": "focused-unit",
+        "reasons": ["Executable source changed."],
+        "commands": ["pnpm run test"]
+      },
+      {
+        "strategy": "integration",
+        "reasons": ["Integration-shaped files require boundary evidence."],
+        "commands": ["pnpm run test"]
+      }
+    ],
+    "gaps": [],
+    "coverageReports": []
+  }
+}

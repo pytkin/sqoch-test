@@ -1,0 +1,20 @@
+[
+  {
+    "file": "kit-1-mineral.png",
+    "source": "exec-8e834e5b-0630-4d66-8247-61ddab23d1b8.png",
+    "size": [1448, 1086],
+    "sha256": "cf8432c53227e2c22dd8f5310127bc8033c75bcc78b02bf75de9237dae00be3b"
+  },
+  {
+    "file": "kit-2-paper.png",
+    "source": "exec-912a6df4-cb10-4d37-8e64-d597ca0365e0.png",
+    "size": [1448, 1086],
+    "sha256": "86cc942db74238b086b9c169d765a9d3e74b847bba316ae5ce951eeb6d3ed678"
+  },
+  {
+    "file": "kit-3-teal.png",
+    "source": "exec-6f1ee19e-12a4-4c66-a261-20c2ec58cf91.png",
+    "size": [1448, 1086],
+    "sha256": "131260224cf4adb10379042a4b43a7ee6787b3a1af689e2f2b6e5e492846faa0"
+  }
+]
